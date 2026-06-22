@@ -424,11 +424,166 @@
       #about { padding: 2rem 1.5rem; }
       #about h2 { font-size: 2rem; }
     }
-  </style>
+  
+
+    /* ── Tab styles ── */
+    #main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .tab-panel {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-panel.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    section {
+      padding: 3.5rem 3rem;
+    }
+    
+    nav button {
+      display: block;
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #a8a39a;
+      text-align: left;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.4rem 0;
+      border-left: 2px solid transparent;
+      padding-left: 0.75rem;
+      margin-left: -0.75rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav button:hover,
+    nav button.active {
+      color: var(--paper);
+      border-left-color: var(--accent);
+    }
+
+    /* ── Sidebar CV Download ── */
+    .sidebar-cv-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      color: var(--ink);
+      background: var(--paper);
+      padding: 0.6rem 0.8rem;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: background 0.2s;
+      text-align: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+    .sidebar-cv-button:hover { 
+      background: var(--accent);
+      color: var(--paper);
+    }
+    .sidebar-cv-button svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ── News styles ── */
+    .news-list { list-style: none; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1.2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-image {
+      width: 100%;
+      max-width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+    }
+    .news-content h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .news-date {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink3);
+      margin-bottom: 0.5rem;
+    }
+    .news-text {
+      font-size: 0.9rem;
+      color: var(--ink2);
+      margin-bottom: 0.6rem;
+      line-height: 1.6;
+    }
+    .news-links {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+    .news-link {
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .news-link:hover { 
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 860px) {
+      .news-item { grid-template-columns: 1fr; }
+      .news-image { max-width: 100%; }
+      nav button { width: auto; padding: 0.2rem 0.5rem; border-left: none; border-bottom: 2px solid transparent; margin-left: 0; }
+      nav button:hover, nav button.active { border-left: none; border-bottom-color: var(--accent); }
+    }
+</style>
+</head>
 </head>
 <body>
-
-<!-- ── SIDEBAR ── -->
 <aside id="sidebar">
   <img src="photo.jpg" alt="Marcos Araújo Castro e Silva" class="sidebar-photo"/>
 
@@ -439,14 +594,20 @@
   <hr class="sidebar-rule"/>
 
   <nav aria-label="Page sections">
-    <a href="#about" class="active">About</a>
-    <a href="#publications">Publications</a>
-    <a href="#cv">CV</a>
-    <a href="#research">Research projects</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
+    <button class="tab-btn" data-tab="about">About</button>
+    <button class="tab-btn" data-tab="publications">Publications</button>
+    <button class="tab-btn" data-tab="cv">CV</button>
+    <button class="tab-btn" data-tab="research">Research projects</button>
+    <button class="tab-btn" data-tab="teaching">Teaching</button>
+    <button class="tab-btn" data-tab="blog">Blog</button>
+    <button class="tab-btn" data-tab="news">News</button>
+    <button class="tab-btn" data-tab="contact">Contact</button>
   </nav>
+
+  <a class="sidebar-cv-button" href="cv.pdf" download>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download CV
+  </a>
 
   <hr class="sidebar-rule"/>
 
@@ -491,12 +652,10 @@
     </a>
   </div>
 </aside>
-
-<!-- ── MAIN ── -->
 <main id="main">
+  <div class="tab-panel active" id="tab-about">
+    <section id="about">
 
-  <!-- About -->
-  <section id="about">
     <div class="section-label">About</div>
     <h2>Marcos Araújo Castro e Silva, Ph.D.</h2>
     <p class="about-tagline">Unravelling the genetic history of Indigenous American and descendant Populations</p>
@@ -536,10 +695,12 @@
       <span class="keyword">whole-genome sequencing</span>
       <span class="keyword">ancient DNA</span>
     </div>
-  </section>
+  
+    </section>
+  </div>
 
-  <!-- Publications -->
-  <section id="publications">
+  <div class="tab-panel" id="tab-publications">
+    <section id="publications">
     <div class="section-label">Research output</div>
     <h2>Publications</h2>
     <div class="section-label">†: Co-first author; (CA): Corresponding author</div>
@@ -704,62 +865,13 @@
   </section>
 
   <!-- Book chapters -->
-  <section id="theses">
-    <div class="section-label">Research output</div>
-    <h2>Book chapters</h2>
-    <div class="section-label">(CA): Corresponding author; (Eds): Book editors</div>
-    <ul class="pub-list">
+  
+    </section>
+  </div>
 
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-title">How did Evolutionary Processes Influence the Genetic Structure of Humans in the Neotropics?</div>
-        <div class="pub-authors">Hünemeier T (CA), Nunes K, <strong>Castro e Silva MA</strong></div>
-        <div class="pub-journal"><em>Population Genetics in the Neotropics · Springer Nature</em> · Chapter 18, 377–417</div>
-        <div class="pub-authors">Bohrer Monteiro Siqueira, MV, Konzen, ER, Galetti Junior, PM (EDS)</div>        
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1007/978-3-031-83685-5_18" target="_blank">DOI</a>
-          <a class="pub-link" href="chapters/978-3-031-83685-5_18.pdf" target="_blank">PDF</a>
-        </div>
-      </li>    
-      
-    </ul>
-  </section>
+  <div class="tab-panel" id="tab-cv">
+    <section id="cv">
 
-  <!-- Thesis and dissertation -->
-  <section id="theses">
-    <div class="section-label">Research output</div>
-    <h2>Thesis and dissertations</h2>
-    <ul class="pub-list">
-
-      <li class="pub-item">
-        <div class="pub-year">2021</div>
-        <div class="pub-title">Genomic perspective on the origin, history, and diversity of indigenous peoples from South America: from the initial settlement to the European colonization</div>
-        <div class="pub-authors"><strong>Castro e Silva MA</strong></div>
-        <div class="pub-journal"><em>PhD thesis</em> · 247 pages</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.11606/t.41.2021.tde-09122021-151927" target="_blank">DOI</a>
-          <a class="pub-link" href="thesis/MarcosAraujoCastroeSilvaOriginal.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://teses.usp.br/teses/disponiveis/41/41131/tde-09122021-151927/en.html" target="_blank">Repository</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2015</div>
-        <div class="pub-title">Convergent evolution of Arabidopsis thaliana FtsH5 protease and its putative negative regulator FIP (FtsH5 interacting protein)</div>
-        <div class="pub-authors"><strong>Castro e Silva MA</strong></div>
-        <div class="pub-journal"><em>MSc dissertation</em> · 92 pages</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.11606/d.11.2015.tde-23042015-163556" target="_blank">DOI</a>
-          <a class="pub-link" href="thesis/Marcos_Araujo_Castro_e_Silva_versao_revisada.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://teses.usp.br/teses/disponiveis/11/11137/tde-23042015-163556/en.html" target="_blank">Repository</a>
-        </div>
-      </li>      
-      
-    </ul>
-  </section>
-
-  <!-- CV -->
-  <section id="cv">
     <div class="section-label">Curriculum vitae</div>
     <h2>CV</h2>
 
@@ -767,7 +879,7 @@
       <div class="cv-section-title">Positions</div>
 
       <div class="cv-item">
-        <div class="cv-year">2026 – 2029 (upcoming December 2026)</div>
+        <div class="cv-year">2026 – 2029 (December 2026)</div>
         <div class="cv-detail">
           <h3>Postdoctoral Junior Leader</h3>
           <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
@@ -1116,18 +1228,13 @@
         </div>
       </div>  
     </div>
+ 
+    </section>
+  </div>
 
-    <div class="cv-section">
-      <div class="cv-section-title">Complete CV</div>    
-        <a class="cv-download" href="cv.pdf" download>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download full CV (PDF)
-        </a>
-    </div>
-  </section>
+  <div class="tab-panel" id="tab-research">
+    <section id="research">
 
-  <!-- Research projects -->
-  <section id="research">
     <div class="section-label">Current and past projects</div>
     <h2>Research projects &amp; lines of investigation</h2>
     <p>My research spans interconnected themes in human population genomics, anthropological genetics, and archaeogenetics:</p>
@@ -1160,71 +1267,12 @@
     </div>
 
     <p></p>
-    <div class="cv-section-title">Participation in grants &amp; research projects</div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2025 - Present</div>
-        <div class="cv-detail">
-          <h3>Researcher associated with the research project</h3>
-          <p>Project: Latin American Genomes (Sequencing 1,000 contemporary Latin American genomes using long-read technology)</p>          
-          <p>Funding: Broad Institute</p>
-          <p>Institution: Multiple institutions</p>
-          <p>Coordinators: Tábita Hünemeier and Andrés Moreno-Estrada</p>
-            <p>Total funding amount: USD 2,000,000</p>
-        </div>
-      </div>
+        </section>
+  </div>
 
-      <div class="cv-item">
-        <div class="cv-year">2023 - Present</div>
-        <div class="cv-detail">
-          <h3>Researcher associated with the research project</h3>
-          <p>Project: Predição de Fenótipos de Comportamento Adaptativos em Primatas Usando Aprendizado de Máquina</p>          
-          <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq</p>
-          <p>Institution: Universidade Federal do Rio Grande do Sul, Brazil</p>
-          <p>Coordinators: Maria Cátira Bortolini</p>
-            <p>Total funding amount: BRL 250,000</p>
-        </div>
-      </div>      
+  <div class="tab-panel" id="tab-teaching">
+    <section id="teaching">
 
-      <div class="cv-item">
-        <div class="cv-year">2022 - 2026</div>
-        <div class="cv-detail">
-          <h3>Researcher associated with the research project</h3>
-          <p>Project: Descifrando la Historia Poblacional de los Romani Americanos a Traves del Analisis de Diversidad Genomica</p>          
-          <p>Funding: Ministerio de Ciencia, Innovación y Universidades (Madrid, Madrid, ES) - PID2022-138755NB-I00</p>
-          <p>Institution: Universitat Pompeu Fabra, Spain</p>
-          <p>Coordinator: David Comas</p>
-            <p>Total funding amount: EUR 256,250</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2019 - 2025</div>
-        <div class="cv-detail">
-          <h3>Permanent research member of the research project</h3>
-          <p>Project: Establishment of a Reference Genome of the Brazilian Population (DNA do Brasil)</p>          
-          <p>Funding: Health Ministry GRB/4 (Convênio 888379/2019 - Projeto Genoma Biociências)</p>
-          <p>Institution: Universidade de São Paulo, Brazil</p>
-          <p>Coordinator: Coordinators: Tábita Hünemeier, Lygia da Veiga Pereira e Alexandre C. Pereira.</p>
-            <p>Total funding amount: BRL 7,977,453</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2017 - 2022</div>
-        <div class="cv-detail">
-          <h3>Researcher associated with the research project</h3>
-          <p>Project: Native American genomic diversity</p>          
-          <p>Funding: Fundação de Amparo à Pesquisa do Estado de São Paulo - FAPESP (FAPESP/2015/26875-9)</p>
-          <p>Institution: Universidade de São Paulo, Brazil</p>
-          <p>Coordinator: Tábita Hünemeier</p>
-            <p>Total funding amount: EUR 220,000</p>
-        </div>
-      </div>    
-  </section>
-
-  <!-- Teaching -->
-  <section id="teaching">
     <div class="section-label">Education</div>
     <h2>Teaching</h2>
     <ul class="teaching-list">
@@ -1285,10 +1333,13 @@
         </div>
       </li>            
     </ul>
-  </section>
+  
+    </section>
+  </div>
 
-  <!-- Blog -->
-  <section id="blog">
+  <div class="tab-panel" id="tab-blog">
+    <section id="blog">
+
     <div class="section-label">Writing</div>
     <h2>Blog posts</h2>
     <p style="margin-bottom:1.5rem">Occasional notes on current research and thoughts.</p>
@@ -1301,10 +1352,123 @@
       </li>
 
     </ul>
-  </section>
+  
+    </section>
+  </div>
 
-  <!-- Contact -->
-  <section id="contact">
+  <div class="tab-panel" id="tab-news">
+    <section id="news">
+<div class="section-label">Media coverage</div>
+    <h2>News & Press Coverage</h2>
+    <p style="margin-bottom:1.5rem">Our research has been featured in international and national media outlets, science magazines, and educational platforms.</p>
+    
+    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">International Newspapers, Magazines & Blogs</div>
+    <div class="news-coverage">
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>EurekAlert! (AAAS)</strong> — Unraveling the genomic roots of Indigenous peoples, Mapping the genome of the Brazilian population with implications for healthcare, Genetic adaptations help Amazonian populations resist Chagas infection
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Science News</strong> — Ancient South Americans arrived in three waves—and had some surprising ancestry, Massive DNA sequencing effort reveals how colonization shaped Brazil's genetic diversity, Earliest South American migrants had Indigenous Australian, Melanesian ancestry
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Live Science</strong> — DNA study of nearly 200 Indigenous genomes reveals unknown Asian 'ghost' population contributed to American ancestry, 1st Americans had Indigenous Australian genes
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Science Alert</strong> — The Genetic Signal of Ancient Australians in South America Goes Deeper Than We Knew
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Science Magazine</strong> — Exploring Spanish Roma's Genetic Diversity and Structure
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Daily Mail</strong> — First humans who crossed the Bering Strait some 15,000 years ago had indigenous Australian DNA that is now found in the bloodline of South America tribes, study finds
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>The Scientist</strong> — The Peopling of South America
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Smithsonian Magazine</strong> — A New Big Database of DNA From Indigenous Americans Shakes Up Scientists' Theories About Human Settlement of South America, Why Did Ancient Indigenous Groups in Brazil Hunt Sharks?
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>The Medical News</strong> — New genetic database sheds light on Brazil's ancestry and disease risks
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>El País</strong> — De Asia a América: la genética desvela nuevos detalles de la migración más larga de la humanidad
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Deutsche Welle</strong> — Colonización redujo la diversidad indígena a una fracción
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>La Vanguardia</strong> — La genética revela la extraordinaria historia de la población de Brasil, Los gitanos de la Península tienen diferencias genéticas respecto a los del resto de Europa
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Catalan News</strong> — Genetic distinctions between Iberian Romas and other European Roma people found
+      </p>
+    </div>
+
+    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">National Newspapers, Magazines & Blogs (Brazil)</div>
+    <div class="news-coverage">
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Pesquisa FAPESP</strong> — Indígenas sul-americanos são diversos e descendem de terceira onda migratória, O brasileiro é ainda mais miscigenado do que você pensa, Defesa natural contra Chagas, Filhos de Ypykuéra, Os últimos Tupiniquim
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>National Geographic Brasil</strong> — Indígenas da Amazônia possuem gene que protege contra a doença de Chagas, diz novo estudo
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>BBC Brasil</strong> — As descobertas sobre origem e história dos povos indígenas da América do Sul reveladas pela genética, O recém-descoberto gene que protege povos amazônicos da doença de Chagas e pode inspirar tratamentos
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Galileu</strong> — Nativos da América do Sul têm influência genética de povos da Oceania
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Folha de São Paulo</strong> — DNA de indígenas mostra elo com Oceania e três ondas de migração, Indígenas da América do Sul descendem, em parte, de povos do Pacífico, reforça novo estudo, A partir do DNA, cientistas mapeiam 2.000 anos de rotas migratórias dos índios no Brasil
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Globo</strong> — Estudo revela evolução e diversidade genética únicas dos indígenas americanos, DNA indica que tupiniquins são descendentes do grupo indígena que Cabral encontrou
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>CBN Vitória Rádio</strong> — Índios de Aracruz são descendentes diretos dos primeiros Tupiniquins
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Blog Arqueologia e Pré-História</strong> — Evidência genética australo-melanésia em grupos nativos da américa do sul
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Revista Planeta</strong> — Genética conta história do colapso populacional de indígenas no Brasil, Genes de povos da Ásia e da Oceania estão em índios da América do Sul
+      </p>
+    </div>
+
+    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">Video & Podcast Coverage</div>
+    <div class="news-coverage">
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>YouTube</strong> — Stefan Milo: Why do Amazonian people have some Australasian DNA? | Ancient Americas: The Tupinambá: From the Amazon to the Coast
+      </p>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <strong>Podcasts</strong> — Anthropology.net: The Long Walk South: Tracing the Longest Migration in Human History | Principio de Incertidumbre (Canal Extremadura): Lo que el ADN indígena revela sobre América
+      </p>
+    </div>
+
+    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">Wikipedia References</div>
+    <div class="news-coverage">
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.5rem;"><strong>English:</strong></p>
+      <ul style="list-style: disc; margin-left: 1.5rem; font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
+        <li>Genetic history of the Indigenous peoples of the Americas</li>
+        <li>Ancient Beringian</li>
+      </ul>
+      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.5rem;"><strong>Portuguese:</strong></p>
+      <ul style="list-style: disc; margin-left: 1.5rem; font-size: 0.85rem; color: var(--ink2);">
+        <li>Estudos genéticos em brasileiros</li>
+        <li>História genética dos povos indígenas da América</li>
+        <li>Primeiras migrações humanas</li>
+        <li>História do estado de São Paulo</li>
+        <li>Rio de Janeiro (estado)</li>
+        <li>Zona da Mata</li>
+      </ul>
+    </div>
+    </section>
+  </div>
+
+  <div class="tab-panel" id="tab-contact">
+    <section id="contact">
+
     <div class="section-label">Get in touch</div>
     <h2>Contact</h2>
     <div class="contact-grid">
@@ -1334,26 +1498,45 @@
         <a href="https://www.researchgate.net/profile/Marcos-Castro-E-Silva" target="_blank" rel="noopener">ResearchGate</a>
       </div>
     </div>
-  </section>
+  
+    </section>
+  </div>
 
 </main>
 
 <script>
-  // Highlight active nav link on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav a');
+  const tabs = ['about', 'publications', 'cv', 'research', 'teaching', 'blog', 'news', 'contact'];
+  const tabButtons = document.querySelectorAll('[data-tab]');
+  const tabPanels = document.querySelectorAll('.tab-panel');
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-        if (link) link.classList.add('active');
-      }
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      showTab(tabId);
     });
-  }, { threshold: 0.3 });
+  });
 
-  sections.forEach(s => observer.observe(s));
+  function showTab(id) {
+    tabPanels.forEach(panel => panel.classList.remove('active'));
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    
+    const panel = document.getElementById('tab-' + id);
+    if (panel) {
+      panel.classList.add('active');
+    }
+    
+    const btn = document.querySelector(`[data-tab="${id}"]`);
+    if (btn) {
+      btn.classList.add('active');
+    }
+    
+    history.replaceState(null, '', '#' + id);
+  }
+
+  const hash = location.hash.replace('#', '');
+  if (tabs.includes(hash)) {
+    showTab(hash);
+  }
 </script>
 </body>
 </html>
