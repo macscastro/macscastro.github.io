@@ -5,1593 +5,1616 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Marcos Araújo Castro e Silva — Population Genomics of Indigenous Americans and Descendant Populations</title>
   <meta name="description" content="Postdoctoral researcher in human population genomics at the Globe Institute's Section for GeoGenetics, University of Copenhagen, Denmark."/>
+  <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)"/>
+  <meta name="theme-color" content="#14130f" media="(prefers-color-scheme: dark)"/>
+  <meta property="og:title" content="Marcos Araújo Castro e Silva, Ph.D."/>
+  <meta property="og:description" content="Population genomics of Indigenous Americans and descendant populations."/>
+  <meta property="og:image" content="images/cover-thumb.jpg"/>
+  <link rel="icon" href="photo.jpg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:       #1a1814;
-      --ink2:      #4a4740;
-      --ink3:      #8a8580;
-      --paper:     #f7f4ee;
-      --paper2:    #eeeae2;
-      --accent:    #2a5c8a;
-      --accent2:   #c0392b;
-      --rule:      #d8d3c8;
-      --sidebar-w: 280px;
+      --bg:        #f6f3ec;
+      --bg2:       #eeeae1;
+      --card:      #fbf9f5;
+      --ink:       #1c1a17;
+      --ink2:      #4a4640;
+      --ink3:      #7f7a72;
+      --rule:      #ddd7cb;
+      --accent:    #1f5f66;
+      --accent-ink:#ffffff;
+      --accent-soft: rgba(31, 95, 102, 0.09);
+      --warm:      #b5462c;
+      --hero-bg:   #1c1a17;
+      --hero-ink:  #f6f3ec;
+      --hero-ink2: #bdb7ab;
+      --hero-rule: #3a3731;
+      --header-bg: rgba(246, 243, 236, 0.86);
+      --shadow:    0 1px 2px rgba(28,26,23,.05), 0 8px 24px rgba(28,26,23,.06);
+      --radius:    10px;
+      --maxw:      1080px;
+      --gutter:    clamp(16px, 4vw, 40px);
       --serif:     'Crimson Pro', Georgia, serif;
-      --sans:      'Outfit', sans-serif;
-      --mono:      'DM Mono', monospace;
+      --sans:      'Outfit', system-ui, sans-serif;
+      --mono:      'DM Mono', ui-monospace, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #14130f;
+        --bg2:       #1b1a16;
+        --card:      #201e1a;
+        --ink:       #eeeae1;
+        --ink2:      #c4bfb4;
+        --ink3:      #8e887d;
+        --rule:      #34312b;
+        --accent:    #6fb3b9;
+        --accent-ink:#0f1a1b;
+        --accent-soft: rgba(111, 179, 185, 0.12);
+        --warm:      #e07a5f;
+        --hero-bg:   #0d0c0a;
+        --header-bg: rgba(20, 19, 15, 0.86);
+        --shadow:    0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      }
     }
 
-    html { scroll-behavior: smooth; }
-
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
     body {
       font-family: var(--sans);
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.7;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 
-    /* ── Sidebar ── */
-    #sidebar {
-      width: var(--sidebar-w);
-      min-width: var(--sidebar-w);
-      background: var(--ink);
-      color: var(--paper);
-      min-height: 100vh;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 2.5rem 1.8rem;
-      overflow-y: auto;
-    }
-
-    .sidebar-photo {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: var(--paper2);
-      border: 3px solid var(--accent);
-      margin-bottom: 1.4rem;
-      object-fit: cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .sidebar-photo-placeholder {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: #2e2c28;
-      border: 3px solid var(--accent);
-      margin-bottom: 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 2rem;
-      color: var(--paper2);
-      letter-spacing: -1px;
-    }
-
-    .sidebar-name {
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--paper);
-      margin-bottom: 0.3rem;
-    }
-
-    .sidebar-role {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #a8a39a;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.2rem;
-    }
-
-    .sidebar-inst {
-      font-size: 0.8rem;
-      color: #c8c3ba;
-      margin-bottom: 1.8rem;
-      line-height: 1.4;
-    }
-
-    .sidebar-rule {
-      border: none;
-      border-top: 1px solid #3a3830;
-      margin: 1rem 0;
-    }
-
-    /* Navigation */
-    nav { margin-bottom: 1.5rem; }
-    nav a {
-      display: block;
-      color: #a8a39a;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.4rem 0;
-      border-left: 2px solid transparent;
-      padding-left: 0.75rem;
-      margin-left: -0.75rem;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    nav a:hover, nav a.active {
-      color: var(--paper);
-      border-left-color: var(--accent);
-    }
-
-    /* Social / ID links */
-    .id-links { margin-top: auto; }
-    .id-links-heading {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #5a5750;
-      margin-bottom: 0.8rem;
-    }
-    .id-link {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #a8a39a;
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-family: var(--mono);
-      padding: 0.25rem 0;
-      transition: color 0.2s;
-    }
-    .id-link:hover { color: var(--paper); }
-    .id-link svg { width: 14px; height: 14px; flex-shrink: 0; fill: currentColor; }
-    .id-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.7; }
-
-    /* ── Main content ── */
-    #main {
-      flex: 1;
-      padding: 0;
-    }
-
-    section {
-      padding: 3.5rem 3rem;
-      border-bottom: 1px solid var(--rule);
-      animation: fadeUp 0.5s ease both;
-    }
-    section:last-child { border-bottom: none; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink3);
-      margin-bottom: 0.5rem;
-    }
-
-    h2 {
-      font-family: var(--serif);
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    h3 {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
-    }
-
-    p { margin-bottom: 1rem; color: var(--ink2); }
-    p:last-child { margin-bottom: 0; }
-
-    /* ── Hero / About ── */
-    #about {
-      background: var(--ink);
-      color: var(--paper);
-      padding: 4rem 3rem 3rem;
-    }
-    #about .section-label { color: #5a5750; }
-    #about h2 {
-      font-size: 2.8rem;
-      color: var(--paper);
-      margin-bottom: 0.5rem;
-    }
-    #about .about-tagline {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #a8a39a;
-      margin-bottom: 2rem;
-    }
-    #about p { color: #c8c3ba; }
-    #about .keywords {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-    .keyword {
-      font-size: 0.72rem;
-      font-family: var(--mono);
-      letter-spacing: 0.05em;
-      padding: 0.25rem 0.65rem;
-      border: 1px solid #3a3830;
-      color: #a8a39a;
-      border-radius: 3px;
-    }
-    #about .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-    .skill {
-      font-size: 0.72rem;
-      font-family: var(--mono);
-      letter-spacing: 0.05em;
-      padding: 0.25rem 0.65rem;
-      border: 1px solid #3a3830;
-      color: #000000;
-      border-radius: 3px;
-    }    
-
-    /* ── Publications ── */
-    .pub-list { list-style: none; }
-    .pub-item {
-      padding: 1.2rem 0;
+    /* ── Header ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--header-bg);
+      backdrop-filter: saturate(160%) blur(12px);
+      -webkit-backdrop-filter: saturate(160%) blur(12px);
       border-bottom: 1px solid var(--rule);
     }
-    .pub-item:last-child { border-bottom: none; }
-    .pub-title {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.2rem;
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 1rem; }
+    .brand {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 600;
+      color: var(--ink); text-decoration: none; white-space: nowrap;
     }
-    .pub-authors {
-      font-size: 0.82rem;
-      color: var(--ink3);
-      margin-bottom: 0.2rem;
+    .brand span { color: var(--ink3); font-weight: 400; }
+    .nav { display: flex; gap: 0.15rem; }
+    .nav a {
+      color: var(--ink2); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.04em;
+      padding: 0.4rem 0.6rem; border-radius: 6px;
+      transition: color .2s, background .2s;
     }
-    .pub-authors strong { color: var(--ink2); font-weight: 500; }
-    .pub-journal {
-      font-size: 0.82rem;
-      font-style: italic;
-      color: var(--ink3);
+    .nav a:hover { color: var(--ink); background: var(--accent-soft); }
+    .nav a.active { color: var(--accent); }
+    .menu-btn {
+      display: none; background: none; border: 1px solid var(--rule); border-radius: 8px;
+      width: 42px; height: 38px; cursor: pointer; color: var(--ink);
+      align-items: center; justify-content: center;
     }
-    .pub-links { margin-top: 0.4rem; display: flex; gap: 0.7rem; }
-    .pub-link {
-      font-size: 0.72rem;
-      font-family: var(--mono);
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      padding: 0.15rem 0.5rem;
-      border-radius: 3px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .pub-link:hover { background: var(--accent); color: #fff; }
-    .pub-year {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--ink3);
-      margin-bottom: 0.4rem;
-    }
+    .menu-btn svg { width: 20px; height: 20px; }
 
-    /* ── CV ── */
-    .cv-section { margin-bottom: 2rem; }
-    .cv-section-title {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 0.4rem;
-      margin-bottom: 1rem;
-    }
-    .cv-item { display: grid; grid-template-columns: 130px 1fr; gap: 0.5rem 1rem; margin-bottom: 1rem; }
-    .cv-year { font-family: var(--mono); font-size: 0.78rem; color: var(--ink3); padding-top: 0.15rem; }
-    .cv-detail h3 { font-size: 1rem; margin-bottom: 0.1rem; }
-    .cv-detail p { font-size: 0.88rem; margin: 0; color: var(--ink3); }
-    .cv-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      font-family: var(--mono);
-      color: var(--paper);
-      background: var(--ink);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-      margin-top: 1rem;
-      transition: background 0.2s;
-    }
-    .cv-download:hover { background: var(--accent); }
-
-    /* ── Research ── */
-    .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 0.5rem; }
-    .research-card {
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 1.2rem;
-      background: var(--paper2);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .research-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(42,92,138,0.08); }
-    .research-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-    .research-card p { font-size: 0.85rem; margin: 0; }
-    .research-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-family: var(--mono);
-      background: var(--accent);
-      color: #fff;
-      padding: 0.1rem 0.4rem;
-      border-radius: 2px;
-      margin-bottom: 0.6rem;
-    }
-
-    /* ── Teaching ── */
-    .teaching-list { list-style: none; }
-    .teaching-item {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 0.3rem 1rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--rule);
-      align-items: start;
-    }
-    .teaching-item:last-child { border-bottom: none; }
-    .teaching-year { font-family: var(--mono); font-size: 0.78rem; color: var(--ink3); }
-    .teaching-title { font-weight: 500; font-size: 0.92rem; }
-    .teaching-inst { font-size: 0.82rem; color: var(--ink3); }
-
-    /* ── Blog ── */
-    .blog-list { list-style: none; }
-    .blog-item {
-      padding: 1.1rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .blog-item:last-child { border-bottom: none; }
-    .blog-date { font-family: var(--mono); font-size: 0.72rem; color: var(--ink3); margin-bottom: 0.3rem; }
-    .blog-title {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--ink);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-    .blog-title:hover { color: var(--accent); }
-    .blog-excerpt { font-size: 0.85rem; color: var(--ink3); margin: 0; }
-
-    /* ── Contact ── */
-    #contact { background: var(--paper2); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .contact-block h3 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.5rem; }
-    .contact-block a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 0.85rem; }
-    .contact-block a:hover { text-decoration: underline; }
-    .contact-block p { font-size: 0.9rem; margin: 0; }
-
-    /* ── Responsive ── */
-    @media (max-width: 860px) {
-      body { flex-direction: column; }
-      #sidebar {
-        width: 100%;
-        min-width: unset;
-        height: auto;
-        position: static;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem;
+    @media (max-width: 920px) {
+      .menu-btn { display: inline-flex; }
+      .nav {
+        position: absolute; top: 60px; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: var(--bg); border-bottom: 1px solid var(--rule);
+        padding: 0.5rem var(--gutter) 1rem;
+        box-shadow: var(--shadow);
+        display: none;
       }
-      .sidebar-photo-placeholder { width: 56px; height: 56px; font-size: 1.2rem; margin-bottom: 0; }
-      .sidebar-name { font-size: 1rem; }
-      nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-      nav a { padding: 0.2rem 0.5rem; border-left: none; border-bottom: 2px solid transparent; padding-left: 0; margin-left: 0; }
-      .id-links { display: none; }
-      .research-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .cv-item { grid-template-columns: 1fr; }
-      section { padding: 2rem 1.5rem; }
-      #about { padding: 2rem 1.5rem; }
-      #about h2 { font-size: 2rem; }
-    }
-  
-
-    /* ── Tab styles ── */
-    #main {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      height: 100vh;
+      .nav.open { display: flex; }
+      .nav a { font-size: 1rem; padding: 0.7rem 0.25rem; border-bottom: 1px solid var(--rule); border-radius: 0; }
+      .nav a:last-child { border-bottom: none; }
     }
 
-    .tab-panel {
-      display: none;
-      flex: 1;
-      overflow-y: auto;
-      animation: fadeIn 0.3s ease;
+    /* ── Hero ── */
+    .hero { background: var(--hero-bg); color: var(--hero-ink); padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4rem); position: relative; overflow: hidden; }
+    .hero::after {
+      content: ""; position: absolute; right: -180px; top: -180px; width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(111,179,185,.18), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; position: relative; z-index: 1; }
+    .hero-photo {
+      width: clamp(120px, 18vw, 180px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--hero-rule); box-shadow: 0 0 0 6px rgba(111,179,185,.15);
+    }
+    .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hero-ink2); margin-bottom: 0.6rem; }
+    .hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.1rem, 5.5vw, 3.4rem); line-height: 1.08; letter-spacing: -0.01em; }
+    .hero-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--hero-ink2); margin: 0.7rem 0 1.1rem; }
+    .hero-aff { font-size: 0.92rem; color: var(--hero-ink2); line-height: 1.55; }
+    .hero-aff strong { color: var(--hero-ink); font-weight: 500; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem;
+      font-size: 0.8rem; color: var(--hero-ink); border: 1px solid var(--hero-rule);
+      background: rgba(255,255,255,.04); border-radius: 999px; padding: 0.35rem 0.85rem;
+    }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #e07a5f; flex-shrink: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; font-weight: 500; text-decoration: none;
+      padding: 0.6rem 1.05rem; border-radius: 8px; transition: transform .15s, background .2s, color .2s, border-color .2s;
+    }
+    .btn svg { width: 15px; height: 15px; }
+    .btn-primary { background: var(--hero-ink); color: var(--hero-bg); }
+    .btn-primary:hover { background: #6fb3b9; }
+    .btn-ghost { color: var(--hero-ink); border: 1px solid var(--hero-rule); }
+    .btn-ghost:hover { border-color: var(--hero-ink2); }
+    .btn:active { transform: translateY(1px); }
+    .id-links { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.4rem; }
+    .id-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--hero-ink2); text-decoration: none; font-family: var(--mono); font-size: 0.74rem;
+      padding: 0.3rem 0.6rem; border-radius: 6px; border: 1px solid transparent; transition: color .2s, border-color .2s;
+    }
+    .id-link:hover { color: var(--hero-ink); border-color: var(--hero-rule); }
+    .id-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    @media (max-width: 640px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: left; }
+      .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
     }
 
-    .tab-panel.active {
-      display: flex;
-      flex-direction: column;
-    }
+    /* ── Sections ── */
+    section { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--rule); }
+    section.alt { background: var(--bg2); }
+    .section-head { margin-bottom: clamp(1.5rem, 3vw, 2.2rem); }
+    .section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.35rem; }
+    h2 { font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 300; line-height: 1.15; color: var(--ink); }
+    .section-intro { color: var(--ink2); margin-top: 0.6rem; max-width: 62ch; }
+    h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; line-height: 1.35; color: var(--ink); }
+    p { color: var(--ink2); }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); }
+    .about-text p { margin-bottom: 1rem; font-size: 1.02rem; }
+    .about-text p:first-child { font-family: var(--serif); font-size: 1.3rem; line-height: 1.55; color: var(--ink); }
+    .aside-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.3rem; align-self: start; }
+    .aside-card h3 { font-family: var(--mono); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.8rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip {
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.02em;
+      padding: 0.22rem 0.6rem; border-radius: 999px;
+      border: 1px solid var(--rule); color: var(--ink2); background: var(--bg);
     }
+    .aside-card + .aside-card { margin-top: 1rem; }
+    .fact { display: flex; gap: 0.8rem; padding: 0.55rem 0; border-bottom: 1px dashed var(--rule); font-size: 0.88rem; color: var(--ink2); }
+    .fact:last-child { border-bottom: none; }
+    .fact b { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--accent); line-height: 1; min-width: 2.2ch; }
+    @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
 
-    section {
-      padding: 3.5rem 3rem;
-    }
-    
-    nav button {
-      display: block;
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #a8a39a;
-      text-align: left;
-      font-family: var(--sans);
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.4rem 0;
-      border-left: 2px solid transparent;
-      padding-left: 0.75rem;
-      margin-left: -0.75rem;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    nav button:hover,
-    nav button.active {
-      color: var(--paper);
-      border-left-color: var(--accent);
-    }
-
-    /* ── Sidebar CV Download ── */
-    .sidebar-cv-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      width: 100%;
-      font-size: 0.75rem;
-      font-family: var(--mono);
-      color: var(--ink);
-      background: var(--paper);
-      padding: 0.6rem 0.8rem;
-      border-radius: 4px;
-      text-decoration: none;
-      margin-top: 1rem;
-      transition: background 0.2s;
-      text-align: center;
-      justify-content: center;
-      border: none;
-      cursor: pointer;
-    }
-    .sidebar-cv-button:hover { 
-      background: var(--accent);
-      color: var(--paper);
-    }
-    .sidebar-cv-button svg {
-      width: 12px;
-      height: 12px;
-      flex-shrink: 0;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-    }
-
-    /* ── News styles ── */
-    .news-list { list-style: none; }
-    .news-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 1.2rem;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--rule);
-      align-items: start;
-    }
+    /* News */
+    .news-list { list-style: none; position: relative; }
+    .news-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
     .news-item:last-child { border-bottom: none; }
-    .news-image {
-      width: 100%;
-      max-width: 200px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid var(--rule);
+    .news-date { font-family: var(--mono); font-size: 0.78rem; color: var(--ink3); padding-top: 0.2rem; }
+    .news-tag { display: inline-block; font-family: var(--mono); font-size: 0.64rem; letter-spacing: .08em; text-transform: uppercase; padding: 0.1rem 0.45rem; border-radius: 4px; margin-bottom: 0.35rem; background: var(--accent-soft); color: var(--accent); }
+    .news-tag.warm { background: rgba(181,70,44,.1); color: var(--warm); }
+    .news-body p { font-size: 0.95rem; }
+    .news-body p strong { color: var(--ink); font-weight: 500; }
+    .news-body a { text-underline-offset: 3px; }
+    .news-item.hidden { display: none; }
+    .more-btn {
+      margin-top: 1rem; background: none; border: 1px solid var(--rule); color: var(--ink2);
+      font-family: var(--sans); font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;
     }
-    .news-content h3 {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
+    .more-btn:hover { border-color: var(--accent); color: var(--accent); }
+    @media (max-width: 560px) { .news-item { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+    /* Research */
+    .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .research-card {
+      background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: 1.4rem; transition: border-color .2s, box-shadow .2s, transform .2s;
+      display: flex; flex-direction: column; gap: 0.5rem;
     }
-    .news-date {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--ink3);
-      margin-bottom: 0.5rem;
+    .research-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
+    .research-card p { font-size: 0.9rem; }
+    .status { align-self: flex-start; font-family: var(--mono); font-size: 0.64rem; letter-spacing: .1em; text-transform: uppercase; padding: 0.12rem 0.5rem; border-radius: 4px; background: var(--accent); color: var(--accent-ink); }
+    .status.past { background: var(--ink3); color: var(--bg); }
+
+    /* Publications */
+    .pub-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .filters { display: inline-flex; background: var(--bg2); border: 1px solid var(--rule); border-radius: 999px; padding: 3px; }
+    .filters button {
+      background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 0.82rem;
+      color: var(--ink2); padding: 0.35rem 0.9rem; border-radius: 999px;
     }
-    .news-text {
-      font-size: 0.9rem;
-      color: var(--ink2);
-      margin-bottom: 0.6rem;
-      line-height: 1.6;
+    .filters button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    .legend { font-family: var(--mono); font-size: 0.72rem; color: var(--ink3); }
+    .pub-year-group { display: grid; grid-template-columns: 80px 1fr; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1rem; margin-top: 1rem; }
+    .pub-year-group:first-of-type { border-top: none; margin-top: 0; }
+    .pub-year-label { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: var(--ink3); line-height: 1.2; position: sticky; top: 76px; align-self: start; }
+    .pub-list { list-style: none; }
+    .pub-item { padding: 0.2rem 0 1.3rem; }
+    .pub-item.hidden { display: none; }
+    .pub-title { font-family: var(--serif); font-size: 1.14rem; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 0.25rem; }
+    .pub-authors { font-size: 0.85rem; color: var(--ink3); }
+    .pub-authors strong { color: var(--ink); font-weight: 500; }
+    .pub-journal { font-size: 0.85rem; color: var(--ink2); }
+    .pub-journal em { color: var(--accent); font-weight: 500; }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.55rem; }
+    .pub-link {
+      font-family: var(--mono); font-size: 0.7rem; text-decoration: none; color: var(--accent);
+      border: 1px solid var(--rule); background: var(--card);
+      padding: 0.16rem 0.55rem; border-radius: 5px; transition: background .2s, color .2s, border-color .2s;
     }
-    .news-links {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-    .news-link {
-      font-size: 0.72rem;
-      font-family: var(--mono);
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      padding: 0.15rem 0.5rem;
-      border-radius: 3px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .news-link:hover { 
-      background: var(--accent);
-      color: #fff;
+    .pub-link:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    .pub-year-group.empty { display: none; }
+    @media (max-width: 560px) {
+      .pub-year-group { grid-template-columns: 1fr; gap: 0.3rem; }
+      .pub-year-label { position: static; font-size: 1.3rem; }
     }
 
-    @media (max-width: 860px) {
-      .news-item { grid-template-columns: 1fr; }
-      .news-image { max-width: 100%; }
-      nav button { width: auto; padding: 0.2rem 0.5rem; border-left: none; border-bottom: 2px solid transparent; margin-left: 0; }
-      nav button:hover, nav button.active { border-left: none; border-bottom-color: var(--accent); }
+    /* Gallery */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .gallery figure {
+      position: relative; border-radius: var(--radius); overflow: hidden; background: var(--card);
+      border: 1px solid var(--rule); cursor: zoom-in;
     }
-</style>
-</head>
+    .gallery figure.wide { grid-column: span 2; }
+    .gallery img { width: 100%; height: 280px; object-fit: cover; object-position: top; transition: transform .5s ease; }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery figcaption { font-size: 0.82rem; color: var(--ink2); padding: 0.7rem 0.9rem; line-height: 1.45; }
+    .gallery figcaption b { display: block; color: var(--ink); font-weight: 500; }
+    @media (max-width: 520px) {
+      .gallery { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .gallery figure.wide { grid-column: span 2; }
+      .gallery img { height: 180px; }
+      .gallery figcaption { font-size: 0.75rem; padding: 0.5rem 0.6rem; }
+    }
+    .lightbox {
+      position: fixed; inset: 0; z-index: 100; background: rgba(10,9,8,.92);
+      display: none; align-items: center; justify-content: center; flex-direction: column; gap: 0.8rem;
+      padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: min(1000px, 100%); max-height: 80vh; object-fit: contain; border-radius: 6px; }
+    .lightbox p { color: #d8d3c8; font-size: 0.9rem; text-align: center; max-width: 60ch; }
+    .lb-btn { position: absolute; background: rgba(255,255,255,.1); border: none; color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.3rem; }
+    .lb-btn:hover { background: rgba(255,255,255,.2); }
+    .lb-close { top: 1rem; right: 1rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+
+    /* CV */
+    .cv-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .btn-dark { background: var(--ink); color: var(--bg); }
+    .btn-dark:hover { background: var(--accent); color: var(--accent-ink); }
+    .cv-block { border-top: 1px solid var(--rule); }
+    .cv-block:last-child { border-bottom: 1px solid var(--rule); }
+    .cv-block summary {
+      list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 0; font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    }
+    .cv-block summary::-webkit-details-marker { display: none; }
+    .cv-block summary::after { content: "+"; font-size: 1.2rem; color: var(--ink3); transition: transform .2s; }
+    .cv-block[open] summary::after { transform: rotate(45deg); }
+    .cv-block .count { color: var(--ink3); margin-left: 0.5rem; }
+    .cv-items { padding-bottom: 1.2rem; }
+    .cv-item { display: grid; grid-template-columns: 150px 1fr; gap: 0.3rem 1.5rem; padding: 0.7rem 0; }
+    .cv-year { font-family: var(--mono); font-size: 0.78rem; color: var(--ink3); padding-top: 0.2rem; }
+    .cv-detail h3 { font-size: 1.05rem; margin-bottom: 0.1rem; }
+    .cv-detail p { font-size: 0.88rem; color: var(--ink3); }
+    .cv-detail .pub-links { margin-top: 0.4rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: 0.4rem; padding-bottom: 1.3rem; }
+    @media (max-width: 600px) { .cv-item { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+    /* Teaching */
+    .teaching-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .teaching-item { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+    .teaching-year { font-family: var(--mono); font-size: 0.72rem; color: var(--warm); margin-bottom: 0.25rem; }
+    .teaching-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; line-height: 1.35; color: var(--ink); margin-bottom: 0.3rem; }
+    .teaching-inst { font-size: 0.84rem; color: var(--ink3); line-height: 1.5; }
+
+    /* Press */
+    .press-group + .press-group { margin-top: 2.2rem; }
+    .press-group-title { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
+    .press-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.9rem; }
+    .press-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem; }
+    .press-card h3 { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .press-card ul { list-style: none; }
+    .press-card li { font-size: 0.86rem; line-height: 1.45; padding: 0.3rem 0 0.3rem 0.9rem; position: relative; }
+    .press-card li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 4px; height: 4px; border-radius: 50%; background: var(--warm); }
+    .press-card a { color: var(--ink2); text-decoration: none; overflow-wrap: anywhere; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .25s, color .2s; }
+    .press-card a:hover { color: var(--accent); background-size: 100% 1px; }
+    @media (max-width: 400px) { .press-grid { grid-template-columns: 1fr; } }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .contact-block h3 { font-family: var(--mono); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.5rem; }
+    .contact-block a { display: inline-block; color: var(--accent); text-decoration: none; font-size: 0.92rem; padding: 0.1rem 0; overflow-wrap: anywhere; }
+    .contact-block a:hover { text-decoration: underline; }
+    .contact-block p { font-size: 0.92rem; line-height: 1.6; }
+
+    footer { padding: 2rem 0; font-size: 0.8rem; color: var(--ink3); }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+    footer a { color: var(--ink3); }
+
+    /* Reveal-on-scroll */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .gallery img, .research-card { transition: none; }
+    }
+  </style>
 </head>
 <body>
-<aside id="sidebar">
-  <img src="photo.jpg" alt="Marcos Araújo Castro e Silva" class="sidebar-photo"/>
 
-  <div class="sidebar-name">Marcos Araújo<br>Castro e Silva</div>
-  <div class="sidebar-role">Postdoctoral Researcher</div>
-  <div class="sidebar-inst">Section for GeoGenetics<br>Globe Institute<br>University of Copenhagen, Denmark</div>
-
-  <hr class="sidebar-rule"/>
-
-  <nav aria-label="Page sections">
-    <button class="tab-btn" data-tab="about">About</button>
-    <button class="tab-btn" data-tab="publications">Publications</button>
-    <button class="tab-btn" data-tab="cv">CV</button>
-    <button class="tab-btn" data-tab="research">Research projects</button>
-    <button class="tab-btn" data-tab="teaching">Teaching</button>
-    <button class="tab-btn" data-tab="news">News</button>
-    <button class="tab-btn" data-tab="contact">Contact</button>
-  </nav>
-
-  <a class="sidebar-cv-button" href="cv.pdf" download>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Download CV
-  </a>
-
-  <hr class="sidebar-rule"/>
-
-  <div class="id-links">
-    <div class="id-links-heading">Profiles &amp; IDs</div>
-
-    <a class="id-link" href="https://orcid.org/0000-0002-9873-3717" target="_blank" rel="noopener">
-      <!-- ORCID icon -->
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.516.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.934-1.566 3.934-3.722 0-2.016-1.453-3.722-3.872-3.722h-2.359z"/></svg>
-      ORCID
-    </a>
-
-    <a class="id-link" href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&hl=en" target="_blank" rel="noopener">
-      <!-- Scholar icon -->
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
-      Google Scholar
-    </a>
-
-    <a class="id-link" href="https://www.researchgate.net/profile/Marcos-Castro-E-Silva" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.1 12.1 0 0 0-.35 3.048c0 1.073.138 1.995.412 2.77.273.775.665 1.362 1.177 1.762.51.4 1.12.602 1.83.602.72 0 1.34-.2 1.862-.602a3.66 3.66 0 0 0 1.17-1.763c.27-.773.406-1.695.406-2.769 0-1.08-.136-2.002-.407-2.77-.274-.774-.67-1.36-1.186-1.758C21.01.19 20.36 0 19.586 0zm-14.5.177L0 3.544v10.609h4.73V7.87h1.444v-3.54H4.73V.177h.356zm9.777 0c-.824 0-1.513.19-2.067.565-.553.377-.95.936-1.19 1.68a12.2 12.2 0 0 0-.35 3.048c0 1.073.135 1.995.403 2.77.27.775.652 1.362 1.15 1.762.496.4 1.095.602 1.796.602.714 0 1.33-.2 1.845-.602a3.63 3.63 0 0 0 1.15-1.763c.264-.773.397-1.695.397-2.769 0-1.08-.133-2.002-.397-2.77-.268-.774-.657-1.36-1.163-1.758C16.22.19 15.58 0 14.863 0zm-10.377 8.1v5.43H0v3.64l4.486 2.675V8.1h.001zm5.03 0v3.44h3.56V8.1h-3.56zm10.39 2.62v.975h-.975V11.72zm-10.39.82v6.286L14.01 24l4.48-2.674v-9.786h-.975v-.974h.975v-.977h-3.56v.977h-.975v.974h.975v9.11l-3.57 2.134-3.54-2.11v-5.41H9.51v-.975H9.506z"/></svg>
-      ResearchGate
-    </a>
-
-    <a class="id-link" href="https://bsky.app/profile/macscastro.bsky.social" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.567.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.202-.659-.3-1.664-.623-4.3 1.238C16.046 4.748 13.087 8.686 12 10.8z"/></svg>
-      Bluesky
-    </a>
-
-    <a class="id-link" href="https://x.com/MacsCastro" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.852L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      X / Twitter
-    </a>
-
-    <a class="id-link" href="https://www.linkedin.com/in/macscastro/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"><path d="M20.447 20.452H17.2v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.962V9h3.111v1.561h.044c.433-.824 1.494-1.69 3.073-1.69 3.287 0 3.892 2.164 3.892 4.977v6.604zM5.337 7.433a1.804 1.804 0 1 1 0-3.608 1.804 1.804 0 0 1 0 3.608zM6.814 20.452H3.861V9h2.953v11.452z"/></svg>
-      LinkedIn
-    </a>
-
-    <a class="id-link" href="https://github.com/macscastro" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-      GitHub
-    </a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">M. A. Castro e Silva<span>, Ph.D.</span></a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Page sections">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#cv">CV</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#press">Press</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
-</aside>
-<main id="main">
-  <div class="tab-panel active" id="tab-about">
-    <section id="about">
+</header>
 
-    <div class="section-label">About</div>
-    <h2>Marcos Araújo Castro e Silva, Ph.D.</h2>
-    <p class="about-tagline">Unravelling the genetic history of Indigenous American and descendant Populations</p>
-    <p>
-      I am a postdoctoral researcher at the <strong style="color:var(--paper)"></strong>Globe Institute's Section for GeoGenetics, University of Copenhagen, Denmark</strong>.
-      In December 2026, I will begin a "la Caixa" Postdoctoral Junior Leader Fellowship at the Institut de Biologia Evolutiva (IBE-CSIC), Universitat Pompeu Fabra, in Barcelona, Spain. 
-      My research combines population genetics, anthropological genetics, archaeogenetics, and bioinformatics to investigate the evolutionary history and genetic diversity 
-      of Indigenous and descendant populations across the Americas, both past and present.
-    </p>
-    <p>
-      I investigate how migration, admixture, population growth or collapse, and adaptation 
-      have shaped human genetic diversity over time. My work aims to uncover the deep and recent population histories of the Americas while 
-      contributing to a more inclusive understanding of global human diversity through the study of historically underrepresented populations.
-    </p>
-    <p>
-      Currently, I am particularly interested in how ancient demographic and evolutionary processes have shaped the genetic diversity 
-      of Indigenous populations in the Americas. I have also been investigating the genetic history of non-indigenous Latin American populations, 
-      which are characterized by complex admixture. More rencently, I have been exploring how these processes have influenced the 
-      phenotypic diversity of modern-day populations, including patterns of natural selection and clinically relevant variation.
-    </p>
-    <p>
-      To address these questions, I integrate large-scale genomic datasets from both living and ancient individuals with 
-      population genetic theory, statistical and demographic modeling, and computational approaches, 
-      to reconstruct human population history and explore the evolutionary forces shaping human diversity.
-    </p>    
-    <div class="keywords">
-      <span class="keyword">population genomics</span>
-      <span class="keyword">anthropological genetics</span>
-      <span class="keyword">archaeogenetics</span>
-      <span class="keyword">bioinformatics</span>
-      <span class="keyword">genetic diversity</span>
-      <span class="keyword">genetic structure</span>
-      <span class="keyword">demographic inference</span>
-      <span class="keyword">natural selection</span>
-      <span class="keyword">Indigenous Americans</span>
-      <span class="keyword">Latin Americans</span>
-      <span class="keyword">whole-genome sequencing</span>
-      <span class="keyword">ancient DNA</span>
+<main id="top">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <img src="photo.jpg" alt="Portrait of Marcos Araújo Castro e Silva" class="hero-photo" width="180" height="180"/>
+      <div>
+        <div class="eyebrow">Human population genomics</div>
+        <h1>Marcos Araújo Castro e Silva, Ph.D.</h1>
+        <p class="hero-tagline">Unravelling the genetic history of Indigenous American and descendant Populations</p>
+        <p class="hero-aff">
+          <strong>Postdoctoral Researcher</strong> · Section for GeoGenetics, Globe Institute<br>
+          University of Copenhagen, Denmark
+        </p>
+        <div class="hero-badge"><span class="dot"></span>From December 2026: “la Caixa” Junior Leader Fellow at IBE (CSIC-UPF), Barcelona</div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="cv.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
+          <a class="btn btn-ghost" href="mailto:marcosaraujocastro@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+            Get in touch
+          </a>
+        </div>
+
+        <div class="id-links" aria-label="Profiles and IDs">
+          <a class="id-link" href="https://orcid.org/0000-0002-9873-3717" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.516.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.934-1.566 3.934-3.722 0-2.016-1.453-3.722-3.872-3.722h-2.359z"/></svg>
+            ORCID
+          </a>
+          <a class="id-link" href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&hl=en" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+            Scholar
+          </a>
+          <a class="id-link" href="https://www.researchgate.net/profile/Marcos-Castro-E-Silva" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.1 12.1 0 0 0-.35 3.048c0 1.073.138 1.995.412 2.77.273.775.665 1.362 1.177 1.762.51.4 1.12.602 1.83.602.72 0 1.34-.2 1.862-.602a3.66 3.66 0 0 0 1.17-1.763c.27-.773.406-1.695.406-2.769 0-1.08-.136-2.002-.407-2.77-.274-.774-.67-1.360-1.186-1.758C21.010.19 20.360 0 19.586 0zm-14.5.177L0 3.544v10.609h4.73V7.87h1.444v-3.54H4.73V.177h.356zm9.777 0c-.824 0-1.513.19-2.067.565-.553.377-.95.936-1.19 1.68a12.2 12.2 0 0 0-.35 3.048c0 1.073.135 1.995.403 2.77.27.775.652 1.362 1.15 1.762.496.4 1.095.602 1.796.602.714 0 1.33-.2 1.845-.602a3.630 3.630 0 0 0 1.15-1.763c.264-.773.397-1.695.397-2.769 0-1.080-.133-2.002-.397-2.770-.268-.774-.657-1.360-1.163-1.758C16.220.19 15.580 0 14.863 0zm-10.377 8.100v5.430H0v3.640l4.486 2.675V8.100h.001zm5.030 0v3.440h3.560V8.100h-3.560zm10.390 2.620v.975h-.975V11.720zm-10.390.820v6.286L14.010 24l4.480-2.674v-9.786h-.975v-.974h.975v-.977h-3.560v.977h-.975v.974h.975v9.110l-3.570 2.134-3.540-2.110v-5.410H9.510v-.975H9.506z"/></svg>
+            ResearchGate
+          </a>
+          <a class="id-link" href="https://github.com/macscastro" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a class="id-link" href="https://bsky.app/profile/macscastro.bsky.social" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.567.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.202-.659-.3-1.664-.623-4.3 1.238C16.046 4.748 13.087 8.686 12 10.8z"/></svg>
+            Bluesky
+          </a>
+          <a class="id-link" href="https://x.com/MacsCastro" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.852L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X
+          </a>
+          <a class="id-link" href="https://www.linkedin.com/in/macscastro/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452H17.2v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.962V9h3.111v1.561h.044c.433-.824 1.494-1.69 3.073-1.69 3.287 0 3.892 2.164 3.892 4.977v6.604zM5.337 7.433a1.804 1.804 0 1 1 0-3.608 1.804 1.804 0 0 1 0 3.608zM6.814 20.452H3.861V9h2.953v11.452z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </div>
-  
-    </section>
   </div>
 
-  <div class="tab-panel" id="tab-publications">
-    <section id="publications">
-    <div class="section-label">Research output</div>
-    <h2>Publications</h2>
-    <div class="section-label">†: Co-first author; (CA): Corresponding author</div>
-    <ul class="pub-list">
-
-      <li class="pub-item">
-        <div class="pub-year">2026</div>
-        <div class="pub-title">Prevalence of Pathogenic Genetic Variants Across Heart Failure Etiologies in an Admixed Population</div>
-        <div class="pub-authors">Ramos-Lima I, Lacerda-Pires LV, <strong>Castro e Silva MA†</strong> ... Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>JACC: Advances</em> · 103123</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1016/j.jacadv.2026.103123" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/1-s2.0-S2772963X26005442-main.pdf" target="_blank">PDF</a>
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">About</div>
+        <h2>Biography &amp; research interests</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I am a postdoctoral researcher at the Globe Institute's Section for GeoGenetics, University of Copenhagen, Denmark.
+            In December 2026, I will begin a "la Caixa" Postdoctoral Junior Leader Fellowship at the Institut de Biologia Evolutiva (IBE-CSIC), Universitat Pompeu Fabra, in Barcelona, Spain.
+          </p>
+          <p>
+            My research combines population genetics, anthropological genetics, archaeogenetics, and bioinformatics to investigate the evolutionary history and genetic diversity
+            of Indigenous and descendant populations across the Americas, both past and present.
+            I investigate how migration, admixture, population growth or collapse, and adaptation
+            have shaped human genetic diversity over time. My work aims to uncover the deep and recent population histories of the Americas while
+            contributing to a more inclusive understanding of global human diversity through the study of historically underrepresented populations.
+          </p>
+          <p>
+            Currently, I am particularly interested in how ancient demographic and evolutionary processes have shaped the genetic diversity
+            of Indigenous populations in the Americas. I have also been investigating the genetic history of non-indigenous Latin American populations,
+            which are characterized by complex admixture. More recently, I have been exploring how these processes have influenced the
+            phenotypic diversity of modern-day populations, including patterns of natural selection and clinically relevant variation.
+          </p>
+          <p>
+            To address these questions, I integrate large-scale genomic datasets from both living and ancient individuals with
+            population genetic theory, statistical and demographic modeling, and computational approaches,
+            to reconstruct human population history and explore the evolutionary forces shaping human diversity.
+          </p>
         </div>
-      </li>
-
-      <li class="pub-item">
-        <div class="pub-year">2026</div>
-        <div class="pub-title">The evolutionary history and unique genetic diversity of Indigenous Americans</div>
-        <div class="pub-authors"><strong>Castro e Silva MA†</strong>, Nunes K†, Ribeiro M† ... Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>Nature</em> · 653, 134–145</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1038/s41586-026-10406-w" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/s41586-026-10406-w.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://www.nature.com/articles/d41586-026-01173-9" target="_blank">Research Briefing</a>
-          <a class="pub-link" href="https://github.com/macscastro/lamask" target="_blank">Code: GitHub</a>
-          <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000002396" target="_blank">Data: EGAD50000002396</a>
-          <a class="pub-link" href="https://datastudio.google.com/u/0/reporting/0b01681e-7098-49a6-8363-44125b7ac64b?s=qzspjbbo1Jo" target="_blank">IAGDP Browser</a>
-        </div>
-      </li>
-
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-title">Demographic insights into paternal genetic diversity and regional substructure in the Spanish Roma</div>
-        <div class="pub-authors">Ena GF†, Giménez A, Carballo-Mesa A, <strong>Castro e Silva MA</strong> ... Comas D (CA)</div>
-        <div class="pub-journal"><em>BMC Genomics</em> · 26, 1012</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1186/s12864-025-12210-8" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/s12864-025-12210-8.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://github.com/gfena/Y-STR-tools" target="_blank">Code: GitHub</a>
-        </div>
-      </li>
-
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-title">Carrying APOL1 G1 allele is associated with cardiovascular complications during COVID−19 in an admixed population</div>
-        <div class="pub-authors">Cadore NA† ... <strong>Castro e Silva MA</strong> ... Vianna FSL (CA)</div>
-        <div class="pub-journal"><em>Hum. Genomics</em> · 19, 105</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1186/s40246-025-00790-1" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/s40246-025-00790-1.pdf" target="_blank">PDF</a>
-        </div>
-      </li>
-
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-title">Admixture’s impact on Brazilian population evolution and health</div>
-        <div class="pub-authors">Nunes K†, <strong>Castro e Silva MA†</strong>, Ribeiro M†, Lemes RB† ... Pereira AC (CA), Pereira LV (CA), Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>Science</em> · 388, 6748</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1126/science.adl3564" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/science.adl3564.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000001012" target="_blank">Data: EGAD50000001012</a>
-          <a class="pub-link" href="https://datastudio.google.com/u/0/reporting/4b3cb1c9-5f26-4278-98d5-9fcb68432ba4/page/p_jsjqk0xugd?s=hRdwUhMcftc" target="_blank">DNABR Browser</a>
-        </div>
-      </li>
-
-      <li class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-title">The genetic footprint of the European Roma diaspora: evidence from the Balkans to the Iberian Peninsula</div>
-        <div class="pub-authors">Ena GF†, Giménez A, Carballo-Mesa A, Lišková P, <strong>Castro e Silva MA</strong>, Comas D (CA)</div>
-        <div class="pub-journal"><em>Hum. Genet.</em> · 144, 463–479</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1007/s00439-025-02735-z" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/s00439-025-02735-z.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://github.com/gfena/AncestryLength" target="_blank">Code: GitHub</a>
-          <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000001103" target="_blank">Data: EGAD50000001103</a>
-        </div>
-      </li>
-
-      <li class="pub-item">
-        <div class="pub-year">2023</div>
-        <div class="pub-title">Indigenous people from Amazon show genetic signatures of pathogen-driven selection</div>
-        <div class="pub-authors">Couto-Silva CM†, Nunes K† ... <strong>Castro e Silva MA</strong> ... Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>Science Advances</em> · 9, 10</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1126/sciadv.abo0234" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/sciadv.abo0234.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://zenodo.org/records/7620975#.Y_Don3bMI2x" target="_blank">Code: Zenodo</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2023</div>
-        <div class="pub-title">A multidisciplinary overview on the Tupi‐speaking people expansion</div>
-        <div class="pub-authors"><strong>Castro e Silva MA (CA)</strong>, Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>AJBA</em> · 186(1), e24876</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1002/ajpa.24876" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/American Journal of Biological Anthropology - 2023 - Castro e Silva - A multidisciplinary overview on the Tupi‐speaking.pdf" target="_blank">PDF</a>
-        </div>
-      </li>  
-      
-      <li class="pub-item">
-        <div class="pub-year">2022</div>
-        <div class="pub-title">A genomic perspective on South American human history</div>
-        <div class="pub-authors"><strong>Castro e Silva MA</strong>, Ferraz T, Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>GMB</em> · 45 (3 Suppl 1)</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1590/1678-4685-GMB-2022-0078" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/GMB - A genomic perspective on South American human history.pdf" target="_blank">PDF</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2022</div>
-        <div class="pub-title">Population Histories and Genomic Diversity of South American Natives</div>
-        <div class="pub-authors"><strong>Castro e Silva MA</strong> ... Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>MBE</em> · 39(1), msab339</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1093/molbev/msab339" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/msab339.pdf" target="_blank">PDF</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2021</div>
-        <div class="pub-title">Deep genetic affinity between coastal Pacific and Amazonian natives evidenced by Australasian ancestry</div>
-        <div class="pub-authors"><strong>Castro e Silva MA†</strong>, Ferraz T† ... Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>PNAS</em> · 118(14), e2025739118</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1073/pnas.2025739118" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/castro-e-silva-et-al-2021-deep-genetic-affinity-between-coastal-pacific-and-amazonian-natives-evidenced-by-australasian.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://ega-archive.org/studies/EGAS00001005022" target="_blank">Data: EGAS00001005022</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2020</div>
-        <div class="pub-title">Genomic insight into the origins and dispersal of the Brazilian coastal natives</div>
-        <div class="pub-authors"><strong>Castro e Silva MA</strong> ... Hünemeier T (CA)</div>
-        <div class="pub-journal"><em>PNAS</em> · 117(5), 2372-2377</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1073/pnas.1909075117" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/castro-e-silva-et-al-2020-genomic-insight-into-the-origins-and-dispersal-of-the-brazilian-coastal-natives.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://ega-archive.org/studies/EGAS00001004036" target="_blank">Data: EGAS00001004036</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2018</div>
-        <div class="pub-title">The Zinc-Finger Thylakoid-Membrane Protein FIP Is Involved With Abiotic Stress Response in Arabidopsis thaliana</div>
-        <div class="pub-authors">Lopes KLL, Rodrigues RAO, <strong>Castro e Silva MA</strong>, Braga WGS, Silva-Filho MC (CA)</div>
-        <div class="pub-journal"><em>Front. Plant Sci.,</em> · 9:504</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.3389/fpls.2018.00504" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/fpls-09-00504.pdf" target="_blank">PDF</a>
-        </div>
-      </li>
-      
-      <li class="pub-item">
-        <div class="pub-year">2015</div>
-        <div class="pub-title">NIK1-mediated translation suppression functions as a plant antiviral immunity mechanism</div>
-        <div class="pub-authors">Zorzatto C, Machado JPB ... <strong>Castro e Silva MA</strong> ... Fontes EPB (CA)</div>
-        <div class="pub-journal"><em>Nature</em> · 520, 679–682</div>
-        <div class="pub-links">
-          <a class="pub-link" href="https://doi.org/10.1038/nature14171" target="_blank">DOI</a>
-          <a class="pub-link" href="papers/nature14171.pdf" target="_blank">PDF</a>
-        </div>
-      </li>      
-
-    </ul>
+        <aside class="reveal">
+          <div class="aside-card">
+            <h3>At a glance</h3>
+            <div class="fact"><b data-count=".pub-item">14</b><span>peer-reviewed publications, incl. <em>Nature</em>, <em>Science</em>, <em>PNAS</em></span></div>
+            <div class="fact"><b data-count="#cv-awards .cv-item">10</b><span>awards, honors &amp; distinctions</span></div>
+            <div class="fact"><b data-count="#cv-fellowships .cv-item">9</b><span>competitive fellowships &amp; scholarships</span></div>
+          </div>
+          <div class="aside-card">
+            <h3>Keywords</h3>
+            <div class="chips">
+              <span class="chip">population genomics</span>
+              <span class="chip">anthropological genetics</span>
+              <span class="chip">archaeogenetics</span>
+              <span class="chip">bioinformatics</span>
+              <span class="chip">genetic diversity</span>
+              <span class="chip">genetic structure</span>
+              <span class="chip">demographic inference</span>
+              <span class="chip">natural selection</span>
+              <span class="chip">Indigenous Americans</span>
+              <span class="chip">Latin Americans</span>
+              <span class="chip">whole-genome sequencing</span>
+              <span class="chip">ancient DNA</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </section>
 
-  <!-- Book chapters -->
-  
-    </section>
-  </div>
-
-  <div class="tab-panel" id="tab-cv">
-    <section id="cv">
-
-    <div class="section-label">Curriculum vitae</div>
-    <h2>CV</h2>
-
-    <div class="cv-section">
-      <div class="cv-section-title">Positions</div>
-
-      <div class="cv-item">
-        <div class="cv-year">2026 – 2029 (December 2026)</div>
-        <div class="cv-detail">
-          <h3>“la Caixa“ Postdoctoral Junior Leader Fellow</h3>
-          <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
-        </div>
+  <!-- ═══════════ NEWS ═══════════
+       Add new items at the top of the list. Items after the 6th are hidden behind "Show older news". -->
+  <section id="news" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Latest</div>
+        <h2>News</h2>
       </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2026 – 2026</div>
-        <div class="cv-detail">
-          <h3>Postdoctoral fellow at the Globe Institute's section for GeoGenetics</h3>
-          <p>University of Copenhagen · Copenhagen, Denmark</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2024 – 2026</div>
-        <div class="cv-detail">
-          <h3>Postdoctoral Fellow - Juan de la Cierva</h3>
-          <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2022 – 2024</div>
-        <div class="cv-detail">
-          <h3>Postdoctoral Fellow - EUTOPIA-SIF Marie Sklodowska-Curie COFUND</h3>
-          <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2022 – 2022</div>
-        <div class="cv-detail">
-          <h3>Innovation Research Fellow</h3>
-          <p>Fundação Faculdade de ​Medicina · São Paulo, Brazil</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2021 – 2022</div>
-        <div class="cv-detail">
-          <h3>Technical Training Fellow</h3>
-          <p>Universidade de São Paulo · São Paulo, Brazil</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2017 – 2021</div>
-        <div class="cv-detail">
-          <h3>PhD student/Researcher</h3>
-          <p>Instituto de Biociências, Universidade de São Paulo · São Paulo, Brazil</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2013 – 2015</div>
-        <div class="cv-detail">
-          <h3>MSc student/Researcher</h3>
-          <p>Universidade de São Paulo · Piracicaba, São Paulo (State), Brazil</p>
-        </div>
-      </div>      
-
-      <div class="cv-item">
-        <div class="cv-year">2011 – 2012</div>
-        <div class="cv-detail">
-          <h3>Scientific initiation fellow</h3>
-          <p>Universidade Federal de Viçosa · Viçosa, Minas Gerais (State), Brazil</p>
-        </div>
-      </div>            
-      <!-- Add more positions as needed -->
+      <ul class="news-list reveal">
+        <li class="news-item">
+          <div class="news-date">Dec 2026</div>
+          <div class="news-body">
+            <span class="news-tag warm">Upcoming</span>
+            <p>Starting my <strong>“la Caixa” Postdoctoral Junior Leader Fellowship</strong> at the Institut de Biologia Evolutiva (CSIC-UPF), Barcelona, with the project <em>Deep Ancestries in Admixed Latin American Genomes</em>.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">Aug 2026</div>
+          <div class="news-body">
+            <span class="news-tag">Position</span>
+            <p>Joined the <strong>Section for GeoGenetics, Globe Institute, University of Copenhagen</strong> as a postdoctoral fellow.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">May 2026</div>
+          <div class="news-body">
+            <span class="news-tag">Cover</span>
+            <p>Our paper on the evolutionary history of Indigenous Americans is the <strong>cover feature of <em>Nature</em></strong> (7 May 2026 issue, vol. 653). <a href="#gallery">See the cover</a>.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">Apr 2026</div>
+          <div class="news-body">
+            <span class="news-tag">Paper</span>
+            <p><strong>“The evolutionary history and unique genetic diversity of Indigenous Americans”</strong> is out in <em>Nature</em>, with a <a href="https://www.nature.com/articles/d41586-026-01173-9" target="_blank" rel="noopener">Research Briefing</a> and wide <a href="#press">media coverage</a>.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">2026</div>
+          <div class="news-body">
+            <span class="news-tag">Award</span>
+            <p>Received the <strong>Seal of Excellence</strong> from the Marie Skłodowska-Curie Actions (MSCA Postdoctoral Fellowships 2025) for the proposal “Deep Population History of Admixed Americans”.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">2026</div>
+          <div class="news-body">
+            <span class="news-tag">Paper</span>
+            <p>New paper in <em>JACC: Advances</em> on the prevalence of pathogenic genetic variants across heart failure etiologies in an admixed population.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">Jul 2025</div>
+          <div class="news-body">
+            <span class="news-tag">Supervision</span>
+            <p>Giacomo Francesco Ena, whom I co-supervised, <strong>defended his PhD with cum laude honors</strong> at Universitat Pompeu Fabra.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">Jul 2025</div>
+          <div class="news-body">
+            <span class="news-tag">Award</span>
+            <p>Received the <strong>Young Investigator Attendance Award</strong> for the SMBE 2025 conference.</p>
+          </div>
+        </li>
+        <li class="news-item">
+          <div class="news-date">May 2025</div>
+          <div class="news-body">
+            <span class="news-tag">Paper</span>
+            <p><strong>“Admixture’s impact on Brazilian population evolution and health”</strong> — the “DNA do Brasil” project — is published in <em>Science</em>.</p>
+          </div>
+        </li>
+      </ul>
+      <button class="more-btn" id="news-more" hidden>Show older news</button>
     </div>
+  </section>
 
-    <div class="cv-section">
-      <div class="cv-section-title">Education</div>
-      <div class="cv-item">
-        <div class="cv-year">2017 – 2021</div>
-        <div class="cv-detail">
-          <h3>PhD in Biology (Genetics)</h3>
-          <p>Universidade de São Paulo · São Paulo, Brazil</p>
-          <p>Supervisor: Prof. Tábita Hunemeier</p>          
-        </div>
+  <!-- ═══════════ RESEARCH ═══════════ -->
+  <section id="research">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Current and past projects</div>
+        <h2>Research projects &amp; lines of investigation</h2>
+        <p class="section-intro">My research spans interconnected themes in human population genomics, anthropological genetics, and archaeogenetics:</p>
       </div>
-      <div class="cv-item">
-        <div class="cv-year">2013 – 2015</div>
-        <div class="cv-detail">
-          <h3>MSc in Genetics and Plant Breeding</h3>
-          <p>Universidade de São Paulo · Piracicaba, São Paulo (State), Brazil</p>
-          <p>Supervisor: Prof. Marcio de Castro Silva-Filho</p>
-        </div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-year">2008 – 2013</div>
-        <div class="cv-detail">
-          <h3>BSc in Biological Sciences</h3>
-          <p>Universidade Federal de Viçosa · Viçosa, Minas Gerais (State), Brazil</p>
-          <p>Supervisor: Prof. Elizabeth Pacheco Batista Fontes</p>
-        </div>
+      <div class="research-grid">
+        <article class="research-card reveal">
+          <span class="status">current</span>
+          <h3>Deep Ancestries in Admixed Latin American Genomes</h3>
+          <p>This project integrates large-scale genomic resources of living and ancient populations to investigate the impact of deep demographic and evolutionary history on modern Latin American populations.</p>
+        </article>
+        <article class="research-card reveal">
+          <span class="status">current</span>
+          <h3>Indigenous American Genomic Diversity Project</h3>
+          <p>A collaborative international effort designed to map the origins and genetic diversity of Indigenous populations through whole-genome sequencing.</p>
+        </article>
+        <article class="research-card reveal">
+          <span class="status">current</span>
+          <h3>"DNA do Brasil" Project</h3>
+          <p>A research initiative using whole-genome sequencing data to characterize genetic diversity in Brazilian populations and its health implications.</p>
+        </article>
+        <article class="research-card reveal">
+          <span class="status past">past</span>
+          <h3>Genomic Origins of European Roma</h3>
+          <p>In collaboration with David Comas, I co-supervised a PhD student investigating the origins, genetic structure, and demography of Iberian and European Romani populations.</p>
+        </article>
       </div>
     </div>
+  </section>
 
-    <div class="cv-section">
-      <div class="cv-section-title">Complementary education</div>
-      <div class="cv-item">
-        <div class="cv-year">May 2026</div>
-        <div class="cv-detail">
-          <h3>Focus on Peer Review (3.5 hours)</h3>
-          <p>Nature Masterclasses on-demand course</p>
-        </div>
-      </div>      
-      <div class="cv-item">
-        <div class="cv-year">March 2022</div>
-        <div class="cv-detail">
-          <h3>EMBO virtual Practical Course Population genomics: background and tools (60 hours)</h3>
-          <p>European Molecular Biology Organization, EMBO/EMBL</p>
-        </div>
+  <!-- ═══════════ PUBLICATIONS ═══════════
+       Mark first / co-first author papers with data-first on the <li>. -->
+  <section id="publications" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Research output</div>
+        <h2>Publications</h2>
       </div>
-      <div class="cv-item">
-        <div class="cv-year">August 2018</div>
-        <div class="cv-detail">
-          <h3>PhD summer course in analyses of genotyping and sequencing data in medical and population genetics (140 hours)</h3>
-          <p>University of Copenhagen · Copenhagen, Denmark</p>
+      <div class="pub-toolbar">
+        <div class="filters" role="group" aria-label="Filter publications">
+          <button class="on" data-filter="all">All</button>
+          <button data-filter="first">First / co-first author</button>
         </div>
+        <div class="legend">†: Co-first author; (CA): Corresponding author</div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2026</div>
+        <ul class="pub-list">
+          <li class="pub-item" data-first>
+            <div class="pub-title">Prevalence of Pathogenic Genetic Variants Across Heart Failure Etiologies in an Admixed Population</div>
+            <div class="pub-authors">Ramos-Lima I, Lacerda-Pires LV, <strong>Castro e Silva MA†</strong> ... Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>JACC: Advances</em> · 103123</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.jacadv.2026.103123" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/1-s2.0-S2772963X26005442-main.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+          <li class="pub-item" data-first>
+            <div class="pub-title">The evolutionary history and unique genetic diversity of Indigenous Americans</div>
+            <div class="pub-authors"><strong>Castro e Silva MA†</strong>, Nunes K†, Ribeiro M† ... Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>Nature</em> · 653, 134–145</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1038/s41586-026-10406-w" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/s41586-026-10406-w.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://www.nature.com/articles/d41586-026-01173-9" target="_blank">Research Briefing</a>
+              <a class="pub-link" href="https://github.com/macscastro/lamask" target="_blank">Code: GitHub</a>
+              <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000002396" target="_blank">Data: EGAD50000002396</a>
+              <a class="pub-link" href="https://datastudio.google.com/u/0/reporting/0b01681e-7098-49a6-8363-44125b7ac64b?s=qzspjbbo1Jo" target="_blank">IAGDP Browser</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2025</div>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-title">Demographic insights into paternal genetic diversity and regional substructure in the Spanish Roma</div>
+            <div class="pub-authors">Ena GF†, Giménez A, Carballo-Mesa A, <strong>Castro e Silva MA</strong> ... Comas D (CA)</div>
+            <div class="pub-journal"><em>BMC Genomics</em> · 26, 1012</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1186/s12864-025-12210-8" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/s12864-025-12210-8.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://github.com/gfena/Y-STR-tools" target="_blank">Code: GitHub</a>
+            </div>
+          </li>
+          <li class="pub-item">
+            <div class="pub-title">Carrying APOL1 G1 allele is associated with cardiovascular complications during COVID−19 in an admixed population</div>
+            <div class="pub-authors">Cadore NA† ... <strong>Castro e Silva MA</strong> ... Vianna FSL (CA)</div>
+            <div class="pub-journal"><em>Hum. Genomics</em> · 19, 105</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1186/s40246-025-00790-1" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/s40246-025-00790-1.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+          <li class="pub-item" data-first>
+            <div class="pub-title">Admixture’s impact on Brazilian population evolution and health</div>
+            <div class="pub-authors">Nunes K†, <strong>Castro e Silva MA†</strong>, Ribeiro M†, Lemes RB† ... Pereira AC (CA), Pereira LV (CA), Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>Science</em> · 388, 6748</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1126/science.adl3564" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/science.adl3564.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000001012" target="_blank">Data: EGAD50000001012</a>
+              <a class="pub-link" href="https://datastudio.google.com/u/0/reporting/4b3cb1c9-5f26-4278-98d5-9fcb68432ba4/page/p_jsjqk0xugd?s=hRdwUhMcftc" target="_blank">DNABR Browser</a>
+            </div>
+          </li>
+          <li class="pub-item">
+            <div class="pub-title">The genetic footprint of the European Roma diaspora: evidence from the Balkans to the Iberian Peninsula</div>
+            <div class="pub-authors">Ena GF†, Giménez A, Carballo-Mesa A, Lišková P, <strong>Castro e Silva MA</strong>, Comas D (CA)</div>
+            <div class="pub-journal"><em>Hum. Genet.</em> · 144, 463–479</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1007/s00439-025-02735-z" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/s00439-025-02735-z.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://github.com/gfena/AncestryLength" target="_blank">Code: GitHub</a>
+              <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000001103" target="_blank">Data: EGAD50000001103</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2023</div>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-title">Indigenous people from Amazon show genetic signatures of pathogen-driven selection</div>
+            <div class="pub-authors">Couto-Silva CM†, Nunes K† ... <strong>Castro e Silva MA</strong> ... Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>Science Advances</em> · 9, 10</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1126/sciadv.abo0234" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/sciadv.abo0234.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://zenodo.org/records/7620975#.Y_Don3bMI2x" target="_blank">Code: Zenodo</a>
+            </div>
+          </li>
+          <li class="pub-item" data-first>
+            <div class="pub-title">A multidisciplinary overview on the Tupi‐speaking people expansion</div>
+            <div class="pub-authors"><strong>Castro e Silva MA (CA)</strong>, Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>AJBA</em> · 186(1), e24876</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1002/ajpa.24876" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/American Journal of Biological Anthropology - 2023 - Castro e Silva - A multidisciplinary overview on the Tupi‐speaking.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2022</div>
+        <ul class="pub-list">
+          <li class="pub-item" data-first>
+            <div class="pub-title">A genomic perspective on South American human history</div>
+            <div class="pub-authors"><strong>Castro e Silva MA</strong>, Ferraz T, Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>GMB</em> · 45 (3 Suppl 1)</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1590/1678-4685-GMB-2022-0078" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/GMB - A genomic perspective on South American human history.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+          <li class="pub-item" data-first>
+            <div class="pub-title">Population Histories and Genomic Diversity of South American Natives</div>
+            <div class="pub-authors"><strong>Castro e Silva MA</strong> ... Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>MBE</em> · 39(1), msab339</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1093/molbev/msab339" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/msab339.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2021</div>
+        <ul class="pub-list">
+          <li class="pub-item" data-first>
+            <div class="pub-title">Deep genetic affinity between coastal Pacific and Amazonian natives evidenced by Australasian ancestry</div>
+            <div class="pub-authors"><strong>Castro e Silva MA†</strong>, Ferraz T† ... Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>PNAS</em> · 118(14), e2025739118</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1073/pnas.2025739118" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/castro-e-silva-et-al-2021-deep-genetic-affinity-between-coastal-pacific-and-amazonian-natives-evidenced-by-australasian.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://ega-archive.org/studies/EGAS00001005022" target="_blank">Data: EGAS00001005022</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2020</div>
+        <ul class="pub-list">
+          <li class="pub-item" data-first>
+            <div class="pub-title">Genomic insight into the origins and dispersal of the Brazilian coastal natives</div>
+            <div class="pub-authors"><strong>Castro e Silva MA</strong> ... Hünemeier T (CA)</div>
+            <div class="pub-journal"><em>PNAS</em> · 117(5), 2372-2377</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1073/pnas.1909075117" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/castro-e-silva-et-al-2020-genomic-insight-into-the-origins-and-dispersal-of-the-brazilian-coastal-natives.pdf" target="_blank">PDF</a>
+              <a class="pub-link" href="https://ega-archive.org/studies/EGAS00001004036" target="_blank">Data: EGAS00001004036</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2018</div>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-title">The Zinc-Finger Thylakoid-Membrane Protein FIP Is Involved With Abiotic Stress Response in Arabidopsis thaliana</div>
+            <div class="pub-authors">Lopes KLL, Rodrigues RAO, <strong>Castro e Silva MA</strong>, Braga WGS, Silva-Filho MC (CA)</div>
+            <div class="pub-journal"><em>Front. Plant Sci.</em> · 9:504</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.3389/fpls.2018.00504" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/fpls-09-00504.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2015</div>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-title">NIK1-mediated translation suppression functions as a plant antiviral immunity mechanism</div>
+            <div class="pub-authors">Zorzatto C, Machado JPB ... <strong>Castro e Silva MA</strong> ... Fontes EPB (CA)</div>
+            <div class="pub-journal"><em>Nature</em> · 520, 679–682</div>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1038/nature14171" target="_blank">DOI</a>
+              <a class="pub-link" href="papers/nature14171.pdf" target="_blank">PDF</a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
+  </section>
 
-    <div class="cv-section">
-      <div class="cv-section-title">Awards, Honors, &amp; Distinctions</div>
-      <div class="cv-item">
-        <div class="cv-year">2026</div>
-        <div class="cv-detail">
-          <h3>Cover feature in Nature (May 7, 2026 issue)</h3>
-          <p>For the paper “The evolutionary history and unique genetic diversity of Indigenous Americans”</p>
-        </div>
+  <!-- ═══════════ GALLERY ═══════════
+       To add a photo: put the file in images/ and copy one <figure> block.
+       data-full = large version shown in the lightbox; add class="wide" for landscape photos. -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Images</div>
+        <h2>Gallery</h2>
+        <p class="section-intro">Photos from fieldwork, conferences, and highlights of our research.</p>
       </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2026</div>
-        <div class="cv-detail">
-          <h3>Seal of Excellence - MSCA Postdoctoral Fellowships 2025</h3>
-          <p>For my project proposal “Deep Population History of Admixed Americans submitted under the Horizon Europe Marie Skłodowska-Curie Actions call HORIZON-MSCA-2025-PF-01-01”</p>
-        </div>
-      </div>      
-
-      <div class="cv-item">
-        <div class="cv-year">2025</div>
-        <div class="cv-detail">
-          <h3>Young Investigator Attendance Award for the SMBE conference 2025</h3>
-          <p>By the Society for ​Molecular Biology & Evolution</p>
-        </div>
+      <div class="gallery">
+        <figure class="reveal" data-full="images/cover.png">
+          <img src="images/cover-thumb.jpg" alt="Nature cover, 7 May 2026: Heading South — whole-genome sequences map dispersal and diversity of Indigenous Americans" loading="lazy"/>
+          <figcaption><b>Cover of <em>Nature</em>, 7 May 2026</b>“Heading South” — whole-genome sequences map dispersal and diversity of Indigenous Americans.</figcaption>
+        </figure>
+        <figure class="reveal" data-full="photo.jpg">
+          <img src="photo.jpg" alt="Portrait of Marcos Araújo Castro e Silva" loading="lazy"/>
+          <figcaption><b>Marcos Araújo Castro e Silva</b>Postdoctoral researcher, University of Copenhagen.</figcaption>
+        </figure>
+        <!--
+        <figure class="reveal" data-full="images/your-photo.jpg">
+          <img src="images/your-photo.jpg" alt="Describe the photo" loading="lazy"/>
+          <figcaption><b>Title</b>Short caption.</figcaption>
+        </figure>
+        -->
       </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2025</div>
-        <div class="cv-detail">
-          <h3>Wiley Top Viewed Article</h3>
-          <p>For the paper “A multidisciplinary overview on the ​Tupi-speaking people expansion”, by the American Journal of Biological ​Anthropology</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2023</div>
-        <div class="cv-detail">
-          <h3>MBE Honorable Mentions - Best Graduate Student Paper</h3>
-          <p>For the paper “Population Histories and Genomic Diversity of South American Natives”, by the Society for Molecular Biology & Evolution</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2023</div>
-        <div class="cv-detail">
-          <h3>Young Geneticist Award “Francisco Mauro Salzano”</h3>
-          <p>By the Sociedade Brasileira de ​Genética - SBG</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2022</div>
-        <div class="cv-detail">
-          <h3>USP Highlight Thesis Award 11th Edition</h3>
-          <p>By the University of São Paulo - USP</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2022</div>
-        <div class="cv-detail">
-          <h3>CAPES Thesis Award</h3>
-          <p>By the Brazilian national funding agency (Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - CAPES)</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2020</div>
-        <div class="cv-detail">
-          <h3>American Society of Human Genetics' Trainee Paper Spotlight</h3>
-          <p>For the paper “Genomic insight into the origins and dispersal of the Brazilian coastal natives”, by the American Society of Human Genetics - ASHG</p>
-        </div>
-      </div>
-      
-      <div class="cv-item">
-        <div class="cv-year">2013</div>
-        <div class="cv-detail">
-          <h3>Votes of praise for academic performance</h3>
-          <p>Coordinating Committee of the ​Biological Sciences Course at the Universidade Federal de Viçosa - UFV</p>
-        </div>
-      </div>      
     </div>
+  </section>
 
-    <div class="cv-section">
-      <div class="cv-section-title">Fellowships &amp; scholarships</div>
-
-      <div class="cv-item">
-        <div class="cv-year">2026 - 2029</div>
-        <div class="cv-detail">
-          <h3>“la Caixa“ Postdoctoral Junior Leader Fellowship (Retaining)</h3>
-          <p>Project: Deep Ancestries in Admixed Latin American Genomes</p>          
-          <p>Funding: ”la Caixa” Foundation (ID 100010434)</p>
-          <p>Institution: Universitat Pompeu Fabra, Spain</p>
-          <p>Total funding amount: EUR  320,100</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2024 - 2025</div>
-        <div class="cv-detail">
-          <h3>Postdoctoral Fellowship - Juan de la Cierva-Formación (JCI-F)</h3>
-          <p>Project: Indigenous American Genome Project</p>          
-          <p>Funding: Agencia Estatal de Investigación - AEI (Spain) (JDC2022-049175-I)</p>
-          <p>Institution: Universitat Pompeu Fabra, Spain</p>
-          <p>Total funding amount: EUR  67,400</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2022 - 2023</div>
-        <div class="cv-detail">
-          <h3>Postdoctoral Fellowship - EUTOPIA-SIF Marie Sklodowska-Curie COFUND</h3>
-          <p>Project: The impact of demography, admixture, and evolution on the health of Brazilian populations</p>          
-          <p>Funding: European Union Horizon 2020 programme under the Marie Skłodowska-Curie grant agreement No 945380</p>
-          <p>Institution: Universitat Pompeu Fabra, Spain</p>
-          <p>Total funding amount: EUR 95,160</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2022 - 2022</div>
-        <div class="cv-detail">
-          <h3>Innovation Research Fellowship - FFM</h3>
-          <p>Project: Establishment of a Reference Genome of the Brazilian Population</p>          
-          <p>Funding: Fundação Faculdade de Medicina - FFM (Convênio 888379/2019 - Projeto Genoma Biociências)</p>
-          <p>Institution: Universidade de São Paulo, Brazil</p>
-          <p>Total funding amount: BRL 12,300</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2021 - 2022</div>
-        <div class="cv-detail">
-          <h3>Technical Training Fellowship (TT5) - FAPESP</h3>
-          <p>Project: Detection of Natural Selection Patterns in Native American Population by Machine Learning</p>          
-          <p>Funding: Fundação de Amparo à Pesquisa do Estado de São Paulo - FAPESP (FAPESP/2021/12238-8)</p>
-          <p>Institution: Universidade de São Paulo, Brazil</p>
-          <p>Total funding amount: BRL 31,060.8</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2019 - 2021</div>
-        <div class="cv-detail">
-          <h3>PhD scholarship - FAPESP</h3>
-          <p>Project: Diversity and Evolution of Brazilian Populations</p>          
-          <p>Funding: Fundação de Amparo à Pesquisa do Estado de São Paulo - FAPESP (FAPESP/2018/01371-6)</p>
-          <p>Institution: Universidade de São Paulo, Brazil</p>
-          <p>Total funding amount: BRL 96,499.2</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2017 - 2019</div>
-        <div class="cv-detail">
-          <h3>PhD scholarship - CNPq</h3>
-          <p>Project: Genetic Structure and Ancestry of Brazilian Admixed Populations</p>          
-          <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (140155/2017-1)</p>
-            <p>Institution: Universidade de São Paulo, Brazil</p>
-            <p>Total funding amount: BRL 50,600</p>
-        </div>
-      </div>      
-
-      <div class="cv-item">
-        <div class="cv-year">2013 - 2015</div>
-        <div class="cv-detail">
-          <h3>MSc scholarship - CNPq</h3>
-          <p>Project: Convergent evolution of Arabidopsis thaliana FtsH5 protease and its putative negative regulator FIP (FtsH5 interacting protein)</p>          
-          <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (130634/2013-1)</p>
-          <p>Institution: Escola Superior de Agricultura “Luiz de Queiroz” - Universidade de São Paulo, Brazil</p>
-            <p>Total funding amount: BRL 36,000</p>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-year">2011 - 2012</div>
-        <div class="cv-detail">
-          <h3>Scientific Initiation Scholarship - CNPq</h3>
-          <p>Project: Transcriptional expression analysis of Arabidopsis thaliana immune system genes related to response against geminivirus</p>          
-          <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (160335/2012-4)</p>
-          <p>Institution: Universidade Federal de Viçosa, Brazil</p>
-            <p>Total funding amount: BRL 4,800</p>
-        </div>
-      </div>
-     
-    </div>    
-
-    <div class="cv-section">
-      <div class="cv-section-title">Thesis &amp; dissertations supervised</div>
-
-      <div class="cv-item">
-        <div class="cv-year">2023 - 2025</div>
-        <div class="cv-detail">
-          <h3>Giacomo Francesco Ena</h3>
-          <p>Degree: PhD (defended with cum laude honors)</p>   
-          <p>Project: Fine-scale genetic structure of Roma in Iberia</p>          
-          <p>Institution: Universitat Pompeu Fabra, Spain</p>
-        </div>
-        <div class="pub-links">
-          <a class="pub-link" href="supervisions/Thesis_GiacomoF_Ena.pdf" target="_blank">PDF</a>
-          <a class="pub-link" href="https://www.tdx.cat/handle/10803/695357?show=full&locale-attribute=es" target="_blank">Repository</a>
-        </div>        
-      </div>
-     
-    </div>    
-
-    <div class="cv-section">
-      <div class="cv-section-title">Skills &amp; tools</div>
-        <div class="skills">
-          <span class="skill">R</span>
-          <span class="skill">Bash</span>
-          <span class="skill">Python</span>
-          <span class="skill">Cloud Computing</span>
-          <span class="skill">Version Control (Git)</span>
-          <span class="skill">GitHub</span>
-          <span class="skill">PLINK</span>
-          <span class="skill">BCVTools</span>
-          <span class="skill">VCFTools</span>
-          <span class="skill">ADMIXTURE</span>
-          <span class="skill">Admixtools</span>
-          <span class="skill">SHAPEIT</span>
-          <span class="skill">Beagle</span>
-          <span class="skill">RFMix</span>
-          <span class="skill">GNOMix</span>
-          <span class="skill">CHROMOPAINTER</span>
-          <span class="skill">fineSTRUCTURE</span>
-          <span class="skill">Globetrotter</span>
-          <span class="skill">SOURCEFIND</span>
-          <span class="skill">TreeMix</span>
-          <span class="skill">EEMS</span>
-          <span class="skill">IBDNe</span>
-          <span class="skill">ASCEND</span>
-          <span class="skill">Relate</span>
-          <span class="skill">VEP</span>
-          <span class="skill">msprime</span>
-          <span class="skill">SLiM</span>
-        </div>
-      </div>  
-    </div>
- 
-    </section>
-  </div>
-
-  <div class="tab-panel" id="tab-research">
-    <section id="research">
-
-    <div class="section-label">Current and past projects</div>
-    <h2>Research projects &amp; lines of investigation</h2>
-    <p>My research spans interconnected themes in human population genomics, anthropological genetics, and archaeogenetics:</p>
-    <div class="research-grid">
-
-      <div class="research-card">
-        <div class="research-tag">current</div>
-        <h3>Deep Ancestries in Admixed Latin American Genomes</h3>
-        <p>This project integrates large-scale genomic resources of living and ancient populations to investigate the impact of deep demographic and evolutionary history on modern Latin American populations.</p>
-      </div>
-
-      <div class="research-card">
-        <div class="research-tag">current</div>
-        <h3>Indigenous American Genomic Diversity Project</h3>
-        <p>A collaborative international effort designed to map the origins and genetic diversity of Indigenous populations through whole-genome sequencing.</p>
-      </div>
-
-      <div class="research-card">
-        <div class="research-tag">current</div>
-        <h3>"DNA do Brasil" Project</h3>
-        <p>A research initiative using whole-genome sequencing data to characterize genetic diversity in Brazilian populations and its health implications.</p>
-      </div>
-
-      <div class="research-card">
-        <div class="research-tag" style="background:var(--ink2)">past</div>
-        <h3>Genomic Origins of European Roma</h3>
-        <p>In collaboration with David Comas, I co-supervised a PhD student investigating the origins, genetic structure, and demography of Iberian and European Romani populations.</p>
-      </div>
-
-    </div>
-
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-btn lb-close" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" aria-label="Previous image">‹</button>
+    <img alt=""/>
     <p></p>
-        </section>
+    <button class="lb-btn lb-next" aria-label="Next image">›</button>
   </div>
 
-  <div class="tab-panel" id="tab-teaching">
-    <section id="teaching">
-
-    <div class="section-label">Education</div>
-    <h2>Teaching</h2>
-    <ul class="teaching-list">
-      <li class="teaching-item">
-        <div class="teaching-year">2025</div>
+  <!-- ═══════════ CV ═══════════ -->
+  <section id="cv" class="alt">
+    <div class="wrap">
+      <div class="section-head cv-top reveal">
         <div>
+          <div class="section-label">Curriculum vitae</div>
+          <h2>CV</h2>
+        </div>
+        <a class="btn btn-dark" href="cv.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Full CV (PDF)
+        </a>
+      </div>
+
+      <details class="cv-block" open>
+        <summary><span>Positions</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">2026 – 2029 (December 2026)</div>
+            <div class="cv-detail">
+              <h3>“la Caixa“ Postdoctoral Junior Leader Fellow</h3>
+              <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2026 – 2026</div>
+            <div class="cv-detail">
+              <h3>Postdoctoral fellow at the Globe Institute's section for GeoGenetics</h3>
+              <p>University of Copenhagen · Copenhagen, Denmark</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2024 – 2026</div>
+            <div class="cv-detail">
+              <h3>Postdoctoral Fellow - Juan de la Cierva</h3>
+              <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022 – 2024</div>
+            <div class="cv-detail">
+              <h3>Postdoctoral Fellow - EUTOPIA-SIF Marie Sklodowska-Curie COFUND</h3>
+              <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022 – 2022</div>
+            <div class="cv-detail">
+              <h3>Innovation Research Fellow</h3>
+              <p>Fundação Faculdade de Medicina · São Paulo, Brazil</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2021 – 2022</div>
+            <div class="cv-detail">
+              <h3>Technical Training Fellow</h3>
+              <p>Universidade de São Paulo · São Paulo, Brazil</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2017 – 2021</div>
+            <div class="cv-detail">
+              <h3>PhD student/Researcher</h3>
+              <p>Instituto de Biociências, Universidade de São Paulo · São Paulo, Brazil</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2013 – 2015</div>
+            <div class="cv-detail">
+              <h3>MSc student/Researcher</h3>
+              <p>Universidade de São Paulo · Piracicaba, São Paulo (State), Brazil</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2011 – 2012</div>
+            <div class="cv-detail">
+              <h3>Scientific initiation fellow</h3>
+              <p>Universidade Federal de Viçosa · Viçosa, Minas Gerais (State), Brazil</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block" open>
+        <summary><span>Education</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">2017 – 2021</div>
+            <div class="cv-detail">
+              <h3>PhD in Biology (Genetics)</h3>
+              <p>Universidade de São Paulo · São Paulo, Brazil</p>
+              <p>Supervisor: Prof. Tábita Hunemeier</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2013 – 2015</div>
+            <div class="cv-detail">
+              <h3>MSc in Genetics and Plant Breeding</h3>
+              <p>Universidade de São Paulo · Piracicaba, São Paulo (State), Brazil</p>
+              <p>Supervisor: Prof. Marcio de Castro Silva-Filho</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2008 – 2013</div>
+            <div class="cv-detail">
+              <h3>BSc in Biological Sciences</h3>
+              <p>Universidade Federal de Viçosa · Viçosa, Minas Gerais (State), Brazil</p>
+              <p>Supervisor: Prof. Elizabeth Pacheco Batista Fontes</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block" id="cv-awards" open>
+        <summary><span>Awards, Honors, &amp; Distinctions</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>Cover feature in Nature (May 7, 2026 issue)</h3>
+              <p>For the paper “The evolutionary history and unique genetic diversity of Indigenous Americans”</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>Seal of Excellence - MSCA Postdoctoral Fellowships 2025</h3>
+              <p>For my project proposal “Deep Population History of Admixed Americans submitted under the Horizon Europe Marie Skłodowska-Curie Actions call HORIZON-MSCA-2025-PF-01-01”</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2025</div>
+            <div class="cv-detail">
+              <h3>Young Investigator Attendance Award for the SMBE conference 2025</h3>
+              <p>By the Society for Molecular Biology &amp; Evolution</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2025</div>
+            <div class="cv-detail">
+              <h3>Wiley Top Viewed Article</h3>
+              <p>For the paper “A multidisciplinary overview on the Tupi-speaking people expansion”, by the American Journal of Biological Anthropology</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2023</div>
+            <div class="cv-detail">
+              <h3>MBE Honorable Mentions - Best Graduate Student Paper</h3>
+              <p>For the paper “Population Histories and Genomic Diversity of South American Natives”, by the Society for Molecular Biology &amp; Evolution</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2023</div>
+            <div class="cv-detail">
+              <h3>Young Geneticist Award “Francisco Mauro Salzano”</h3>
+              <p>By the Sociedade Brasileira de Genética - SBG</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022</div>
+            <div class="cv-detail">
+              <h3>USP Highlight Thesis Award 11th Edition</h3>
+              <p>By the University of São Paulo - USP</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022</div>
+            <div class="cv-detail">
+              <h3>CAPES Thesis Award</h3>
+              <p>By the Brazilian national funding agency (Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - CAPES)</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2020</div>
+            <div class="cv-detail">
+              <h3>American Society of Human Genetics' Trainee Paper Spotlight</h3>
+              <p>For the paper “Genomic insight into the origins and dispersal of the Brazilian coastal natives”, by the American Society of Human Genetics - ASHG</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2013</div>
+            <div class="cv-detail">
+              <h3>Votes of praise for academic performance</h3>
+              <p>Coordinating Committee of the Biological Sciences Course at the Universidade Federal de Viçosa - UFV</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block" id="cv-fellowships">
+        <summary><span>Fellowships &amp; scholarships</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">2026 - 2029</div>
+            <div class="cv-detail">
+              <h3>“la Caixa“ Postdoctoral Junior Leader Fellowship (Retaining)</h3>
+              <p>Project: Deep Ancestries in Admixed Latin American Genomes</p>
+              <p>Funding: ”la Caixa” Foundation (ID 100010434)</p>
+              <p>Institution: Universitat Pompeu Fabra, Spain</p>
+              <p>Total funding amount: EUR 320,100</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2024 - 2025</div>
+            <div class="cv-detail">
+              <h3>Postdoctoral Fellowship - Juan de la Cierva-Formación (JCI-F)</h3>
+              <p>Project: Indigenous American Genome Project</p>
+              <p>Funding: Agencia Estatal de Investigación - AEI (Spain) (JDC2022-049175-I)</p>
+              <p>Institution: Universitat Pompeu Fabra, Spain</p>
+              <p>Total funding amount: EUR 67,400</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022 - 2023</div>
+            <div class="cv-detail">
+              <h3>Postdoctoral Fellowship - EUTOPIA-SIF Marie Sklodowska-Curie COFUND</h3>
+              <p>Project: The impact of demography, admixture, and evolution on the health of Brazilian populations</p>
+              <p>Funding: European Union Horizon 2020 programme under the Marie Skłodowska-Curie grant agreement No 945380</p>
+              <p>Institution: Universitat Pompeu Fabra, Spain</p>
+              <p>Total funding amount: EUR 95,160</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022 - 2022</div>
+            <div class="cv-detail">
+              <h3>Innovation Research Fellowship - FFM</h3>
+              <p>Project: Establishment of a Reference Genome of the Brazilian Population</p>
+              <p>Funding: Fundação Faculdade de Medicina - FFM (Convênio 888379/2019 - Projeto Genoma Biociências)</p>
+              <p>Institution: Universidade de São Paulo, Brazil</p>
+              <p>Total funding amount: BRL 12,300</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2021 - 2022</div>
+            <div class="cv-detail">
+              <h3>Technical Training Fellowship (TT5) - FAPESP</h3>
+              <p>Project: Detection of Natural Selection Patterns in Native American Population by Machine Learning</p>
+              <p>Funding: Fundação de Amparo à Pesquisa do Estado de São Paulo - FAPESP (FAPESP/2021/12238-8)</p>
+              <p>Institution: Universidade de São Paulo, Brazil</p>
+              <p>Total funding amount: BRL 31,060.8</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2019 - 2021</div>
+            <div class="cv-detail">
+              <h3>PhD scholarship - FAPESP</h3>
+              <p>Project: Diversity and Evolution of Brazilian Populations</p>
+              <p>Funding: Fundação de Amparo à Pesquisa do Estado de São Paulo - FAPESP (FAPESP/2018/01371-6)</p>
+              <p>Institution: Universidade de São Paulo, Brazil</p>
+              <p>Total funding amount: BRL 96,499.2</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2017 - 2019</div>
+            <div class="cv-detail">
+              <h3>PhD scholarship - CNPq</h3>
+              <p>Project: Genetic Structure and Ancestry of Brazilian Admixed Populations</p>
+              <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (140155/2017-1)</p>
+              <p>Institution: Universidade de São Paulo, Brazil</p>
+              <p>Total funding amount: BRL 50,600</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2013 - 2015</div>
+            <div class="cv-detail">
+              <h3>MSc scholarship - CNPq</h3>
+              <p>Project: Convergent evolution of Arabidopsis thaliana FtsH5 protease and its putative negative regulator FIP (FtsH5 interacting protein)</p>
+              <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (130634/2013-1)</p>
+              <p>Institution: Escola Superior de Agricultura “Luiz de Queiroz” - Universidade de São Paulo, Brazil</p>
+              <p>Total funding amount: BRL 36,000</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2011 - 2012</div>
+            <div class="cv-detail">
+              <h3>Scientific Initiation Scholarship - CNPq</h3>
+              <p>Project: Transcriptional expression analysis of Arabidopsis thaliana immune system genes related to response against geminivirus</p>
+              <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (160335/2012-4)</p>
+              <p>Institution: Universidade Federal de Viçosa, Brazil</p>
+              <p>Total funding amount: BRL 4,800</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block">
+        <summary><span>Thesis &amp; dissertations supervised</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">2023 - 2025</div>
+            <div class="cv-detail">
+              <h3>Giacomo Francesco Ena</h3>
+              <p>Degree: PhD (defended with cum laude honors)</p>
+              <p>Project: Fine-scale genetic structure of Roma in Iberia</p>
+              <p>Institution: Universitat Pompeu Fabra, Spain</p>
+              <div class="pub-links">
+                <a class="pub-link" href="supervisions/Thesis_GiacomoF_Ena.pdf" target="_blank">PDF</a>
+                <a class="pub-link" href="https://www.tdx.cat/handle/10803/695357?show=full&locale-attribute=es" target="_blank">Repository</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block">
+        <summary><span>Complementary education</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">May 2026</div>
+            <div class="cv-detail">
+              <h3>Focus on Peer Review (3.5 hours)</h3>
+              <p>Nature Masterclasses on-demand course</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">March 2022</div>
+            <div class="cv-detail">
+              <h3>EMBO virtual Practical Course Population genomics: background and tools (60 hours)</h3>
+              <p>European Molecular Biology Organization, EMBO/EMBL</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">August 2018</div>
+            <div class="cv-detail">
+              <h3>PhD summer course in analyses of genotyping and sequencing data in medical and population genetics (140 hours)</h3>
+              <p>University of Copenhagen · Copenhagen, Denmark</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block" open>
+        <summary><span>Skills &amp; tools</span></summary>
+        <div class="skills">
+          <span class="chip">R</span>
+          <span class="chip">Bash</span>
+          <span class="chip">Python</span>
+          <span class="chip">Cloud Computing</span>
+          <span class="chip">Version Control (Git)</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">PLINK</span>
+          <span class="chip">BCVTools</span>
+          <span class="chip">VCFTools</span>
+          <span class="chip">ADMIXTURE</span>
+          <span class="chip">Admixtools</span>
+          <span class="chip">SHAPEIT</span>
+          <span class="chip">Beagle</span>
+          <span class="chip">RFMix</span>
+          <span class="chip">GNOMix</span>
+          <span class="chip">CHROMOPAINTER</span>
+          <span class="chip">fineSTRUCTURE</span>
+          <span class="chip">Globetrotter</span>
+          <span class="chip">SOURCEFIND</span>
+          <span class="chip">TreeMix</span>
+          <span class="chip">EEMS</span>
+          <span class="chip">IBDNe</span>
+          <span class="chip">ASCEND</span>
+          <span class="chip">Relate</span>
+          <span class="chip">VEP</span>
+          <span class="chip">msprime</span>
+          <span class="chip">SLiM</span>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ═══════════ TEACHING ═══════════ -->
+  <section id="teaching">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Education</div>
+        <h2>Teaching</h2>
+      </div>
+      <ul class="teaching-list">
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2025</div>
           <div class="teaching-title">Population genomics of modern humans</div>
           <div class="teaching-inst">Class to master students · Teacher (2 hours)</div>
           <div class="teaching-inst">Universitat Pompeu Fabra, Barcelona, Spain</div>
-        </div>
-      </li>      
-      <li class="teaching-item">
-        <div class="teaching-year">2025</div>
-        <div>
+        </li>
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2025</div>
           <div class="teaching-title">Bioinformatics (20428)</div>
           <div class="teaching-inst">Undergraduate course · Teaching assistant (20 hours)</div>
           <div class="teaching-inst">Universitat Pompeu Fabra, Barcelona, Spain</div>
-        </div>
-      </li>
-      <li class="teaching-item">
-        <div class="teaching-year">2025</div>
-        <div>
+        </li>
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2025</div>
           <div class="teaching-title">“Brief introduction to population structure and history inference from genetic data”</div>
           <div class="teaching-inst">Workshop · Tutor (2 hours)</div>
-          <div class="teaching-inst"> Universitat Pompeu Fabra, Barcelona, Spain</div>
-        </div>
-      </li>
-      <li class="teaching-item">
-        <div class="teaching-year">2025</div>
-        <div>
+          <div class="teaching-inst">Universitat Pompeu Fabra, Barcelona, Spain</div>
+        </li>
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2025</div>
           <div class="teaching-title">Population genomics of modern humans</div>
           <div class="teaching-inst">Class · Teacher (2 hours)</div>
           <div class="teaching-inst">Master in Prehistoric Archeology/UAB, Barcelona, Spain</div>
-        </div>
-      </li>
-      <li class="teaching-item">
-        <div class="teaching-year">2025</div>
-        <div>
+        </li>
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2025</div>
           <div class="teaching-title">“Avances en Genómica y Metagenómica: De la Microbiota Oral a las Poblaciones Nativas Americanas”</div>
           <div class="teaching-inst">Workshop · Tutor (2 hours)</div>
           <div class="teaching-inst">Universitat Pompeu Fabra, Barcelona, Spain</div>
-        </div>
-      </li>    
-      <li class="teaching-item">
-        <div class="teaching-year">2019</div>
-        <div>
+        </li>
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2019</div>
           <div class="teaching-title">“First Native American Studies” Workshop</div>
           <div class="teaching-inst">Workshop · Tutor (2 hours)</div>
           <div class="teaching-inst">Universidade Federal do Rio Grande do Sul, Porto Alegre, Brazil</div>
-        </div>
-      </li>
-      <li class="teaching-item">
-        <div class="teaching-year">2017</div>
-        <div>
+        </li>
+        <li class="teaching-item reveal">
+          <div class="teaching-year">2017</div>
           <div class="teaching-title">Evolutionary Biology (BIO0103)</div>
           <div class="teaching-inst">Undergraduate course · Teaching Improvement Program (120 hours)</div>
           <div class="teaching-inst">Universidade de São Paulo, São Paulo, Brazil</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRESS ═══════════ -->
+  <section id="press" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Media coverage</div>
+        <h2>News &amp; Press Coverage</h2>
+        <p class="section-intro">Our research has been featured in international and national media outlets, science magazines, and educational platforms.</p>
+      </div>
+
+      <div class="press-group">
+        <div class="press-group-title">International Newspapers, Magazines &amp; Blogs</div>
+        <div class="press-grid">
+          <div class="press-card reveal">
+            <h3>EurekAlert! (AAAS)</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513194756/https://www.eurekalert.org/news-releases/1124930" target="_blank" rel="noopener">Unraveling the genomic roots of Indigenous peoples</a></li>
+              <li><a href="https://web.archive.org/web/20250703061246/https://www.eurekalert.org/news-releases/1083649" target="_blank" rel="noopener">Mapping the genome of the Brazilian population, with implications for healthcare</a></li>
+              <li><a href="https://web.archive.org/web/20250411122017/https://www.eurekalert.org/news-releases/982062" target="_blank" rel="noopener">Genetic adaptations help Amazonian populations resist Chagas infection</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Science News</h3>
+            <ul>
+              <li><a href="https://www.science.org/content/article/people-settled-south-america-three-distinct-waves-surprising-genetic-diversity" target="_blank" rel="noopener">Ancient South Americans arrived in three waves—and had some surprising ancestry</a></li>
+              <li><a href="http://web.archive.org/web/20250708131348/https://www.science.org/content/article/massive-dna-sequencing-effort-reveals-how-colonization-shaped-brazil-s-genetic" target="_blank" rel="noopener">Massive DNA sequencing effort reveals how colonization shaped Brazil's genetic diversity</a></li>
+              <li><a href="https://web.archive.org/web/20250411122420/https://www.science.org/content/article/earliest-south-american-migrants-had-australian-melanesian-ancestry" target="_blank" rel="noopener">Earliest South American migrants had Indigenous Australian, Melanesian ancestry</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Live Science</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513201023/https://www.livescience.com/archaeology/americas/dna-study-of-nearly-200-indigenous-genomes-reveals-unknown-asian-ghost-population-contributed-to-american-ancestry" target="_blank" rel="noopener">DNA study of nearly 200 Indigenous genomes reveals unknown Asian 'ghost' population contributed to American ancestry</a></li>
+              <li><a href="https://web.archive.org/web/20250411122709/https://www.livescience.com/south-american-australian-dna-connection.html" target="_blank" rel="noopener">1st Americans had Indigenous Australian genes</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Smithsonian Magazine</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513195817/https://www.smithsonianmag.com/smart-news/a-new-big-database-of-dna-from-indigenous-americans-shakes-up-scientific-theories-about-human-settlement-of-south-america-180988628/" target="_blank" rel="noopener">A New Big Database of DNA From Indigenous Americans Shakes Up Scientists' Theories About Human Settlement of South America</a></li>
+              <li><a href="https://www.smithsonianmag.com/science-nature/ancient-indigenous-groups-brazil-hunted-sharks-food-and-arm-weapons-180976941/" target="_blank" rel="noopener">Why Did Ancient Indigenous Groups in Brazil Hunt Sharks?</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Science Alert</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411122745/https://www.sciencealert.com/the-genetic-signal-of-ancient-australians-in-south-america-goes-deeper-than-we-knew" target="_blank" rel="noopener">The Genetic Signal of Ancient Australians in South America Goes Deeper Than We Knew</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Science Magazine</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20251204232100/https://scienmag.com/exploring-spanish-romas-genetic-diversity-and-structure/" target="_blank" rel="noopener">Exploring Spanish Roma's Genetic Diversity and Structure</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Daily Mail</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411123818/https://www.dailymail.co.uk/sciencetech/article-9431151/Indigenous-South-American-tribes-evidence-ancient-Australian-DNA.html" target="_blank" rel="noopener">First humans who crossed the Bering Strait some 15,000 years ago had indigenous Australian DNA that is now found in the bloodline of South America tribes</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>The Scientist</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411122830/https://www.the-scientist.com/the-peopling-of-south-america-67860" target="_blank" rel="noopener">The Peopling of South America</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>The Medical News</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250708122719/https://www.news-medical.net/news/20250515/New-genetic-database-sheds-light-on-Brazile28099s-ancestry-and-disease-risks.aspx" target="_blank" rel="noopener">New genetic database sheds light on Brazil's ancestry and disease risks</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>El País</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250708122311/https://elpais.com/ciencia/2025-05-15/de-asia-a-america-la-genetica-desvela-nuevos-detalles-de-la-migracion-mas-larga-de-la-humanidad.html" target="_blank" rel="noopener">De Asia a América: la genética desvela nuevos detalles de la migración más larga de la humanidad</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Deutsche Welle</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513200431/https://www.dw.com/es/el-adn-ind%C3%ADgena-americano-revela-una-diversidad-gen%C3%A9tica-vast%C3%ADsima-hoy-reducida-tras-la-colonizaci%C3%B3n/a-76954366" target="_blank" rel="noopener">Colonización redujo la diversidad indígena a una fracción</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>La Vanguardia</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250708122228/https://www.lavanguardia.com/comprar/prime-day/20250708/10865318/mejores-ofertas-samsung-prime-day-2025-mkt-sams.html" target="_blank" rel="noopener">La genética revela la extraordinaria historia de la población de Brasil</a></li>
+              <li><a href="https://web.archive.org/web/20250522054059/https://www.lavanguardia.com/vida/20250520/10699577/gitanos-peninsula-diferencias-geneticas-resto-europa.html" target="_blank" rel="noopener">Los gitanos de la Península tienen diferencias genéticas respecto a los del resto de Europa</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Catalan News</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250708123311/https://www.catalannews.com/society-science/item/genetic-distinctions-between-iberian-romas-and-other-european-roma-people-found" target="_blank" rel="noopener">Genetic distinctions between Iberian Romas and other European Roma people found</a></li>
+            </ul>
+          </div>
         </div>
-      </li>            
-    </ul>
-  
-    </section>
-  </div>
-
-  <div class="tab-panel" id="tab-news">
-    <section id="news">
-<div class="section-label">Media coverage</div>
-    <h2>News & Press Coverage</h2>
-    <p style="margin-bottom:1.5rem">Our research has been featured in international and national media outlets, science magazines, and educational platforms.</p>
-    
-    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">International Newspapers, Magazines & Blogs</div>
-    <div class="news-coverage">
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>EurekAlert! (AAAS):</strong><br>
-        <a href="https://web.archive.org/web/20260513194756/https://www.eurekalert.org/news-releases/1124930" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Unraveling the genomic roots of Indigenous peoples</a> | 
-        <a href="https://web.archive.org/web/20250703061246/https://www.eurekalert.org/news-releases/1083649" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Mapping the genome of the Brazilian population, with implications for healthcare</a> | 
-        <a href="https://web.archive.org/web/20250411122017/https://www.eurekalert.org/news-releases/982062" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Genetic adaptations help Amazonian populations resist Chagas infection</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Science News:</strong><br>
-        <a href="https://www.science.org/content/article/people-settled-south-america-three-distinct-waves-surprising-genetic-diversity" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Ancient South Americans arrived in three waves—and had some surprising ancestry</a> | 
-        <a href="http://web.archive.org/web/20250708131348/https://www.science.org/content/article/massive-dna-sequencing-effort-reveals-how-colonization-shaped-brazil-s-genetic" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Massive DNA sequencing effort reveals how colonization shaped Brazil's genetic diversity</a> | 
-        <a href="https://web.archive.org/web/20250411122420/https://www.science.org/content/article/earliest-south-american-migrants-had-australian-melanesian-ancestry" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Earliest South American migrants had Indigenous Australian, Melanesian ancestry</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Live Science:</strong><br>
-        <a href="https://web.archive.org/web/20260513201023/https://www.livescience.com/archaeology/americas/dna-study-of-nearly-200-indigenous-genomes-reveals-unknown-asian-ghost-population-contributed-to-american-ancestry" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">DNA study of nearly 200 Indigenous genomes reveals unknown Asian 'ghost' population contributed to American ancestry</a> | 
-        <a href="https://web.archive.org/web/20250411122709/https://www.livescience.com/south-american-australian-dna-connection.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">1st Americans had Indigenous Australian genes</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Science Alert:</strong><br>
-        <a href="https://web.archive.org/web/20250411122745/https://www.sciencealert.com/the-genetic-signal-of-ancient-australians-in-south-america-goes-deeper-than-we-knew" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">The Genetic Signal of Ancient Australians in South America Goes Deeper Than We Knew</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Science Magazine:</strong><br>
-        <a href="https://web.archive.org/web/20251204232100/https://scienmag.com/exploring-spanish-romas-genetic-diversity-and-structure/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Exploring Spanish Roma's Genetic Diversity and Structure</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Daily Mail:</strong><br>
-        <a href="https://web.archive.org/web/20250411123818/https://www.dailymail.co.uk/sciencetech/article-9431151/Indigenous-South-American-tribes-evidence-ancient-Australian-DNA.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">First humans who crossed the Bering Strait some 15,000 years ago had indigenous Australian DNA that is now found in the bloodline of South America tribes</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>The Scientist:</strong><br>
-        <a href="https://web.archive.org/web/20250411122830/https://www.the-scientist.com/the-peopling-of-south-america-67860" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">The Peopling of South America</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Smithsonian Magazine:</strong><br>
-        <a href="https://web.archive.org/web/20260513195817/https://www.smithsonianmag.com/smart-news/a-new-big-database-of-dna-from-indigenous-americans-shakes-up-scientific-theories-about-human-settlement-of-south-america-180988628/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">A New Big Database of DNA From Indigenous Americans Shakes Up Scientists' Theories About Human Settlement of South America</a> | 
-        <a href="https://www.smithsonianmag.com/science-nature/ancient-indigenous-groups-brazil-hunted-sharks-food-and-arm-weapons-180976941/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Why Did Ancient Indigenous Groups in Brazil Hunt Sharks?</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>The Medical News:</strong><br>
-        <a href="https://web.archive.org/web/20250708122719/https://www.news-medical.net/news/20250515/New-genetic-database-sheds-light-on-Brazile28099s-ancestry-and-disease-risks.aspx" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">New genetic database sheds light on Brazil's ancestry and disease risks</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>El País:</strong><br>
-        <a href="https://web.archive.org/web/20250708122311/https://elpais.com/ciencia/2025-05-15/de-asia-a-america-la-genetica-desvela-nuevos-detalles-de-la-migracion-mas-larga-de-la-humanidad.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">De Asia a América: la genética desvela nuevos detalles de la migración más larga de la humanidad</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Deutsche Welle:</strong><br>
-        <a href="https://web.archive.org/web/20260513200431/https://www.dw.com/es/el-adn-ind%C3%ADgena-americano-revela-una-diversidad-gen%C3%A9tica-vast%C3%ADsima-hoy-reducida-tras-la-colonizaci%C3%B3n/a-76954366" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Colonización redujo la diversidad indígena a una fracción</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>La Vanguardia:</strong><br>
-        <a href="https://web.archive.org/web/20250708122228/https://www.lavanguardia.com/comprar/prime-day/20250708/10865318/mejores-ofertas-samsung-prime-day-2025-mkt-sams.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">La genética revela la extraordinaria historia de la población de Brasil</a> | 
-        <a href="https://web.archive.org/web/20250522054059/https://www.lavanguardia.com/vida/20250520/10699577/gitanos-peninsula-diferencias-geneticas-resto-europa.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Los gitanos de la Península tienen diferencias genéticas respecto a los del resto de Europa</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Catalan News:</strong><br>
-        <a href="https://web.archive.org/web/20250708123311/https://www.catalannews.com/society-science/item/genetic-distinctions-between-iberian-romas-and-other-european-roma-people-found" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Genetic distinctions between Iberian Romas and other European Roma people found</a>
-      </p>
-    </div>
-
-    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">National Newspapers, Magazines & Blogs (Brazil)</div>
-    <div class="news-coverage">
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Pesquisa FAPESP:</strong><br>
-        <a href="https://web.archive.org/web/20260513201723/https://revistapesquisa.fapesp.br/indigenas-sul-americanos-sao-diversos-e-descendem-de-terceira-onda-migratoria/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Indígenas sul-americanos são diversos e descendem de terceira onda migratória</a> | 
-        <a href="https://web.archive.org/web/20250623155559/https://revistapesquisa.fapesp.br/o-brasileiro-e-ainda-mais-miscigenado-do-que-voce-pensa/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">O brasileiro é ainda mais miscigenado do que você pensa</a> | 
-        <a href="https://web.archive.org/web/20250411095228/https://revistapesquisa.fapesp.br/defesa-natural-contra-chagas/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Defesa natural contra Chagas</a> | 
-        <a href="https://web.archive.org/web/20250411095431/https://revistapesquisa.fapesp.br/filhos-de-ypykuera/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Filhos de Ypykuéra</a> | 
-        <a href="https://web.archive.org/web/20250411103321/https://revistapesquisa.fapesp.br/os-ultimos-tupiniquim/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Os últimos Tupiniquim</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>National Geographic Brasil:</strong><br>
-        <a href="https://www.nationalgeographicbrasil.com/ciencia/2023/03/indigenas-da-amazonia-possuem-gene-que-protege-contra-a-doenca-de-chagas-diz-novo-estudo" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Indígenas da Amazônia possuem gene que protege contra a doença de Chagas, diz novo estudo</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>BBC Brasil:</strong><br>
-        <a href="https://web.archive.org/web/20250411104213/https://www.bbc.com/portuguese/geral-64309059" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">As descobertas sobre origem e história dos povos indígenas da América do Sul reveladas pela genética</a> | 
-        <a href="https://web.archive.org/web/20250411104204/https://www.bbc.com/portuguese/articles/c87vd031k33o" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">O recém-descoberto gene que protege povos amazônicos da doença de Chagas e pode inspirar tratamentos</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Galileu:</strong><br>
-        <a href="https://web.archive.org/web/20250411104406/https://revistagalileu.globo.com/Ciencia/noticia/2021/03/nativos-da-america-do-sul-tem-influencia-genetica-de-povos-da-oceania.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Nativos da América do Sul têm influência genética de povos da Oceania</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Folha de São Paulo:</strong><br>
-        <a href="https://web.archive.org/web/20260513203444/https://www1.folha.uol.com.br/ciencia/2026/04/dna-de-indigenas-mostra-elo-com-oceania-e-tres-ondas-de-migracao.shtml" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">DNA de indígenas mostra elo com Oceania e três ondas de migração</a> | 
-        <a href="https://web.archive.org/web/20250411104915/https://www1.folha.uol.com.br/ciencia/2021/04/indigenas-da-america-do-sul-descendem-em-parte-de-povos-do-pacifico-reforca-novo-estudo.shtml" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Indígenas da América do Sul descendem, em parte, de povos do Pacífico</a> | 
-        <a href="https://web.archive.org/web/20250411105529/https://www1.folha.uol.com.br/ciencia/2020/01/a-partir-do-dna-cientistas-mapeiam-2000-anos-de-rotas-migratorias-dos-indios-no-brasil.shtml" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">A partir do DNA, cientistas mapeiam 2.000 anos de rotas migratórias dos índios no Brasil</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Globo:</strong><br>
-        <a href="https://web.archive.org/web/20260513202646/https://umsoplaneta.globo.com/sociedade/noticia/2026/04/24/estudo-revela-evolucao-e-diversidade-genetica-unicas-dos-indigenas-americanos.ghtml" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Estudo revela evolução e diversidade genética únicas dos indígenas americanos</a> | 
-        <a href="https://web.archive.org/web/20221107002330/https://oglobo.globo.com/brasil/dna-indica-que-tupiniquins-sao-descendentes-do-grupo-indigena-que-cabral-encontrou-24187408" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">DNA indica que tupiniquins são descendentes do grupo indígena que Cabral encontrou</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>CBN Vitória Rádio:</strong><br>
-        <a href="https://www.cbnvitoria.com.br/comentaristas/coisas_do_es/2020/01/ndios-de-aracruz-sao-descendentes-diretos-dos-primeiros-tupiniquins-1014202938.html" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Índios de Aracruz são descendentes diretos dos primeiros Tupiniquins</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Blog Arqueologia e Pré-História:</strong><br>
-        <a href="https://web.archive.org/web/20250411124547/https://arqueologiaeprehistoria.com/2021/04/05/evidencia-genetica-australo-melanesia-em-grupos-nativos-da-america-do-sul/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Evidência genética australo-melanésia em grupos nativos da américa do sul</a>
-      </p>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Revista Planeta:</strong><br>
-        <a href="https://web.archive.org/web/20250411130552/https://revistaplaneta.com.br/genetica-conta-historia-do-colapso-populacional-de-indigenas-no-brasil/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Genética conta história do colapso populacional de indígenas no Brasil</a> | 
-        <a href="https://web.archive.org/web/20250411130507/https://revistaplaneta.com.br/genes-de-povos-da-asia-e-da-oceania-estao-em-indios-da-america-do-sul/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Genes de povos da Ásia e da Oceania estão em índios da América do Sul</a>
-      </p>
-    </div>
-
-    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">Video & Podcast Coverage</div>
-    <div class="news-coverage">
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>YouTube Creators:</strong>
-      </p>
-      <ul style="list-style: disc; margin-left: 1.5rem; font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <li><a href="https://web.archive.org/web/20250411123136/https://www.youtube.com/watch?v=A1PMingCvxI" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Stefan Milo - Why do Amazonian people have some Australasian DNA?</a></li>
-        <li><a href="https://web.archive.org/web/20260111123242/https://www.youtube.com/watch?v=Q1KcyEnFbzA&themeRefresh=1" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Ancient Americas - The Tupinambá: From the Amazon to the Coast</a></li>
-        <li><a href="https://web.archive.org/web/20260111123242/https://www.youtube.com/watch?v=NnqIIQKI3Tc" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Podcast: De frente com a ciência</a></li>
-      </ul>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <strong>Podcasts:</strong>
-      </p>
-      <ul style="list-style: disc; margin-left: 1.5rem; font-size: 0.85rem; color: var(--ink2);">
-        <li><a href="https://web.archive.org/web/20260208054233/https://www.anthropology.net/p/the-long-walk-south-tracing-the-longest" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Anthropology.net - The Long Walk South: Tracing the Longest Migration in Human History</a></li>
-        <li><a href="http://www.youtube.com/watch?v=UAIJc_wUyVI&list=PL-CFXzBsgHmSBn9vW30mAbhpBt1zhSDGL&index=1" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Principio de Incertidumbre (Canal Extremadura) - Lo que el ADN indígena revela sobre América</a></li>
-      </ul>
-    </div>
-
-    <div class="news-section-title" style="font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;">Wikipedia References</div>
-    <div class="news-coverage">
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;"><strong>English:</strong></p>
-      <ul style="list-style: disc; margin-left: 1.5rem; font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;">
-        <li><a href="https://en.wikipedia.org/?curid=25869325" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Genetic history of the Indigenous peoples of the Americas</a></li>
-        <li><a href="https://en.wikipedia.org/?curid=56212545" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Ancient Beringian</a></li>
-      </ul>
-      <p style="font-size: 0.85rem; color: var(--ink2); margin-bottom: 0.8rem;"><strong>Portuguese:</strong></p>
-      <ul style="list-style: disc; margin-left: 1.5rem; font-size: 0.85rem; color: var(--ink2);">
-        <li><a href="https://pt.wikipedia.org/?curid=7313807" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Estudos genéticos em brasileiros</a></li>
-        <li><a href="https://pt.wikipedia.org/?curid=6990170" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">História genética dos povos indígenas da América</a></li>
-        <li><a href="https://pt.wikipedia.org/?curid=7062580" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Primeiras migrações humanas</a></li>
-        <li><a href="https://pt.wikipedia.org/?curid=500115" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">História do estado de São Paulo</a></li>
-        <li><a href="https://pt.wikipedia.org/?curid=1658" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Rio de Janeiro (estado)</a></li>
-        <li><a href="https://pt.wikipedia.org/?curid=348976" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Zona da Mata</a></li>
-      </ul>
-    </div>
-    </section>
-  </div>
-
-  <div class="tab-panel" id="tab-contact">
-    <section id="contact">
-
-    <div class="section-label">Get in touch</div>
-    <h2>Contact</h2>
-    <div class="contact-grid">
-      <div class="contact-block">
-        <h3>Email</h3>
-        <a href="mailto:marcosaraujocastro@gmail.com">marcosaraujocastro@gmail.com</a>
       </div>
-      <div class="contact-block">
-        <h3>Office</h3>
-        <p style="font-size:0.85rem; color:var(--ink2)">
-          Section for GeoGenetics<br>
-          Globe Institute<br>
-          University of Copenhagen<br>
-          Museum of Natural History · Øster Voldgade 5-7<br>
-          1350 København K<br>
-        </p>
+
+      <div class="press-group">
+        <div class="press-group-title">National Newspapers, Magazines &amp; Blogs (Brazil)</div>
+        <div class="press-grid">
+          <div class="press-card reveal">
+            <h3>Pesquisa FAPESP</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513201723/https://revistapesquisa.fapesp.br/indigenas-sul-americanos-sao-diversos-e-descendem-de-terceira-onda-migratoria/" target="_blank" rel="noopener">Indígenas sul-americanos são diversos e descendem de terceira onda migratória</a></li>
+              <li><a href="https://web.archive.org/web/20250623155559/https://revistapesquisa.fapesp.br/o-brasileiro-e-ainda-mais-miscigenado-do-que-voce-pensa/" target="_blank" rel="noopener">O brasileiro é ainda mais miscigenado do que você pensa</a></li>
+              <li><a href="https://web.archive.org/web/20250411095228/https://revistapesquisa.fapesp.br/defesa-natural-contra-chagas/" target="_blank" rel="noopener">Defesa natural contra Chagas</a></li>
+              <li><a href="https://web.archive.org/web/20250411095431/https://revistapesquisa.fapesp.br/filhos-de-ypykuera/" target="_blank" rel="noopener">Filhos de Ypykuéra</a></li>
+              <li><a href="https://web.archive.org/web/20250411103321/https://revistapesquisa.fapesp.br/os-ultimos-tupiniquim/" target="_blank" rel="noopener">Os últimos Tupiniquim</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Folha de São Paulo</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513203444/https://www1.folha.uol.com.br/ciencia/2026/04/dna-de-indigenas-mostra-elo-com-oceania-e-tres-ondas-de-migracao.shtml" target="_blank" rel="noopener">DNA de indígenas mostra elo com Oceania e três ondas de migração</a></li>
+              <li><a href="https://web.archive.org/web/20250411104915/https://www1.folha.uol.com.br/ciencia/2021/04/indigenas-da-america-do-sul-descendem-em-parte-de-povos-do-pacifico-reforca-novo-estudo.shtml" target="_blank" rel="noopener">Indígenas da América do Sul descendem, em parte, de povos do Pacífico</a></li>
+              <li><a href="https://web.archive.org/web/20250411105529/https://www1.folha.uol.com.br/ciencia/2020/01/a-partir-do-dna-cientistas-mapeiam-2000-anos-de-rotas-migratorias-dos-indios-no-brasil.shtml" target="_blank" rel="noopener">A partir do DNA, cientistas mapeiam 2.000 anos de rotas migratórias dos índios no Brasil</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>BBC Brasil</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411104213/https://www.bbc.com/portuguese/geral-64309059" target="_blank" rel="noopener">As descobertas sobre origem e história dos povos indígenas da América do Sul reveladas pela genética</a></li>
+              <li><a href="https://web.archive.org/web/20250411104204/https://www.bbc.com/portuguese/articles/c87vd031k33o" target="_blank" rel="noopener">O recém-descoberto gene que protege povos amazônicos da doença de Chagas e pode inspirar tratamentos</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Globo</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260513202646/https://umsoplaneta.globo.com/sociedade/noticia/2026/04/24/estudo-revela-evolucao-e-diversidade-genetica-unicas-dos-indigenas-americanos.ghtml" target="_blank" rel="noopener">Estudo revela evolução e diversidade genética únicas dos indígenas americanos</a></li>
+              <li><a href="https://web.archive.org/web/20221107002330/https://oglobo.globo.com/brasil/dna-indica-que-tupiniquins-sao-descendentes-do-grupo-indigena-que-cabral-encontrou-24187408" target="_blank" rel="noopener">DNA indica que tupiniquins são descendentes do grupo indígena que Cabral encontrou</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>National Geographic Brasil</h3>
+            <ul>
+              <li><a href="https://www.nationalgeographicbrasil.com/ciencia/2023/03/indigenas-da-amazonia-possuem-gene-que-protege-contra-a-doenca-de-chagas-diz-novo-estudo" target="_blank" rel="noopener">Indígenas da Amazônia possuem gene que protege contra a doença de Chagas, diz novo estudo</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Revista Planeta</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411130552/https://revistaplaneta.com.br/genetica-conta-historia-do-colapso-populacional-de-indigenas-no-brasil/" target="_blank" rel="noopener">Genética conta história do colapso populacional de indígenas no Brasil</a></li>
+              <li><a href="https://web.archive.org/web/20250411130507/https://revistaplaneta.com.br/genes-de-povos-da-asia-e-da-oceania-estao-em-indios-da-america-do-sul/" target="_blank" rel="noopener">Genes de povos da Ásia e da Oceania estão em índios da América do Sul</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Galileu</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411104406/https://revistagalileu.globo.com/Ciencia/noticia/2021/03/nativos-da-america-do-sul-tem-influencia-genetica-de-povos-da-oceania.html" target="_blank" rel="noopener">Nativos da América do Sul têm influência genética de povos da Oceania</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>CBN Vitória Rádio</h3>
+            <ul>
+              <li><a href="https://www.cbnvitoria.com.br/comentaristas/coisas_do_es/2020/01/ndios-de-aracruz-sao-descendentes-diretos-dos-primeiros-tupiniquins-1014202938.html" target="_blank" rel="noopener">Índios de Aracruz são descendentes diretos dos primeiros Tupiniquins</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Blog Arqueologia e Pré-História</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411124547/https://arqueologiaeprehistoria.com/2021/04/05/evidencia-genetica-australo-melanesia-em-grupos-nativos-da-america-do-sul/" target="_blank" rel="noopener">Evidência genética australo-melanésia em grupos nativos da américa do sul</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="contact-block">
-        <h3>Social</h3>
-        <a href="https://www.linkedin.com/in/macscastro/" target="_blank" rel="noopener">LinkedIn</a><br>        
-        <a href="https://bsky.app/profile/macscastro.bsky.social" target="_blank" rel="noopener">Bluesky</a><br>
-        <a href="https://x.com/MacsCastro" target="_blank" rel="noopener">X / Twitter</a>
+
+      <div class="press-group">
+        <div class="press-group-title">Video &amp; Podcast Coverage</div>
+        <div class="press-grid">
+          <div class="press-card reveal">
+            <h3>YouTube Creators</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20250411123136/https://www.youtube.com/watch?v=A1PMingCvxI" target="_blank" rel="noopener">Stefan Milo - Why do Amazonian people have some Australasian DNA?</a></li>
+              <li><a href="https://web.archive.org/web/20260111123242/https://www.youtube.com/watch?v=Q1KcyEnFbzA&themeRefresh=1" target="_blank" rel="noopener">Ancient Americas - The Tupinambá: From the Amazon to the Coast</a></li>
+              <li><a href="https://web.archive.org/web/20260111123242/https://www.youtube.com/watch?v=NnqIIQKI3Tc" target="_blank" rel="noopener">Podcast: De frente com a ciência</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Podcasts</h3>
+            <ul>
+              <li><a href="https://web.archive.org/web/20260208054233/https://www.anthropology.net/p/the-long-walk-south-tracing-the-longest" target="_blank" rel="noopener">Anthropology.net - The Long Walk South: Tracing the Longest Migration in Human History</a></li>
+              <li><a href="http://www.youtube.com/watch?v=UAIJc_wUyVI&list=PL-CFXzBsgHmSBn9vW30mAbhpBt1zhSDGL&index=1" target="_blank" rel="noopener">Principio de Incertidumbre (Canal Extremadura) - Lo que el ADN indígena revela sobre América</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="contact-block">
-        <h3>Academic profiles</h3>
-        <a href="https://orcid.org/0000-0002-9873-3717" target="_blank" rel="noopener">ORCID</a><br>
-        <a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><br>
-        <a href="https://www.researchgate.net/profile/Marcos-Castro-E-Silva" target="_blank" rel="noopener">ResearchGate</a>
+
+      <div class="press-group">
+        <div class="press-group-title">Wikipedia References</div>
+        <div class="press-grid">
+          <div class="press-card reveal">
+            <h3>English</h3>
+            <ul>
+              <li><a href="https://en.wikipedia.org/?curid=25869325" target="_blank" rel="noopener">Genetic history of the Indigenous peoples of the Americas</a></li>
+              <li><a href="https://en.wikipedia.org/?curid=56212545" target="_blank" rel="noopener">Ancient Beringian</a></li>
+            </ul>
+          </div>
+          <div class="press-card reveal">
+            <h3>Portuguese</h3>
+            <ul>
+              <li><a href="https://pt.wikipedia.org/?curid=7313807" target="_blank" rel="noopener">Estudos genéticos em brasileiros</a></li>
+              <li><a href="https://pt.wikipedia.org/?curid=6990170" target="_blank" rel="noopener">História genética dos povos indígenas da América</a></li>
+              <li><a href="https://pt.wikipedia.org/?curid=7062580" target="_blank" rel="noopener">Primeiras migrações humanas</a></li>
+              <li><a href="https://pt.wikipedia.org/?curid=500115" target="_blank" rel="noopener">História do estado de São Paulo</a></li>
+              <li><a href="https://pt.wikipedia.org/?curid=1658" target="_blank" rel="noopener">Rio de Janeiro (estado)</a></li>
+              <li><a href="https://pt.wikipedia.org/?curid=348976" target="_blank" rel="noopener">Zona da Mata</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  
-    </section>
-  </div>
+  </section>
 
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Get in touch</div>
+        <h2>Contact</h2>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-block">
+          <h3>Email</h3>
+          <a href="mailto:marcosaraujocastro@gmail.com">marcosaraujocastro@gmail.com</a>
+        </div>
+        <div class="contact-block">
+          <h3>Office</h3>
+          <p>
+            Section for GeoGenetics<br>
+            Globe Institute<br>
+            University of Copenhagen<br>
+            Museum of Natural History · Øster Voldgade 5-7<br>
+            1350 København K
+          </p>
+        </div>
+        <div class="contact-block">
+          <h3>Social</h3>
+          <a href="https://www.linkedin.com/in/macscastro/" target="_blank" rel="noopener">LinkedIn</a><br>
+          <a href="https://bsky.app/profile/macscastro.bsky.social" target="_blank" rel="noopener">Bluesky</a><br>
+          <a href="https://x.com/MacsCastro" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+        <div class="contact-block">
+          <h3>Academic profiles</h3>
+          <a href="https://orcid.org/0000-0002-9873-3717" target="_blank" rel="noopener">ORCID</a><br>
+          <a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><br>
+          <a href="https://www.researchgate.net/profile/Marcos-Castro-E-Silva" target="_blank" rel="noopener">ResearchGate</a><br>
+          <a href="https://github.com/macscastro" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<script>
-  const tabs = ['about', 'publications', 'cv', 'research', 'teaching', 'news', 'contact'];
-  const tabButtons = document.querySelectorAll('[data-tab]');
-  const tabPanels = document.querySelectorAll('.tab-panel');
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Marcos Araújo Castro e Silva</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
 
-  tabButtons.forEach(btn => {
+<script>
+  // Mobile menu
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('nav');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Highlight current section in the nav
+  const navLinks = [...nav.querySelectorAll('a')];
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // News: show the 6 most recent, hide the rest behind a button
+  const NEWS_VISIBLE = 6;
+  const newsItems = document.querySelectorAll('.news-item');
+  const moreBtn = document.getElementById('news-more');
+  if (newsItems.length > NEWS_VISIBLE) {
+    newsItems.forEach((li, i) => { if (i >= NEWS_VISIBLE) li.classList.add('hidden'); });
+    moreBtn.hidden = false;
+    moreBtn.addEventListener('click', () => {
+      newsItems.forEach(li => li.classList.remove('hidden'));
+      moreBtn.hidden = true;
+    });
+  }
+
+  // Publication filter
+  document.querySelectorAll('.filters button').forEach(btn => {
     btn.addEventListener('click', () => {
-      const tabId = btn.getAttribute('data-tab');
-      showTab(tabId);
+      document.querySelectorAll('.filters button').forEach(b => b.classList.toggle('on', b === btn));
+      const firstOnly = btn.dataset.filter === 'first';
+      document.querySelectorAll('.pub-item').forEach(li => li.classList.toggle('hidden', firstOnly && !li.hasAttribute('data-first')));
+      document.querySelectorAll('.pub-year-group').forEach(g => g.classList.toggle('empty', !g.querySelector('.pub-item:not(.hidden)')));
     });
   });
 
-  function showTab(id) {
-    tabPanels.forEach(panel => panel.classList.remove('active'));
-    tabButtons.forEach(btn => btn.classList.remove('active'));
-    
-    const panel = document.getElementById('tab-' + id);
-    if (panel) {
-      panel.classList.add('active');
-    }
-    
-    const btn = document.querySelector(`[data-tab="${id}"]`);
-    if (btn) {
-      btn.classList.add('active');
-    }
-    
-    history.replaceState(null, '', '#' + id);
+  // Gallery lightbox
+  const figs = [...document.querySelectorAll('.gallery figure')];
+  const lb = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('img');
+  const lbCap = lb.querySelector('p');
+  let current = 0;
+  function show(i) {
+    current = (i + figs.length) % figs.length;
+    const f = figs[current], img = f.querySelector('img');
+    lbImg.src = f.dataset.full || img.src;
+    lbImg.alt = img.alt;
+    lbCap.innerHTML = f.querySelector('figcaption')?.innerHTML || '';
   }
+  figs.forEach((f, i) => f.addEventListener('click', () => { show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }));
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lb.querySelector('.lb-close').addEventListener('click', closeLb);
+  lb.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); show(current - 1); });
+  lb.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); show(current + 1); });
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+  if (figs.length < 2) lb.querySelectorAll('.lb-prev, .lb-next').forEach(b => b.hidden = true);
 
-  const hash = location.hash.replace('#', '');
-  if (tabs.includes(hash)) {
-    showTab(hash);
-  }
+  // Keep the 'At a glance' numbers in sync with the content
+  document.querySelectorAll('[data-count]').forEach(el => { el.textContent = document.querySelectorAll(el.dataset.count).length; });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
