@@ -175,6 +175,12 @@
     .section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.35rem; }
     h2 { font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 300; line-height: 1.15; color: var(--ink); }
     .section-intro { color: var(--ink2); margin-top: 0.6rem; max-width: 62ch; }
+    .notice {
+      display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.4rem;
+      font-size: 0.88rem; color: var(--accent); background: var(--accent-soft);
+      border: 1px solid var(--rule); border-radius: 8px; padding: 0.5rem 0.9rem;
+    }
+    .notice::before { content: "ⓘ"; font-size: 1rem; }
     h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; line-height: 1.35; color: var(--ink); }
     p { color: var(--ink2); }
 
@@ -1050,6 +1056,7 @@
         <h2>Gallery</h2>
         <p class="section-intro">Photos from fieldwork, conferences, and highlights of our research.</p>
       </div>
+      <p class="notice reveal">This gallery is being updated: more photos are coming soon.</p>
       <div class="gallery">
         <figure class="reveal" data-full="images/cover.png">
           <img src="images/cover-thumb.jpg" alt="Nature cover, 7 May 2026: Heading South — whole-genome sequences map dispersal and diversity of Indigenous Americans" loading="lazy"/>
