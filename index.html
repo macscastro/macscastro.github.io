@@ -206,6 +206,7 @@
     .news-body p { font-size: 0.95rem; }
     .news-body p strong { color: var(--ink); font-weight: 500; }
     .news-body a { text-underline-offset: 3px; }
+    .news-body p a strong { color: inherit; }
     .news-item.hidden { display: none; }
     .more-btn {
       margin-top: 1rem; background: none; border: 1px solid var(--rule); color: var(--ink2);
@@ -225,6 +226,13 @@
     .research-card p { font-size: 0.9rem; }
     .status { align-self: flex-start; font-family: var(--mono); font-size: 0.64rem; letter-spacing: .1em; text-transform: uppercase; padding: 0.12rem 0.5rem; border-radius: 4px; background: var(--accent); color: var(--accent-ink); }
     .status.past { background: var(--ink3); color: var(--bg); }
+    .proj-papers { margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--rule); }
+    .proj-papers-label { font-family: var(--mono); font-size: 0.64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.4rem; }
+    .proj-papers ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .proj-papers a { font-size: 0.85rem; line-height: 1.35; color: var(--ink); text-decoration: none; display: block; }
+    .proj-papers a:hover { color: var(--accent); }
+    .proj-papers a span { display: block; font-size: 0.78rem; color: var(--ink3); }
+    .proj-papers a span em { color: var(--accent); font-weight: 500; }
 
     /* Publications */
     .pub-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 1.2rem; }
@@ -241,6 +249,12 @@
     .pub-list { list-style: none; }
     .pub-item { padding: 0.2rem 0 1.3rem; }
     .pub-item.hidden { display: none; }
+    .pub-entry { padding: 0.2rem 0 1.3rem; }
+    .pub-other { margin-top: 2.2rem; }
+    .pub-other.hidden { display: none; }
+    .pub-subhead { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--ink); border-top: 1px solid var(--rule); padding-top: 1.4rem; margin: 1.4rem 0 0.4rem; }
+    .pub-other .pub-subhead:first-child { margin-top: 0; }
+    .pub-subhead + .pub-year-group { border-top: none; margin-top: 0; }
     .pub-title { font-family: var(--serif); font-size: 1.14rem; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 0.25rem; }
     .pub-authors { font-size: 0.85rem; color: var(--ink3); }
     .pub-authors strong { color: var(--ink); font-weight: 500; }
@@ -254,6 +268,19 @@
     }
     .pub-link:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
     .pub-year-group.empty { display: none; }
+    .pub-highlight { margin-top: 0.6rem; }
+    .pub-highlight summary {
+      display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+      font-family: var(--mono); font-size: 0.7rem; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-soft); padding: 0.2rem 0.6rem; border-radius: 5px;
+    }
+    .pub-highlight summary::-webkit-details-marker { display: none; }
+    .pub-highlight summary::before { content: "★"; }
+    .pub-highlight summary::after { content: "+"; font-size: 0.9rem; transition: transform .2s; }
+    .pub-highlight[open] summary::after { transform: rotate(45deg); }
+    .pub-highlight-body { margin-top: 0.7rem; padding-left: 0.9rem; border-left: 2px solid var(--accent-soft); }
+    .pub-highlight-body p { font-size: 0.9rem; color: var(--ink2); margin-bottom: 0.6rem; }
+    .pub-highlight-body a { text-underline-offset: 3px; }
     @media (max-width: 560px) {
       .pub-year-group { grid-template-columns: 1fr; gap: 0.3rem; }
       .pub-year-label { position: static; font-size: 1.3rem; }
@@ -339,6 +366,28 @@
     .contact-block a { display: inline-block; color: var(--accent); text-decoration: none; font-size: 0.92rem; padding: 0.1rem 0; overflow-wrap: anywhere; }
     .contact-block a:hover { text-decoration: underline; }
     .contact-block p { font-size: 0.92rem; line-height: 1.6; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: 1.4rem; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .contact-form .full { grid-column: 1 / -1; }
+    .contact-form label { display: flex; flex-direction: column; gap: 0.35rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+    .contact-form input, .contact-form textarea {
+      font: inherit; font-family: var(--sans); font-size: 0.95rem; letter-spacing: normal; text-transform: none;
+      color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 0.6rem 0.75rem; width: 100%;
+    }
+    .contact-form textarea { min-height: 9rem; resize: vertical; }
+    .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+    .contact-form .hp { position: absolute; left: -9999px; }
+    .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .form-actions button {
+      font-family: var(--sans); font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      background: var(--accent); color: var(--accent-ink); border: none; border-radius: 8px; padding: 0.6rem 1.4rem;
+    }
+    .form-actions button:disabled { opacity: 0.6; cursor: wait; }
+    .form-status { font-size: 0.88rem; color: var(--ink2); }
+    .form-status.error { color: var(--warm); }
+    @media (max-width: 560px) { .contact-form { grid-template-columns: 1fr; } }
 
     footer { padding: 2rem 0; font-size: 0.8rem; color: var(--ink3); }
     footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
@@ -474,7 +523,11 @@
             <h3>At a glance</h3>
             <div class="fact"><b data-count=".pub-item">14</b><span>peer-reviewed publications, incl. <em>Nature</em>, <em>Science</em>, <em>PNAS</em></span></div>
             <div class="fact"><b data-count="#cv-awards .cv-item">10</b><span>awards, honors &amp; distinctions</span></div>
-            <div class="fact"><b data-count="#cv-fellowships .cv-item">9</b><span>competitive fellowships &amp; scholarships</span></div>
+            <div class="fact"><b data-count="#cv-fellowships .cv-item:not([data-noncompetitive])">7</b><span>competitive fellowships &amp; scholarships</span></div>
+            <div class="fact"><b data-count="#cv-presentations .cv-item">20</b><span>presentations in scientific events &amp; conferences</span></div>
+            <div class="fact"><b>704</b><span>citations (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
+            <div class="fact"><b>9</b><span>h-index (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
+            <div class="fact"><b>8</b><span>i10-index (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
           </div>
           <div class="aside-card">
             <h3>Keywords</h3>
@@ -525,21 +578,21 @@
           <div class="news-date">Aug 2026</div>
           <div class="news-body">
             <span class="news-tag">Paper</span>
-            <p>New paper in <em>JACC: Advances</em> on the prevalence of pathogenic genetic variants across heart failure etiologies in an admixed population.</p>
+            <p><a href="https://doi.org/10.1016/j.jacadv.2026.103123" target="_blank" rel="noopener">New paper</a> in <em>JACC: Advances</em> on the prevalence of pathogenic genetic variants across heart failure etiologies in an admixed population.</p>
           </div>
         </li>
         <li class="news-item">
           <div class="news-date">May 2026</div>
           <div class="news-body">
             <span class="news-tag">Cover</span>
-            <p>Our paper on the evolutionary history of Indigenous Americans is the <strong>cover feature of <em>Nature</em></strong> (7 May 2026 issue, vol. 653). <a href="#gallery">See the cover</a>.</p>
+            <p>Our <a href="https://doi.org/10.1038/s41586-026-10406-w" target="_blank" rel="noopener">paper on the evolutionary history of Indigenous Americans</a> is the <strong>cover feature of <em>Nature</em></strong> (7 May 2026 issue, vol. 653). <a href="#gallery">See the cover</a>.</p>
           </div>
         </li>
         <li class="news-item">
           <div class="news-date">Apr 2026</div>
           <div class="news-body">
             <span class="news-tag">Paper</span>
-            <p><strong>“The evolutionary history and unique genetic diversity of Indigenous Americans”</strong> is out in <em>Nature</em>, with a <a href="https://www.nature.com/articles/d41586-026-01173-9" target="_blank" rel="noopener">Research Briefing</a> and wide <a href="#press">media coverage</a>.</p>
+            <p><a href="https://doi.org/10.1038/s41586-026-10406-w" target="_blank" rel="noopener"><strong>“The evolutionary history and unique genetic diversity of Indigenous Americans”</strong></a> is out in <em>Nature</em>, with a <a href="https://www.nature.com/articles/d41586-026-01173-9" target="_blank" rel="noopener">Research Briefing</a> and wide <a href="#press">media coverage</a>.</p>
           </div>
         </li>
         <li class="news-item">
@@ -567,7 +620,7 @@
           <div class="news-date">May 2025</div>
           <div class="news-body">
             <span class="news-tag">Paper</span>
-            <p><strong>“Admixture’s impact on Brazilian population evolution and health”</strong> — the “DNA do Brasil” project — is published in <em>Science</em>.</p>
+            <p><a href="https://doi.org/10.1126/science.adl3564" target="_blank" rel="noopener"><strong>“Admixture’s impact on Brazilian population evolution and health”</strong></a> — the “DNA do Brasil” project — is published in <em>Science</em>.</p>
           </div>
         </li>
       </ul>
@@ -593,16 +646,85 @@
           <span class="status">current</span>
           <h3>Indigenous American Genomic Diversity Project</h3>
           <p>A collaborative international effort designed to map the origins and genetic diversity of Indigenous populations through whole-genome sequencing.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.1038/s41586-026-10406-w" target="_blank">The evolutionary history and unique genetic diversity of Indigenous Americans<span><em>Nature</em> · 2026</span></a></li>
+            </ul>
+          </div>
         </article>
         <article class="research-card reveal">
           <span class="status">current</span>
           <h3>"DNA do Brasil" Project</h3>
           <p>A research initiative using whole-genome sequencing data to characterize genetic diversity in Brazilian populations and its health implications.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.1016/j.jacadv.2026.103123" target="_blank">Prevalence of Pathogenic Genetic Variants Across Heart Failure Etiologies in an Admixed Population<span><em>JACC: Advances</em> · 2026</span></a></li>
+              <li><a href="https://doi.org/10.1126/science.adl3564" target="_blank">Admixture’s impact on Brazilian population evolution and health<span><em>Science</em> · 2025</span></a></li>
+              <li><a href="https://doi.org/10.1186/s40246-025-00790-1" target="_blank">Carrying APOL1 G1 allele is associated with cardiovascular complications during COVID−19 in an admixed population<span><em>Hum. Genomics</em> · 2025</span></a></li>
+            </ul>
+          </div>
         </article>
         <article class="research-card reveal">
           <span class="status past">past</span>
           <h3>Genomic Origins of European Roma</h3>
           <p>In collaboration with David Comas, I co-supervised a PhD student investigating the origins, genetic structure, and demography of Iberian and European Romani populations.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.1186/s12864-025-12210-8" target="_blank">Demographic insights into paternal genetic diversity and regional substructure in the Spanish Roma<span><em>BMC Genomics</em> · 2025</span></a></li>
+              <li><a href="https://doi.org/10.1007/s00439-025-02735-z" target="_blank">The genetic footprint of the European Roma diaspora: evidence from the Balkans to the Iberian Peninsula<span><em>Hum. Genet.</em> · 2025</span></a></li>
+            </ul>
+          </div>
+        </article>
+        <article class="research-card reveal">
+          <span class="status past">past</span>
+          <h3>Origins and Dispersal of the Tupi Peoples</h3>
+          <p>As part of my PhD with Tábita Hünemeier, I traced the genomic origins of the Brazilian coastal natives, showing that the spread of Tupi-Guarani languages and culture from the Amazon to the Atlantic coast and Southern Brazil was driven by population dispersal rather than cultural diffusion.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.1002/ajpa.24876" target="_blank">A multidisciplinary overview on the Tupi‐speaking people expansion<span><em>AJBA</em> · 2023</span></a></li>
+              <li><a href="https://doi.org/10.1073/pnas.1909075117" target="_blank">Genomic insight into the origins and dispersal of the Brazilian coastal natives<span><em>PNAS</em> · 2020</span></a></li>
+            </ul>
+          </div>
+        </article>
+        <article class="research-card reveal">
+          <span class="status past">past</span>
+          <h3>Diversity and Evolution of Brazilian Populations</h3>
+          <p>The project behind my FAPESP-funded PhD with Tábita Hünemeier at the Universidade de São Paulo. I investigated the genetic diversity and population histories of native Brazilians and South Americans, from the initial settlement of the continent to Late Holocene population expansions and the impact of European colonization.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.1126/sciadv.abo0234" target="_blank">Indigenous people from Amazon show genetic signatures of pathogen-driven selection<span><em>Science Advances</em> · 2023</span></a></li>
+              <li><a href="https://doi.org/10.1590/1678-4685-GMB-2022-0078" target="_blank">A genomic perspective on South American human history<span><em>GMB</em> · 2022</span></a></li>
+              <li><a href="https://doi.org/10.1093/molbev/msab339" target="_blank">Population Histories and Genomic Diversity of South American Natives<span><em>MBE</em> · 2022</span></a></li>
+              <li><a href="https://doi.org/10.1073/pnas.2025739118" target="_blank">Deep genetic affinity between coastal Pacific and Amazonian natives evidenced by Australasian ancestry<span><em>PNAS</em> · 2021</span></a></li>
+            </ul>
+          </div>
+        </article>
+        <article class="research-card reveal">
+          <span class="status past">past</span>
+          <h3>FIP and Abiotic Stress Response in <em>Arabidopsis</em></h3>
+          <p>During my MSc in Genetics and Plant Breeding with Marcio de Castro Silva Filho at the Universidade de São Paulo, I studied the convergent evolution of the chloroplast protease FtsH5 and its putative negative regulator FIP. FIP is a zinc-finger protein in the thylakoid membrane, and we showed that it is involved in <em>Arabidopsis</em> responses to high light, oxidative, salt and osmotic stress.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.3389/fpls.2018.00504" target="_blank">The Zinc-Finger Thylakoid-Membrane Protein FIP Is Involved With Abiotic Stress Response in Arabidopsis thaliana<span><em>Front. Plant Sci.</em> · 2018</span></a></li>
+            </ul>
+          </div>
+        </article>
+        <article class="research-card reveal">
+          <span class="status past">past</span>
+          <h3>Plant Antiviral Immunity against Geminiviruses</h3>
+          <p>As an undergraduate with Elizabeth Fontes at the Universidade Federal de Viçosa, I analysed how <em>Arabidopsis</em> immune genes are expressed in response to geminiviruses. This work contributed to the discovery that the immune receptor NIK1 defends plants against begomoviruses by suppressing the host's global protein translation.</p>
+          <div class="proj-papers">
+            <div class="proj-papers-label">Papers</div>
+            <ul>
+              <li><a href="https://doi.org/10.1038/nature14171" target="_blank">NIK1-mediated translation suppression functions as a plant antiviral immunity mechanism<span><em>Nature</em> · 2015</span></a></li>
+            </ul>
+          </div>
         </article>
       </div>
     </div>
@@ -627,9 +749,9 @@
       <div class="pub-year-group">
         <div class="pub-year-label">2026</div>
         <ul class="pub-list">
-          <li class="pub-item" data-first>
+          <li class="pub-item">
             <div class="pub-title">Prevalence of Pathogenic Genetic Variants Across Heart Failure Etiologies in an Admixed Population</div>
-            <div class="pub-authors">Ramos-Lima I, Lacerda-Pires LV, <strong>Castro e Silva MA†</strong> ... Hünemeier T (CA)</div>
+            <div class="pub-authors">Ramos Lima I (CA), Lacerda Pires LV, <strong>Castro e Silva MA</strong> ... Krieger JE, Pereira AC</div>
             <div class="pub-journal"><em>JACC: Advances</em> · 103123</div>
             <div class="pub-links">
               <a class="pub-link" href="https://doi.org/10.1016/j.jacadv.2026.103123" target="_blank">DOI</a>
@@ -648,6 +770,15 @@
               <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000002396" target="_blank">Data: EGAD50000002396</a>
               <a class="pub-link" href="https://datastudio.google.com/u/0/reporting/0b01681e-7098-49a6-8363-44125b7ac64b?s=qzspjbbo1Jo" target="_blank">IAGDP Browser</a>
             </div>
+            <details class="pub-highlight">
+              <summary>Highlighted research</summary>
+              <div class="pub-highlight-body">
+                <p>Indigenous American populations remain markedly underrepresented in global genomic research, limiting our understanding of the evolutionary history and genetic diversity of the last continent settled by humans. To address this gap, we generated and analyzed 128 high-coverage whole-genome sequences from individuals representing 45 Indigenous ethnic groups across eight Latin American countries (Argentina, Bolivia, Brazil, Colombia, Ecuador, Mexico, Paraguay, and Peru), spanning 28 language families and a wide range of environments from the Arctic to the tropical lowlands and the Andes. These data were integrated with genomes from ancient individuals and worldwide populations to reconstruct the demographic history of the Americas while accounting for recent European and African admixture through local ancestry inference.</p>
+                <p>Our analyses uncovered more than one million previously undocumented genetic variants, highlighting the distinctive evolutionary history of Indigenous Americans and their persistent underrepresentation in global databases. We detected strong geographic structure in genetic variation, with patterns of similarity broadly reflecting geography over millennia. Comparisons with ancient DNA revealed evidence for multiple dispersals into South America, including a previously uncharacterized Late Holocene migration related to Mesoamerican populations that contributed to present-day South Americans and ancient Caribbean individuals. Despite these movements, several regions show long-term genetic continuity, indicating deep local ancestry maintained over thousands of years. We also identified signatures of natural selection, including adaptive introgression, affecting genes involved in immune response, metabolism, growth, and reproduction, consistent with adaptation to diverse environments across the American continent. In addition, our results support the hypothesis that the Australasian-like ancestry component (also known as “population Y” ancestry) reflects an ancient admixture event that contributed to the formation of the first Americans and was partly preserved by selection.</p>
+                <p>Together, these findings provide one of the most comprehensive views of Indigenous American genomic diversity to date, showing that the genetic landscape of the continent was shaped by multiple dispersals, regional continuity, and adaptation to highly diverse environments. The study also demonstrates that substantial human genetic variation remains undocumented, including variants with potential biomedical relevance, underscoring the importance of expanding genomic research in partnership with Indigenous communities to achieve a more complete and equitable representation of human diversity.</p>
+                <p>This research, on which I am first author, was published in <em>Nature</em> in April 2026 and featured on the cover of the 7 May 2026 issue. The underlying dataset is publicly available through the European Genome-Phenome Archive (EGA) under controlled access (<a href="https://ega-archive.org/studies/EGAS50000001664" target="_blank" rel="noopener">EGAS50000001664</a>). To facilitate data exploration, we also developed an <a href="https://datastudio.google.com/u/0/reporting/0b01681e-7098-49a6-8363-44125b7ac64b?s=qzspjbbo1Jo" target="_blank" rel="noopener">interactive genome browser</a> (IAGDP Browser) that allows users to visualize variant-level and allele-frequency information specific to Indigenous American populations. The results have been presented at multiple international conferences and seminars, including the 2025 meeting of the Society for Molecular Biology and Evolution, where I delivered the presentation.</p>
+              </div>
+            </details>
           </li>
         </ul>
       </div>
@@ -684,6 +815,15 @@
               <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000001012" target="_blank">Data: EGAD50000001012</a>
               <a class="pub-link" href="https://datastudio.google.com/u/0/reporting/4b3cb1c9-5f26-4278-98d5-9fcb68432ba4/page/p_jsjqk0xugd?s=hRdwUhMcftc" target="_blank">DNABR Browser</a>
             </div>
+            <details class="pub-highlight">
+              <summary>Highlighted research</summary>
+              <div class="pub-highlight-body">
+                <p>Brazil, home to Latin America's largest population and the world's most extensive recently-admixed population, remains significantly underrepresented in global genomic research. As part of the Brazilian Ministry of Health’s DNA do Brasil project, we analyzed 2,723 high-coverage whole-genome sequences from individuals spanning the country's diverse ecoregions and ethnic backgrounds. Our study revealed an extraordinary level of genetic diversity compared to global reference datasets, identifying millions of novel variants—including thousands with potential deleterious effects. Notably, we observed a positive correlation between the number of deleterious variants and individual ancestry components.</p>
+                <p>Our findings portray the Brazilian population as a complex mosaic of global haplotypes, shaped by centuries of non-random mating, with peak admixture occurring in the 18th and 19th centuries. We uncovered fine-scale population structure both spatially and temporally, and identified candidate genes under selection both pre- and post-contact, particularly those related to fertility, immune function, and distinct metabolic traits. These insights highlight the profound influence of Brazil’s ancestral diversity on the genetic landscape and health of its admixed population.</p>
+                <p>This research was recently published as an Open Access article in <em>Science</em> (May 15, 2025), on which I am co-first author. The underlying dataset is publicly available through EGA (<a href="https://ega-archive.org/studies/EGAS50000000730" target="_blank" rel="noopener">EGAS50000000730</a>) under a data access agreement. To facilitate access for public health officials and clinicians, we also developed an <a href="https://datastudio.google.com/u/0/reporting/4b3cb1c9-5f26-4278-98d5-9fcb68432ba4/page/p_jsjqk0xugd?s=hRdwUhMcftc" target="_blank" rel="noopener">interactive genome browser</a> (DNABR Browser) that enables users to explore variant-level and allele frequency data specific to the Brazilian population.</p>
+                <p>The DNA do Brasil project was funded by the Brazilian Ministry of Health. My contributions to this work were supported by the European Union’s Horizon 2020 programme (Marie Skłodowska-Curie grant No. 945380) and the Spanish Agencia Estatal de Investigación (AEI). The study’s results have been presented by the co-first and corresponding authors at numerous national and international scientific conferences and seminars. Since the publication, the article has received widespread attention, with over 40,000 downloads and media coverage by more than 30 international and Brazilian news outlets.</p>
+              </div>
+            </details>
           </li>
           <li class="pub-item">
             <div class="pub-title">The genetic footprint of the European Roma diaspora: evidence from the Balkans to the Iberian Peninsula</div>
@@ -695,6 +835,13 @@
               <a class="pub-link" href="https://github.com/gfena/AncestryLength" target="_blank">Code: GitHub</a>
               <a class="pub-link" href="https://ega-archive.org/datasets/EGAD50000001103" target="_blank">Data: EGAD50000001103</a>
             </div>
+            <details class="pub-highlight">
+              <summary>Highlighted research</summary>
+              <div class="pub-highlight-body">
+                <p>The Roma people, with South Asian origins, migrated westward about 1,000 years ago, settling in Europe, particularly the Iberian Peninsula, are the largest ethnic minority in Europe. This study is the most extensive genome-wide analysis of 181 Iberian Roma individuals, confirming their South Asian origins and revealing significant gene flow from populations encountered during migration. We found no genetic evidence supporting previous hypotheses of a North African migration route into Iberia or connections to Jewish populations. The Iberian Roma showed substantial genetic differentiation from non-Roma Iberians, as well as significant regional substructure. We also identified assortative mating within Roma groups, suggesting distinct mating patterns and increasing integration with non-Roma. These findings shed light on their complex demographic history, the influence of historical migrations, and the ongoing social dynamics shaping their genetic diversity, with potential implications for health risks in Roma and related populations.</p>
+                <p>This study has been published in <em>Human Genetics</em>, and as co-supervisor of the first author (Giacomo Ena), I contributed to the methodology, study design, writing, and editing of the manuscript. Our results have been presented by the first and corresponding authors at Spanish and international scientific conferences and seminars. This study was conducted under the project "El Camí del Poble Gitano: una història de diversitat" in collaboration with the Federation of Roma Associations of Catalonia. Preliminary findings were shared by the corresponding author with the local Roma community during a meeting at UPF in Barcelona, which was also streamed on <a href="https://www.youtube.com/watch?v=JRP9So3bnwc" target="_blank" rel="noopener">YouTube</a>. The newly sequenced data was made publicly available through a data access agreement on EGA (<a href="https://ega-archive.org/studies/EGAS50000000746" target="_blank" rel="noopener">EGAS50000000746</a>).</p>
+              </div>
+            </details>
           </li>
         </ul>
       </div>
@@ -730,7 +877,7 @@
           <li class="pub-item" data-first>
             <div class="pub-title">A genomic perspective on South American human history</div>
             <div class="pub-authors"><strong>Castro e Silva MA</strong>, Ferraz T, Hünemeier T (CA)</div>
-            <div class="pub-journal"><em>GMB</em> · 45 (3 Suppl 1)</div>
+            <div class="pub-journal"><em>GMB</em> · 45(3 Suppl 1), e20220078</div>
             <div class="pub-links">
               <a class="pub-link" href="https://doi.org/10.1590/1678-4685-GMB-2022-0078" target="_blank">DOI</a>
               <a class="pub-link" href="papers/GMB - A genomic perspective on South American human history.pdf" target="_blank">PDF</a>
@@ -744,6 +891,14 @@
               <a class="pub-link" href="https://doi.org/10.1093/molbev/msab339" target="_blank">DOI</a>
               <a class="pub-link" href="papers/msab339.pdf" target="_blank">PDF</a>
             </div>
+            <details class="pub-highlight">
+              <summary>Highlighted research</summary>
+              <div class="pub-highlight-body">
+                <p>This study examines the population history of South American Indigenous peoples, focusing on factors shaping their genetic diversity and geographic distribution. Using the largest genome-wide dataset of Indigenous Americans at the time, we analyzed 58 populations across the Amazon, Cerrado, Atlantic coast, Andes, Pacific coast, and Mexico, offering a broad view of the genetic landscape of the Americas. Our findings challenge the expected genetic divide between Andean and Amazonian populations, revealing a longitudinal genetic variation likely formed during the initial settlement of the continent. We also observed a west-to-east increase in inbreeding coefficient, shaped by geographical isolation and serial population bottlenecks. These results highlight the roles of isolation by distance and demographic history in shaping Indigenous genetic diversity. We further reconstructed the severe population collapse during European colonization, evidencing its devastating impact. Additionally, we uncovered a case of linguistic replacement in western Amazonia, emphasizing the complexity of pre-Columbian population interactions.</p>
+                <p>This research, published in <em>Molecular Biology and Evolution</em>, represented the most comprehensive chapter of my PhD thesis. Conducted in collaboration with an international team from multiple institutions, I was primarily responsible for performing the genomic analyses and writing the manuscript, with valuable input from coauthors. This research was supported by funding from the Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP, Brazil) with my personal funding provided initially by the Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq; Brazil) and later through a competitive grant from FAPESP. The study is published as an Open Access article, and the datasets reported in this article have been deposited in EGA (<a href="https://www.ega-archive.org/datasets/EGAD00010002061" target="_blank" rel="noopener">EGAD00010002061</a> and <a href="https://www.ega-archive.org/datasets/EGAD00010001803" target="_blank" rel="noopener">EGAD00010001803</a>).</p>
+                <p>The study has been <a href="https://scholar.google.com.br/citations?view_op=view_citation&amp;hl=en&amp;user=KkHCEkEAAAAJ&amp;citation_for_view=KkHCEkEAAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener">cited</a> by independent research groups in high-impact journals such as <em>MBE</em> and <em>Cell Genomics</em>. Furthermore, it has achieved a High Attention Score, ranking in the 96th percentile among publications of the same age, as reported by <a href="https://oxfordjournals.altmetric.com/details/118348590" target="_blank" rel="noopener">Altmetric</a>. The findings were presented at multiple national and international scientific conferences and seminars and shared through a network of research collaborators who adapted their dissemination for local Indigenous communities. The study also attracted significant attention from prominent Brazilian and international media outlets.</p>
+              </div>
+            </details>
           </li>
         </ul>
       </div>
@@ -760,6 +915,15 @@
               <a class="pub-link" href="papers/castro-e-silva-et-al-2021-deep-genetic-affinity-between-coastal-pacific-and-amazonian-natives-evidenced-by-australasian.pdf" target="_blank">PDF</a>
               <a class="pub-link" href="https://ega-archive.org/studies/EGAS00001005022" target="_blank">Data: EGAS00001005022</a>
             </div>
+            <details class="pub-highlight">
+              <summary>Highlighted research</summary>
+              <div class="pub-highlight-body">
+                <p>Genetic evidence shows that all non-Arctic Native Americans share a common ancestor that entered the Americas via Beringia around 16,000 years ago. However, some Indigenous groups in the Amazon and Central Brazilian Plateau exhibit unexpected genetic similarities with populations from South Asia, Melanesia, and Australia. This unexpected affinity suggests previously unknown contributions to South American Indigenous ancestry.</p>
+                <p>Our research investigated this Australasian-like signal in South American populations, linked to a hypothesized and unsampled ancestral group, "Ypikuéra" or "Y." Using a genome-wide dataset, we found this signal extends beyond the Amazon to the Central Brazilian Plateau, southern Center-West, and Pacific coast, spanning both sides of the Andes. Our models suggest this ancestry spread along the Pacific coast during early dispersals, offering new insights into South America's genetic history.</p>
+                <p>This study, published in <em>PNAS</em>, was an integral part of my PhD. Project collaborators included my PhD supervisor, Tábita Hünemeier; Tiago Ferraz, another PhD student under her supervision specializing in archaeogenetics and affiliated with the Max Planck Institute for the Science of Human History (Jena, Germany); and Maria Cátira Bortolini, a prominent authority on the study of Indigenous Americans in Brazil. Together with Tiago Ferraz, I was responsible for conducting the genomic analyses, while I wrote the paper with input from coauthors. This research received financial support from the FAPESP, while my personal funding came from the CNPq during part of the project and later from a competitive grant awarded by FAPESP. The publication is freely available through Open Access, and the newly generated genotypic data can be accessed via EGA under accession number <a href="https://ega-archive.org/studies/EGAS00001005022" target="_blank" rel="noopener">EGAS00001005022</a>.</p>
+                <p>The study has been <a href="https://scholar.google.com.br/citations?view_op=view_citation&amp;hl=en&amp;user=KkHCEkEAAAAJ&amp;citation_for_view=KkHCEkEAAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">cited</a> by independent research groups in high-impact journals such as <em>Science</em> and <em>Nature</em>. Furthermore, it has achieved a High Attention Score, ranking in the 99th percentile among publications of the same age, as reported by <a href="https://pnas.altmetric.com/details/102962545" target="_blank" rel="noopener">Altmetric</a>. The findings were presented at several national and international scientific conferences and seminars. Additionally, the results were communicated through a network of research collaborators, who tailored their dissemination to local Indigenous communities. The study also gained attention from important media outlets both Brazilian and international, as well as science communicators.</p>
+              </div>
+            </details>
           </li>
         </ul>
       </div>
@@ -776,6 +940,14 @@
               <a class="pub-link" href="papers/castro-e-silva-et-al-2020-genomic-insight-into-the-origins-and-dispersal-of-the-brazilian-coastal-natives.pdf" target="_blank">PDF</a>
               <a class="pub-link" href="https://ega-archive.org/studies/EGAS00001004036" target="_blank">Data: EGAS00001004036</a>
             </div>
+            <details class="pub-highlight">
+              <summary>Highlighted research</summary>
+              <div class="pub-highlight-body">
+                <p>Here we revealed the relationships among the Tupi from the Brazilian coast, Amazon, and Central-West Brazil human populations, as well as ancient individuals, retracing their dispersal routes from the Amazon to the Atlantic coast and Southern Brazil. Analyzing a small, admixed Tupiniquim community, we showed their descent from coastal Tupi groups with Amazonian origins. Our findings suggest the spread of Tupi-Guarani languages and culture was driven by population dispersal rather than cultural diffusion. We reveal that coastal Tupi (e.g., Tupinambá) and Guarani diverged and expanded from the Amazon via distinct routes. The Tupi expansion represents the most significant demographic event of the Holocene in eastern South America, shaping genetic diversity in Brazil and Latin America. By elucidating the dynamics of this dispersal, we contributed significantly to the comprehension of the complex Indigenous American genetic heritage of Brazil and its broader implications for the genetic composition of Latin American populations.</p>
+                <p>This scientific contribution was published in <em>PNAS</em> and was part of my PhD, involving an international team of collaborators from many institutions. I was responsible for conducting the genomic analysis and writing the paper, with input from coauthors. The study was funded by the FAPESP, with my own funding provided by the CNPq during one period, and a competitive grant from FAPESP during another period. The publication is available via Open Access, and all newly genotyped data can be accessed through a data access agreement in the European Genome-phenome Archive (EGA) under accession no. <a href="https://ega-archive.org/studies/EGAS00001004036" target="_blank" rel="noopener">EGAS00001004036</a>.</p>
+                <p>The study has been <a href="https://scholar.google.com.br/citations?view_op=view_citation&amp;hl=en&amp;user=KkHCEkEAAAAJ&amp;citation_for_view=KkHCEkEAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener">cited</a> by independent groups in high-impact journals such as <em>PNAS</em> and <em>MBE</em>. Additionally, the publication has earned a High Attention Score, placing it in the 96th percentile compared to other outputs of the same age, according to <a href="https://pnas.altmetric.com/details/73977980" target="_blank" rel="noopener">Altmetric</a>. This publication has also been awarded the <a href="https://www.ashg.org/careers-learning/trainee/paper-spotlight/marcos-araujo-castro-e-silva/" target="_blank" rel="noopener">American Society of Human Genetics’ Trainee Paper Spotlight</a> in 2020. The results were presented at national and international scientific conferences and seminars. Additionally, we shared a comprehensive summary of the findings with the Tupiniquim and Guarani-Mbya communities, the main focus of this study, in Aracruz (Espírito Santo state, Brazil), in collaboration with local researchers from the Universidade Federal do Espírito Santo. The publication has garnered attention from both Brazilian and international media.</p>
+              </div>
+            </details>
           </li>
         </ul>
       </div>
@@ -808,6 +980,51 @@
             </div>
           </li>
         </ul>
+      </div>
+      <div class="pub-other">
+        <h3 class="pub-subhead">Book chapters</h3>
+        <div class="pub-year-group">
+          <div class="pub-year-label">2025</div>
+          <ul class="pub-list">
+            <li class="pub-entry">
+              <div class="pub-title">How did Evolutionary Processes Influence the Genetic Structure of Humans in the Neotropics?</div>
+              <div class="pub-authors">Hünemeier T, Nunes K, <strong>Castro e Silva MA</strong></div>
+              <div class="pub-journal">In: Bohrer Monteiro Siqueira MV et al. (eds), <em>Population Genetics in the Neotropics</em> · Springer, Cham · Chapter 18, 377–417</div>
+              <div class="pub-links">
+                <a class="pub-link" href="https://doi.org/10.1007/978-3-031-83685-5_18" target="_blank">DOI</a>
+                <a class="pub-link" href="chapters/978-3-031-83685-5_18.pdf" target="_blank">PDF</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <h3 class="pub-subhead">Science communication</h3>
+        <div class="pub-year-group">
+          <div class="pub-year-label">2021</div>
+          <ul class="pub-list">
+            <li class="pub-entry">
+              <div class="pub-title">Reading South American history in the native Brazilian genomes</div>
+              <div class="pub-authors"><strong>Castro e Silva MA</strong>, Hünemeier T</div>
+              <div class="pub-journal"><em>The Science Breaker</em> · 07</div>
+              <div class="pub-links">
+                <a class="pub-link" href="https://web.archive.org/web/20250203105040/https://thesciencebreaker.org/breaks/evolution-behaviour/reading-south-american-history-in-the-native-brazilian-genomes" target="_blank">Web archive</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="pub-year-group">
+          <div class="pub-year-label">2020</div>
+          <ul class="pub-list">
+            <li class="pub-entry">
+              <div class="pub-title">Lendo a história do Brasil nos genomas brasileiros</div>
+              <div class="pub-authors"><strong>Castro e Silva MA</strong>, Hünemeier T</div>
+              <div class="pub-journal"><em>Blog Darwinianas</em></div>
+              <div class="pub-links">
+                <a class="pub-link" href="https://web.archive.org/web/20250411095039/https://darwinianas.com/2020/09/26/lendo-a-historia-do-brasil-nos-genomas-brasileiros/" target="_blank">Web archive</a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -881,14 +1098,14 @@
             </div>
           </div>
           <div class="cv-item">
-            <div class="cv-year">2024 – 2026</div>
+            <div class="cv-year">2024 – 2025</div>
             <div class="cv-detail">
               <h3>Postdoctoral Fellow - Juan de la Cierva</h3>
               <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
             </div>
           </div>
           <div class="cv-item">
-            <div class="cv-year">2022 – 2024</div>
+            <div class="cv-year">2022 – 2023</div>
             <div class="cv-detail">
               <h3>Postdoctoral Fellow - EUTOPIA-SIF Marie Sklodowska-Curie COFUND</h3>
               <p>Institut de Biologia Evolutiva, CSIC-UPF · Barcelona, Spain</p>
@@ -940,7 +1157,7 @@
             <div class="cv-detail">
               <h3>PhD in Biology (Genetics)</h3>
               <p>Universidade de São Paulo · São Paulo, Brazil</p>
-              <p>Supervisor: Prof. Tábita Hunemeier</p>
+              <p>Supervisor: Prof. Tábita Hünemeier</p>
             </div>
           </div>
           <div class="cv-item">
@@ -976,7 +1193,7 @@
             <div class="cv-year">2026</div>
             <div class="cv-detail">
               <h3>Seal of Excellence - MSCA Postdoctoral Fellowships 2025</h3>
-              <p>For my project proposal “Deep Population History of Admixed Americans submitted under the Horizon Europe Marie Skłodowska-Curie Actions call HORIZON-MSCA-2025-PF-01-01”</p>
+              <p>For my project proposal “Deep Population History of Admixed Americans” submitted under the Horizon Europe Marie Skłodowska-Curie Actions call HORIZON-MSCA-2025-PF-01-01</p>
             </div>
           </div>
           <div class="cv-item">
@@ -1055,7 +1272,7 @@
             <div class="cv-year">2024 - 2025</div>
             <div class="cv-detail">
               <h3>Postdoctoral Fellowship - Juan de la Cierva-Formación (JCI-F)</h3>
-              <p>Project: Indigenous American Genome Project</p>
+              <p>Project: Indigenous American Genomic Diversity Project</p>
               <p>Funding: Agencia Estatal de Investigación - AEI (Spain) (JDC2022-049175-I)</p>
               <p>Institution: Universitat Pompeu Fabra, Spain</p>
               <p>Total funding amount: EUR 67,400</p>
@@ -1081,7 +1298,7 @@
               <p>Total funding amount: BRL 12,300</p>
             </div>
           </div>
-          <div class="cv-item">
+          <div class="cv-item" data-noncompetitive>
             <div class="cv-year">2021 - 2022</div>
             <div class="cv-detail">
               <h3>Technical Training Fellowship (TT5) - FAPESP</h3>
@@ -1121,7 +1338,7 @@
               <p>Total funding amount: BRL 36,000</p>
             </div>
           </div>
-          <div class="cv-item">
+          <div class="cv-item" data-noncompetitive>
             <div class="cv-year">2011 - 2012</div>
             <div class="cv-detail">
               <h3>Scientific Initiation Scholarship - CNPq</h3>
@@ -1129,6 +1346,170 @@
               <p>Funding: Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq (160335/2012-4)</p>
               <p>Institution: Universidade Federal de Viçosa, Brazil</p>
               <p>Total funding amount: BRL 4,800</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="cv-block" id="cv-presentations">
+        <summary><span>Presentations in scientific events &amp; conferences</span></summary>
+        <div class="cv-items">
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>Evolução e diversidade genética em populações indígenas das Américas</h3>
+              <p>Seminário do Centro de Estudos da Fundação Oswaldo Cruz</p>
+              <p>Minas Gerais, Brazil · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>Perspectivas genéticas sobre la historia y la diversidad de la costa norte de Perú</h3>
+              <p>Ecología, sociedades humanas y trayectorias históricas en la costa norte del Perú</p>
+              <p>Trujillo, Peru · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>Perspectivas genéticas sobre la historia y la diversidad de la costa norte de Perú</h3>
+              <p>Simposio internacional hacia una (pre)historia holística del norte del Perú</p>
+              <p>Chiclayo, Peru · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>Historia genética de la América indígena — desde el primer poblamiento hasta el día de hoy</h3>
+              <p>Lima, Peru · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2026</div>
+            <div class="cv-detail">
+              <h3>El Perú como microcosmos de la adaptación a la ecología en América: perspectivas desde la genética</h3>
+              <p>El Perú y el Antropoceno: el caso ejemplar de la relación ecología ~ trayectoria humana</p>
+              <p>Lima, Peru · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2025</div>
+            <div class="cv-detail">
+              <h3>Ancient origins and evolutionary legacies of the Eurasian ancestries in admixed American populations</h3>
+              <p>XXIII Colóquio Internacional Juan Comas / XVII Congreso Internacional de la Asociación Latinoamericana de Antropología Biológica (ALAB 2025)</p>
+              <p>Cholula, Mexico · Symposium organizer and oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2025</div>
+            <div class="cv-detail">
+              <h3>The Dynamic Genetic Landscape of Indigenous South Americans</h3>
+              <p>Society for Molecular Biology and Evolution Meeting (SMBE 2025)</p>
+              <p>Beijing, China · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2024</div>
+            <div class="cv-detail">
+              <h3>Genomic Analysis Reveals Historical Assortative Mating and Sex-Biased Ancestry in Brazil</h3>
+              <p>EMBO | EMBL Symposium: Reconstructing the human past: using ancient and modern genomics</p>
+              <p>Heidelberg, Germany · Oral and poster presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2024</div>
+            <div class="cv-detail">
+              <h3>DNA do Brasil project: genomic insights into history, demography and evolution</h3>
+              <p>XXIII Jornada de Biologia Evolutiva</p>
+              <p>Barcelona, Spain · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2023</div>
+            <div class="cv-detail">
+              <h3>Uncovering the genetic history of American indigenous peoples</h3>
+              <p>Cycle of seminars BEEES (Behaviour, Ecology, Environment and Evolution Seminar), Department of Evolutionary Biology and Environmental Studies, University of Zurich</p>
+              <p>Zurich, Switzerland · Invited speaker</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2023</div>
+            <div class="cv-detail">
+              <h3>Untangling the threads of South America's Indigenous Diversity: Genomic Insights from Ancient Settlements to European Contact</h3>
+              <p>Congresso Brasileiro de Genética</p>
+              <p>Ouro Preto, Brazil · Presentation and poster for the Young Geneticist award</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2023</div>
+            <div class="cv-detail">
+              <h3>The genomic landscape of Native American peoples</h3>
+              <p>92nd AABA Annual Meeting, American Association of Biological Anthropologists</p>
+              <p>Reno, USA · Invited speaker</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022</div>
+            <div class="cv-detail">
+              <h3>IBE/ICP Scientific Retreat 2022</h3>
+              <p>Barcelona, Spain · Oral presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2022</div>
+            <div class="cv-detail">
+              <h3>Genomic perspective on the origin, history and diversity of the indigenous peoples of South America: from initial settlement to European colonization</h3>
+              <p>Seminars at the Department of Genetics and Evolutionary Biology, USP Biosciences Institute</p>
+              <p>São Paulo, Brazil · Invited speaker</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2021</div>
+            <div class="cv-detail">
+              <h3>The genetic landscape of South Native American populations</h3>
+              <p>American Society of Human Genetics 2021 Annual Meeting</p>
+              <p>Poster presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2020</div>
+            <div class="cv-detail">
+              <h3>Genetic structure of the South American lowlanders</h3>
+              <p>American Society of Human Genetics 2020 Annual Meeting</p>
+              <p>Poster presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2019</div>
+            <div class="cv-detail">
+              <h3>Recovering a Native American lineage extinct during the Conquest Period from Admixed Genomes</h3>
+              <p>Society for Molecular Biology and Evolution Meeting (SMBE 2019)</p>
+              <p>Manchester, England · Poster presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2019</div>
+            <div class="cv-detail">
+              <h3>Reconstructing the History of the Native American Populations of the Brazilian Coast</h3>
+              <p>First Native American Studies Workshop (UFRGS)</p>
+              <p>Porto Alegre, Brazil · Invited speaker</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2017</div>
+            <div class="cv-detail">
+              <h3>Genomic origins and admixture profile of Afro-Brazilians from Rio de Janeiro</h3>
+              <p>Brazilian International Congress of Genetics</p>
+              <p>Águas de Lindóia, Brazil · Poster presentation</p>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-year">2014</div>
+            <div class="cv-detail">
+              <h3>Convergent evolution of Arabidopsis thaliana FtsH5 and its negative regulator FIP (FtsH5 interacting protein)</h3>
+              <p>ISCB-Latin America X-Meeting on Bioinformatics with BSB and SoiBio</p>
+              <p>Belo Horizonte, Brazil · Poster presentation</p>
             </div>
           </div>
         </div>
@@ -1492,6 +1873,27 @@
         <div class="section-label">Get in touch</div>
         <h2>Contact</h2>
       </div>
+      <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/marcosaraujocastro@gmail.com" method="POST">
+        <label>Name
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label class="full">Subject
+          <input type="text" name="_subject" required>
+        </label>
+        <label class="full">Message
+          <textarea name="message" required></textarea>
+        </label>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-actions full">
+          <button type="submit">Send message</button>
+          <span class="form-status" id="form-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
       <div class="contact-grid reveal">
         <div class="contact-block">
           <h3>Email</h3>
@@ -1580,7 +1982,8 @@
       document.querySelectorAll('.filters button').forEach(b => b.classList.toggle('on', b === btn));
       const firstOnly = btn.dataset.filter === 'first';
       document.querySelectorAll('.pub-item').forEach(li => li.classList.toggle('hidden', firstOnly && !li.hasAttribute('data-first')));
-      document.querySelectorAll('.pub-year-group').forEach(g => g.classList.toggle('empty', !g.querySelector('.pub-item:not(.hidden)')));
+      document.querySelectorAll('.pub-year-group').forEach(g => g.classList.toggle('empty', !g.querySelector('.pub-item:not(.hidden)') && !g.querySelector('.pub-entry')));
+      document.querySelector('.pub-other').classList.toggle('hidden', firstOnly);
     });
   });
 
@@ -1613,6 +2016,33 @@
 
   // Keep the 'At a glance' numbers in sync with the content
   document.querySelectorAll('[data-count]').forEach(el => { el.textContent = document.querySelectorAll(el.dataset.count).length; });
+
+  // Contact form: send through FormSubmit without leaving the page
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    btn.disabled = true;
+    status.className = 'form-status';
+    status.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      const data = await res.json();
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Request failed');
+      form.reset();
+      status.textContent = 'Thank you! Your message has been sent.';
+    } catch (err) {
+      status.className = 'form-status error';
+      status.textContent = 'Sorry, the message could not be sent. Please email me directly at marcosaraujocastro@gmail.com.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
