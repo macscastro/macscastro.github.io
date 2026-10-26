@@ -752,6 +752,7 @@
           <button class="on" data-filter="all">All</button>
           <button data-filter="first">First / co-first author</button>
           <button data-filter="highlighted">★ Highlighted research</button>
+          <button data-filter="review">Under review &amp; submitted</button>
           <button data-filter="chapters">Book chapters</button>
           <button data-filter="scicomm">Science communication</button>
         </div>
@@ -994,6 +995,35 @@
         </ul>
       </div>
       <div class="pub-other">
+        <div class="pub-sub" id="pub-review">
+        <h3 class="pub-subhead">Under review &amp; submitted</h3>
+        <div class="pub-year-group">
+          <div class="pub-year-label">2026</div>
+          <ul class="pub-list">
+            <li class="pub-entry">
+              <div class="pub-title">Clinically relevant drug-target genomic variation in Indigenous and admixed American populations</div>
+              <div class="pub-authors">Sena L, Nunes K, Lemes R ... <strong>Castro e Silva MA</strong> ... Pereira L, Hünemeier T (CA)</div>
+              <div class="pub-journal">Submitted to <em>Nature Genetics</em></div>
+            </li>
+            <li class="pub-entry">
+              <div class="pub-title">Subsistence-Driven Variation in Salivary Amylase Gene (AMY1) Copy Number Among Indigenous Populations of America</div>
+              <div class="pub-authors">de Oliveira LG, Nunes K, Barbosa R, <strong>Castro e Silva MA</strong> ... Bortolini MC, Hünemeier T (CA)</div>
+              <div class="pub-journal">Under review in <em>iScience</em></div>
+            </li>
+            <li class="pub-entry">
+              <div class="pub-title">Two Millennia of Demographic and Adaptive Shifts Revealed by Ancient Genomes from Atlantic Patagonia</div>
+              <div class="pub-authors">Pezo-Valderrama P, De Angelis F, Ribeiro MR, <strong>Castro e Silva MA</strong> ... Parolin ML (CA), Hünemeier T (CA)</div>
+              <div class="pub-journal">Under review in <em>Science</em></div>
+            </li>
+            <li class="pub-entry">
+              <div class="pub-title">Uncovering high levels of genomic diversity in the Southern Cone of South America</div>
+              <div class="pub-authors">Arango-Isaza E (CA), Reilly PF, Briskine R, <strong>Castro e Silva MA</strong> ... Shimizu K (CA), Barbieri C (CA)</div>
+              <div class="pub-journal">Submitted to <em>Nature Communications</em></div>
+            </li>
+          </ul>
+        </div>
+        </div>
+
         <div class="pub-sub" id="pub-chapters">
         <h3 class="pub-subhead">Book chapters</h3>
         <div class="pub-year-group">
@@ -1245,14 +1275,14 @@
           <div class="cv-item">
             <div class="cv-year">2022</div>
             <div class="cv-detail">
-              <h3>USP Highlight Thesis Award 11th Edition</h3>
+              <h3>USP Highlight Thesis Award 11th Edition - Best Thesis Award (in Biology)</h3>
               <p>By the University of São Paulo - USP</p>
             </div>
           </div>
           <div class="cv-item">
             <div class="cv-year">2022</div>
             <div class="cv-detail">
-              <h3>CAPES Thesis Award</h3>
+              <h3>CAPES Thesis Award - Best Thesis Award (in Biology)</h3>
               <p>By the Brazilian national funding agency (Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - CAPES)</p>
             </div>
           </div>
@@ -2000,9 +2030,10 @@
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filters button').forEach(b => b.classList.toggle('on', b === btn));
       const f = btn.dataset.filter;
-      document.querySelectorAll('.pub-item').forEach(li => li.classList.toggle('hidden', f === 'chapters' || f === 'scicomm' ||
+      document.querySelectorAll('.pub-item').forEach(li => li.classList.toggle('hidden', f === 'review' || f === 'chapters' || f === 'scicomm' ||
         (f === 'first' && !li.hasAttribute('data-first')) || (f === 'highlighted' && !li.querySelector('.pub-highlight'))));
       document.querySelectorAll('.pub-year-group').forEach(g => g.classList.toggle('empty', !g.querySelector('.pub-item:not(.hidden)') && !g.querySelector('.pub-entry')));
+      document.getElementById('pub-review').classList.toggle('hidden', f !== 'all' && f !== 'review');
       document.getElementById('pub-chapters').classList.toggle('hidden', f !== 'all' && f !== 'chapters');
       document.getElementById('pub-scicomm').classList.toggle('hidden', f !== 'all' && f !== 'scicomm');
     });
