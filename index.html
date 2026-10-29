@@ -354,6 +354,20 @@
     .teaching-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; line-height: 1.35; color: var(--ink); margin-bottom: 0.3rem; }
     .teaching-inst { font-size: 0.84rem; color: var(--ink3); line-height: 1.5; }
 
+    /* Talks */
+    .talks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
+    .talk { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+    .talk-video { position: relative; aspect-ratio: 16 / 9; background: #000; }
+    .talk-video button, .talk-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .talk-video button { padding: 0; cursor: pointer; background: #000 center / cover no-repeat; }
+    .talk-video button::after { content: ""; position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(0,0,0,.65) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center / 28px no-repeat; transition: background-color .2s, transform .2s; }
+    .talk-video button:hover::after, .talk-video button:focus-visible::after { background-color: var(--accent); transform: scale(1.06); }
+    .talk-body { padding: 0.9rem 1.1rem 1rem; }
+    .talk-year { font-family: var(--mono); font-size: 0.72rem; color: var(--warm); margin-bottom: 0.25rem; }
+    .talk-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; line-height: 1.35; color: var(--ink); margin-bottom: 0.3rem; }
+    .talk-venue { font-size: 0.84rem; color: var(--ink3); line-height: 1.5; }
+    @media (max-width: 400px) { .talks-grid { grid-template-columns: 1fr; } }
+
     /* Press */
     .press-group + .press-group { margin-top: 2.2rem; }
     .press-group-title { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
@@ -426,6 +440,7 @@
       <a href="#gallery">Gallery</a>
       <a href="#cv">CV</a>
       <a href="#teaching">Teaching</a>
+      <a href="#talks">Talks</a>
       <a href="#press">Press</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -534,9 +549,9 @@
             <div class="fact"><b data-count="#cv-awards .cv-item">10</b><span>awards, honors &amp; distinctions</span></div>
             <div class="fact"><b data-count="#cv-fellowships .cv-item:not([data-noncompetitive])">7</b><span>competitive fellowships &amp; scholarships</span></div>
             <div class="fact"><b data-count="#cv-presentations .cv-item">20</b><span>presentations in scientific events &amp; conferences</span></div>
-            <div class="fact"><b>704</b><span>citations (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
-            <div class="fact"><b>9</b><span>h-index (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
-            <div class="fact"><b>8</b><span>i10-index (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
+            <div class="fact"><b data-scholar="citations">709</b><span>citations (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
+            <div class="fact"><b data-scholar="h-index">9</b><span>h-index (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
+            <div class="fact"><b data-scholar="i10-index">8</b><span>i10-index (<a href="https://scholar.google.com.br/citations?user=KkHCEkEAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>)</span></div>
           </div>
           <div class="aside-card">
             <h3>Keywords</h3>
@@ -1698,8 +1713,30 @@
     </div>
   </section>
 
+  <!-- ═══════════ TALKS ═══════════ -->
+  <section id="talks" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-label">Recorded presentations</div>
+        <h2>Talks</h2>
+        <p class="section-intro">Recordings of seminars, lectures, and conference presentations.</p>
+      </div>
+      <!-- To add a talk, copy an <article> block and set data-youtube to the video ID
+           (the part after "v=" or "youtu.be/" in the YouTube link). -->
+      <div class="talks-grid">
+        <article class="talk reveal">
+          <div class="talk-video" data-youtube="up_ASOyql-4"></div>
+          <div class="talk-body">
+            <div class="talk-title">Evolução e diversidade genética em populações indígenas das Américas</div>
+            <div class="talk-venue">Centro de Estudos · Fiocruz Minas, Brazil</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════ PRESS ═══════════ -->
-  <section id="press" class="alt">
+  <section id="press">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="section-label">Media coverage</div>
@@ -1916,7 +1953,7 @@
   </section>
 
   <!-- ═══════════ CONTACT ═══════════ -->
-  <section id="contact">
+  <section id="contact" class="alt">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="section-label">Get in touch</div>
@@ -2011,6 +2048,26 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Talks: show a thumbnail, load the YouTube player only when clicked
+  document.querySelectorAll('.talk-video[data-youtube]').forEach(box => {
+    const id = box.dataset.youtube;
+    const title = box.closest('.talk').querySelector('.talk-title').textContent;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Play video: ' + title);
+    btn.style.backgroundImage = `url("https://i.ytimg.com/vi/${id}/hqdefault.jpg")`;
+    btn.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      frame.title = title;
+      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.allowFullscreen = true;
+      box.replaceChildren(frame);
+    });
+    box.appendChild(btn);
+  });
 
   // News: show the 6 most recent, hide the rest behind a button
   const NEWS_VISIBLE = 6;
