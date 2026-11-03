@@ -5,6 +5,7 @@ Run by .github/workflows/scholar.yml; can also be run by hand: python3 scripts/u
 """
 import re
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -12,16 +13,35 @@ PROFILE = "https://scholar.google.com/citations?user=KkHCEkEAAAAJ&hl=en"
 INDEX = Path(__file__).resolve().parent.parent / "index.html"
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
-req = urllib.request.Request(PROFILE, headers={"User-Agent": UA, "Accept-Language": "en"})
-try:
-    html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
-except Exception as e:
-    sys.exit(f"Could not fetch Scholar profile: {e}")
+def skip(reason):
+    # Google often blocks GitHub's datacenter IPs (CAPTCHA / HTTP 429). That is not a bug in
+    # the site, so warn and exit successfully instead of failing the workflow; the next
+    # scheduled run will try again.
+    print(f"::warning::Skipping Scholar update: {reason}")
+    sys.exit(0)
 
-# The stats table has 6 cells: citations, h-index, i10-index × (all time, since year)
-cells = re.findall(r'<td class="gsc_rsb_std">(\d+)</td>', html)
+
+def fetch():
+    req = urllib.request.Request(PROFILE, headers={"User-Agent": UA, "Accept-Language": "en"})
+    return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+
+
+cells, reason = [], ""
+for attempt in range(3):
+    if attempt:
+        time.sleep(30 * attempt)
+    try:
+        html = fetch()
+    except Exception as e:
+        reason = f"could not fetch profile ({e})"
+        continue
+    # The stats table has 6 cells: citations, h-index, i10-index × (all time, since year)
+    cells = re.findall(r'<td class="gsc_rsb_std">(\d+)</td>', html)
+    if len(cells) >= 6:
+        break
+    reason = "stats not found (Google probably served a CAPTCHA)"
 if len(cells) < 6:
-    sys.exit("Scholar stats not found (Google may have served a CAPTCHA); leaving index.html unchanged.")
+    skip(reason)
 metrics = {"citations": cells[0], "h-index": cells[2], "i10-index": cells[4]}
 
 page = INDEX.read_text(encoding="utf-8")
